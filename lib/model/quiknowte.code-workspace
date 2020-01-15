@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "E:\\W\\sqfEntity-master"
+		},
+		{
+			"path": "E:\\W\\sqlite_at_runtime"
+		}
+	],
+	"settings": {
+		"editor.fontFamily": "Consolas, 'segoe print', monospace",
+		"editor.fontSize": 15,
+		"terminal.integrated.fontFamily": "Monotype Corsiva Italic",
+		"terminal.integrated.fontSize": 12,
+		"debug.console.fontFamily": "Bradley Hand ITC Regular",
+		"liveServer.settings.multiRootWorkspaceName": "QR-Scanner-master"
+	}
+}
