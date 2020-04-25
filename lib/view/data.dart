@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sqfentity_sample/view/dataAdd.dart';
-import 'package:sqfentity_sample/view/datatables.dart';
+import 'package:quiknowte/view/dataAdd.dart';
+import 'package:quiknowte/view/datatables.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DataView extends StatefulWidget {

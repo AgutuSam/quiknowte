@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sqfentity_sample/model/dynsql.dart' as flex;
+import 'package:quiknowte/model/dynsql.dart' as flex;
 
 class Dtables extends StatefulWidget {
   @override
@@ -57,16 +57,16 @@ class _Dtables extends State<Dtables> {
     final List<DataRow> _dRow = [];
     for (int i = 0; i < _tableList.length; i++) {
       _dColmn.add(DataColumn(
-              label:
-                  _tableList[i]['name'].toString() == 'Id' ? Icon(Icons.menu) :
-                  RichText(
-        text: TextSpan(
-            text: _tableList[i]['name'].toString().toUpperCase(),
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            )),
-      ))
+              label: _tableList[i]['name'].toString() == 'Id'
+                  ? Icon(Icons.menu)
+                  : RichText(
+                      text: TextSpan(
+                          text: _tableList[i]['name'].toString().toUpperCase(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          )),
+                    ))
           // Text(_tableList[i]['name'].toString()),
 
           );
@@ -78,9 +78,12 @@ class _Dtables extends State<Dtables> {
       print('number = $_numb');
       for (int i = 0; i < _numb; i++) {
         _dcell.add(
-          DataCell(
-               colNm[i].toString() == 'Id' ? IconButton(icon: Icon(Icons.delete), onPressed: () {},) :
-              Text('${_retList[num][colNm[i].toString()].toString()}')),
+          DataCell(colNm[i].toString() == 'Id'
+              ? IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: () {},
+                )
+              : Text('${_retList[num][colNm[i].toString()].toString()}')),
         );
       }
 
@@ -93,18 +96,51 @@ class _Dtables extends State<Dtables> {
       );
     }
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-          sortColumnIndex: 0,
-          sortAscending: false,
-          columns: _dColmn,
-          rows: _dRow,
+    if (_dcell == null ||
+        _dcell.isEmpty ||
+        _dColmn == null ||
+        _dColmn.isEmpty ||
+        colNm == null ||
+        colNm.isEmpty ||
+        _dRow == null ||
+        _dRow.isEmpty) {
+      return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                '  No data has been added to this element yet!',
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 20,
+                ),
+              ),
+              Text(''),
+              Row(
+                children: <Widget>[
+                  // Icon(Icons.mood_bad),
+                  Icon(Icons.sentiment_dissatisfied,size: 42,),
+                                //  CircularProgressIndicator(),
+                ],
+              ),
+            ],
+          ));
+    } else {
+      return SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: DataTable(
+            sortColumnIndex: 0,
+            sortAscending: false,
+            columns: _dColmn,
+            rows: _dRow,
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   @override
@@ -112,14 +148,14 @@ class _Dtables extends State<Dtables> {
     // TODO: implement build
     return Scaffold(
       body: Container(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            child: _getDataBody(),
-          ),
-        ],
-      ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: _getDataBody(),
+            ),
+          ],
+        ),
       ),
     );
   }

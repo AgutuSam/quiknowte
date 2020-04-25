@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sqfentity_sample/samples/ptitles.dart';
+// import 'package:sqfentity_sample/samples/ptitles.dart';
 import 'package:sqflite/sqflite.dart';
 // import 'package:sqfentity_sample/view/dynamic.dart';
 import 'model/dbhelper.dart';
@@ -28,7 +28,7 @@ class MyStatelessWidget extends StatelessWidget {
   BuildContext get context => null;
 
   Future insert() async {
-    return await db.saveProject(Ptitle(['omg', 'project']));
+    return await db.saveProject(['omg', 'project']);
   }
 
   Future delete() async {

@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:sqfentity_sample/view/projects.dart';
+import 'package:quiknowte/view/projects.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
 /// This Widget is the main application widget.

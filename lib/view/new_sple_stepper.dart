@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sqfentity_sample/model/dynsql.dart' as flex;
+import 'package:quiknowte/model/dynsql.dart' as flex;
+import 'package:quiknowte/view/tableList.dart';
 import 'package:toast/toast.dart';
 
 class NewSample extends StatefulWidget {
@@ -94,9 +95,10 @@ class _NewSample extends State<NewSample> {
                         context,
                         duration: Toast.LENGTH_SHORT,
                         gravity: Toast.BOTTOM)
-                    : dy.table(samples, constants, variables)
+                        : dy.table(samples, constants, variables)
+                    : () => Navigator.push(context,MaterialPageRoute(builder: (context) => Samples())),
                     
-                : null,
+                // : null,
         onStepCancel:
             _currentStep > 0 ? () => setState(() => _currentStep -= 1) : null,
         currentStep: _currentStep,

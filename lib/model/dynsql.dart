@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:sqfentity_sample/samples/psamples.dart';
+import 'package:quiknowte/samples/psamples.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -237,6 +237,7 @@ Future createTabConst(Database dyn, int newVersion) async {
   Future<List<Map>> getTableInfo(String tabName) async {
     final dyClient = await dyn;
     final result = await dyClient.rawQuery('PRAGMA table_info($tabName)');
+    print('HHHHHHHHHHHH');
     print(result.toList());
     return result.toList();
   }

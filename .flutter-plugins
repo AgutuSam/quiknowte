@@ -1,4 +1,11 @@
 # This is a generated file; do not edit or check into version control.
-path_provider=E:\\xsystem\\folders\\flutter-sdk\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-1.4.5\\
+flutter_plugin_android_lifecycle=E:\\xsystem\\folders\\flutter-sdk\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_plugin_android_lifecycle-1.0.6\\
+flutter_share=E:\\xsystem\\folders\\flutter-sdk\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_share-1.0.2+1\\
+fluttertoast=E:\\xsystem\\folders\\flutter-sdk\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\fluttertoast-3.1.3\\
+image_picker=E:\\xsystem\\folders\\flutter-sdk\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\image_picker-0.6.3+4\\
+open_file=E:\\xsystem\\folders\\flutter-sdk\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\open_file-3.0.1\\
+path_provider=E:\\xsystem\\folders\\flutter-sdk\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-1.6.5\\
+path_provider_macos=E:\\xsystem\\folders\\flutter-sdk\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_macos-0.0.4\\
+permission_handler=E:\\xsystem\\folders\\flutter-sdk\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\permission_handler-4.3.0\\
 shared_preferences=E:\\xsystem\\folders\\flutter-sdk\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences-0.5.4+6\\
 sqflite=E:\\xsystem\\folders\\flutter-sdk\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\sqflite-1.1.7+3\\

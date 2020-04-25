@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sqfentity_sample/model/dynsql.dart' as flex;
-import 'package:sqfentity_sample/view/data.dart';
+import 'package:quiknowte/model/dynsql.dart' as flex;
+import 'package:quiknowte/view/data.dart';
 
 class Samples extends StatefulWidget {
   @override

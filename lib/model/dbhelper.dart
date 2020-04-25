@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:sqfentity_sample/samples/ptitles.dart';
+import 'package:quiknowte/samples/ptitles.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sqfentity_sample/model/dynsql.dart' as flex;
+import 'package:quiknowte/model/dynsql.dart' as flex;
 
 class DatabaseHelper {
   factory DatabaseHelper() => _instance;
@@ -19,6 +19,7 @@ class DatabaseHelper {
   var comma = ',';
   var equal = ' = ';
   String quote = '"';
+  String slash = '/';
   final String exten = '.db';
   var date, time, concat;
 
@@ -50,18 +51,18 @@ print(result.toList());
   }
 
   // ADD NEW PROJECT!
-  Future<dynamic> saveProject(Ptitle sample) async {
+  Future<List> saveProject(List sample) async {
     // final String databasesPath = await getDatabasesPath();
     final dbClient = await db;
 //    var result = await dbClient.insert(tableName, sample.toMap());
     var tabName;
 // final String table = sample.tableTitle[0] as String;
-    for (var i = 0; i < sample.tableTitle.length; i++) {
-      if (i != sample.tableTitle.length - 1) {
-        final eye = sample.tableTitle[i] as String;
+    for (var i = 0; i < sample.length; i++) {
+      if (i != sample.length - 1) {
+        final eye = sample[i] as String;
         tabname.add(quote + eye + quote + comma);
-      } else if (i == sample.tableTitle.length - 1) {
-        final eye = sample.tableTitle[i] as String;
+      } else if (i == sample.length - 1) {
+        final eye = sample[i] as String;
         tabname.add(quote + eye + quote);
       }
     }
@@ -71,8 +72,9 @@ print(result.toList());
     date = '271019';
 // time = TimeOfDay.now();
     final DateTime today = DateTime.now();
-    final String nameTime =
-        "$quote${sample.tableTitle[0]}${today.year.toString()}${today.month.toString().padLeft(2, '0')}${today.day.toString().padLeft(2, '0')}${today.hour.toString().padLeft(2, '0')}${today.minute.toString().padLeft(2, '0')}$quote";
+    final String nameTimeNoQuote = '${sample[0]}${today.year.toString()}${today.month.toString().padLeft(2, '0')}${today.day.toString().padLeft(2, '0')}${today.hour.toString().padLeft(2, '0')}${today.minute.toString().padLeft(2, '0')}${today.second.toString().padLeft(2, '0')}';
+    final String nameTime ="$quote${sample[0]}${today.year.toString()}${today.month.toString().padLeft(2, '0')}${today.day.toString().padLeft(2, '0')}${today.hour.toString().padLeft(2, '0')}${today.minute.toString().padLeft(2, '0')}${today.second.toString().padLeft(2, '0')}$quote";
+    final String nameTimeSlash ="$slash${sample[0]}${today.year.toString()}${today.month.toString().padLeft(2, '0')}${today.day.toString().padLeft(2, '0')}${today.hour.toString().padLeft(2, '0')}${today.minute.toString().padLeft(2, '0')}${today.second.toString().padLeft(2, '0')}$slash";
 // time = '1120';
 // concat = sample.tableTitle[0]+date+time;
     concat = 'haunahoo';
@@ -89,8 +91,25 @@ print(result.toList());
     tabname = [];
     tabName = [];
     print(result);
-    daync.createDB(nameTime);
-    return result;
+    final String databaseName = sample[0] as String;
+    daync.createDB(databaseName);
+    final String appDIr = '/data/user/0/com.example.sqfentity/';
+    final String fileDir = 'files/';
+    final fullDir = appDIr+nameTimeNoQuote+fileDir;
+    final myDir = Directory(fullDir)
+  ..exists().then((isThere) {
+    isThere ? print('DIRECTORYINEXISTENCE!') : Directory(fullDir).create()
+    // The created directory is returned as a Future.
+    .then((Directory directory) {
+      print('SSSPPPPPPPPPPPPPPPPPPPPPPPSSS');
+      print(directory.path);
+      print(nameTimeSlash);
+  });
+  });
+  
+    final List res = [nameTimeNoQuote,databaseName,result];
+    // print('TTTTTTTT: '+res.toString());
+    return res;
   }
 
   // REMOVE A PROJECT!
@@ -107,7 +126,7 @@ print(result.toList());
     // return await dbClient.delete(tableName, where: '$columnId = ?', whereArgs: [id]);
     await dbClient.rawDelete('DELETE FROM projects WHERE Id = $id');
     dir.deleteSync(recursive: true);
-    await deleteDatabase(dbPath);
+    // await deleteDatabase(dbPath);
     print(exist);
   }
 
@@ -137,6 +156,7 @@ print(result.toList());
 //    return await dbClient.rawUpdate(
 //        'UPDATE projects SET $tabData WHERE id = $id');
 //   }
+
 
 // GET ALLFROM TABLE!
   Future<List<Map>> getAllSamples() async {

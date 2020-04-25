@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-// import 'package:sqfentity_sample/samples/psamples.dart';
-import 'package:sqfentity_sample/view/tableList.dart';
+import 'package:quiknowte/utils/navbar1.dart';
+import 'package:quiknowte/view/tableList.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sqfentity_sample/model/dbhelper.dart' as stat;
-import 'package:sqfentity_sample/model/dynsql.dart' as flex;
+import 'package:quiknowte/model/dbhelper.dart' as stat;
+import 'package:quiknowte/model/dynsql.dart' as flex;
 import 'new_sple_stepper.dart';
 
 String popper;
 
 class Mydine extends StatefulWidget {
-  Mydine({Key key, @required this.text, @required this.id}) : super(key: key);
+  Mydine({Key key, @required this.extended,@required this.text, @required this.id}) : super(key: key);
   final String text;
+  final String extended;
   final int id;
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _Dine(dbName: text, dbid: id);
+    return _Dine(dbName: extended,projName: text, dbid: id);
   }
 }
 
 class _Dine extends State<Mydine> {
-  _Dine({Key key, @required this.dbName, @required this.dbid});
+  _Dine({Key key,@required this.dbName, @required this.projName, @required this.dbid});
   final String dbName;
+  final String projName;
   final int dbid;
   static String exten = '.db';
   final dy = flex.DatabaseHelper();
@@ -84,6 +86,7 @@ class _Dine extends State<Mydine> {
     // final String dbPath = prefs.getString('dbPath');
     // final bool exist = await databaseExists(dbPath);
     final db = await openDatabase(dbName + exten);
+    // print('DDD'+dbName);
     print(db);
     print(path);
     if (popper == 'false') {
@@ -98,13 +101,13 @@ class _Dine extends State<Mydine> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-          title: Text(dbName),
+          // leading: IconButton(
+          //   icon: Icon(Icons.arrow_back),
+          //   onPressed: () {
+          //     Navigator.pop(context);
+          //   },
+          // ),
+          title: Text(projName),
           actions: <Widget>[
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 15.0),
@@ -118,7 +121,7 @@ class _Dine extends State<Mydine> {
                         content: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            Text(sure + dbName + quest),
+                            Text(sure + dbName.substring(0,dbName.length-14) + quest),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Row(
@@ -152,7 +155,9 @@ class _Dine extends State<Mydine> {
               // Icon(Icons.delete_forever),
             ),
           ],
+          
         ),
+        
         bottomNavigationBar: BottomNavigationBar(
           onTap: onTabTapped,
           currentIndex: _currentIndex,
@@ -167,6 +172,7 @@ class _Dine extends State<Mydine> {
             ),
           ],
         ),
+        drawer: NavBar1(),
         body: _children[_currentIndex],
       ),
     );

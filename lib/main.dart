@@ -1,17 +1,23 @@
 import 'dart:async';
+// import 'package:flutter/foundation.dart';
+
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:sqfentity_sample/view/home.dart';
+import 'package:quiknowte/home.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  // debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       color: Colors.blue,
       home: Splash(),
     );
@@ -30,7 +36,7 @@ class SplashState extends State<Splash> {
 
     if (_seen) {
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) => Home()));
+          .pushReplacement(MaterialPageRoute(builder: (context) => StartHomePage()));
     } else {
       prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(
@@ -69,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
 
   Future navigationPage() async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => StartHomePage()));
   }
 
   @override

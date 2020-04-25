@@ -1,6 +1,6 @@
 import 'dart:async';
 // import 'dart:async' as prefix0;
-import 'package:sqfentity_sample/samples/sample.dart';
+import 'package:quiknowte/samples/sample.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 

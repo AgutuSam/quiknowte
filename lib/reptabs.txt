@@ -1,0 +1,993 @@
+import 'package:flutter/material.dart';
+
+class Choice {
+  Choice({this.title, this.icon});
+
+  final String title;
+  final IconData icon;
+}
+
+class Tabz {
+  Tabz({this.wijet});
+  final Widget wijet;
+}
+
+ List<Choice> choices = <Choice>[
+  Choice(title: 'CAR', icon: Icons.directions_car),
+  Choice(title: 'BICYCLE', icon: Icons.directions_bike),
+  Choice(title: 'BOAT', icon: Icons.directions_boat),
+  Choice(title: 'BUS', icon: Icons.directions_bus),
+  Choice(title: 'BUS', icon: Icons.directions_bus),
+  Choice(title: 'BUS', icon: Icons.directions_bus),
+  Choice(title: 'TRAIN', icon: Icons.directions_railway),
+  Choice(title: 'WALK', icon: Icons.directions_walk),
+];
+
+List<Tabz> tabz = <Tabz>[
+  Tabz(wijet: Tab(
+              icon: Icon(Icons.filter_1),
+              child: Container(
+                height: 500.0,
+                // width: MediaQuery.of(context).size.width,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.2,
+                  padding: const EdgeInsets.all(16.0),
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  children:
+  [
+    cards(
+                        'assets/charts/axes/bar_secondary_axis_only_full.png',
+                        'Bar Secondary Only',
+                        BarChartWithSecondaryAxisOnly.withSampleData()),
+                    cards(
+                        'assets/charts/axes/bar_secondary_axis_full.png',
+                        'Bar Secondary Axis',
+                        BarChartWithSecondaryAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/custom_axis_tick_formatters_full.png',
+                        'CustomAxis Tick',
+                        CustomAxisTickFormatters.withSampleData()),
+                    cards(
+                        'assets/charts/axes/custom_font_size_and_color_full.png',
+                        'FontSize Color',
+                        CustomFontSizeAndColor.withSampleData()),
+                    cards(
+                        'assets/charts/axes/custom_measure_tick_count_full.png',
+                        'Custom Measure Tick',
+                        CustomMeasureTickCount.withSampleData()),
+                    cards(
+                        'assets/charts/axes/flipped_vertical_axis_full.png',
+                        'Flipped Vertical',
+                        FlippedVerticalAxis.withSampleData()),
+                    cards('assets/charts/axes/gridline_dash_pattern_full.png',
+                        'Gridline Dash', GridlineDashPattern.withSampleData()),
+                    cards(
+                        'assets/charts/axes/hidden_ticks_and_labels_axis_full.png',
+                        'Hidden Ticks',
+                        HiddenTicksAndLabelsAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/horizontal_bar_secondary_axis_full.png',
+                        'Horizontal Bar',
+                        HorizontalBarChartWithSecondaryAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/integer_only_measure_axis_full.png',
+                        'Integer Only Axis',
+                        IntegerOnlyMeasureAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/line_disjoint_axis_full.png',
+                        'Disjoint Axis',
+                        DisjointMeasureAxisLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/axes/measure_axis_label_alignment_full.png',
+                        'Measure Axis Label',
+                        MeasureAxisLabelAlignment.withSampleData()),
+                    cards(
+                        'assets/charts/axes/nonzero_bound_measure_axis_full.png',
+                        'Nonzero Bound',
+                        NonzeroBoundMeasureAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/numeric_initial_viewport_full.png',
+                        'Numeric Initial',
+                        NumericInitialViewport.withSampleData()),
+                    cards(
+                        'assets/charts/axes/ordinal_initial_viewport_full.png',
+                        'Ordinal Initial',
+                        OrdinalInitialViewport.withSampleData()),
+                    cards(
+                        'assets/charts/axes/short_tick_length_axis_full.png',
+                        'Short Tick Length',
+                        ShortTickLengthAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/statically_provided_ticks_full.png',
+                        'Statically Ticks',
+                        StaticallyProvidedTicks.withSampleData()),
+  ]),
+              ),
+  ),
+  ),
+  Tabz(wijet: Tab(
+              icon: Icon(Icons.filter_1),
+              child: Container(
+                height: 500.0,
+                // width: MediaQuery.of(context).size.width,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.2,
+                  padding: const EdgeInsets.all(16.0),
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  children:
+   [
+    cards('assets/charts/bar_charts/simple_full.png',
+                        'Simple Bar', SimpleBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/custom_rounded_bars_full.png',
+                        'Custom Round',
+                        CustomRoundedBars.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_fill_color_full.png',
+                        'Grouped Fill Color',
+                        GroupedFillColorBarChart.withSampleData()),
+                    cards('assets/charts/bar_charts/grouped_full.png',
+                        'Grouped', GroupedBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_stacked_full.png',
+                        'Grouped Stacked',
+                        GroupedStackedBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_stacked_weight_pattern_full.png',
+                        'Weight Pattern',
+                        GroupedStackedWeightPatternBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_target_line_full.png',
+                        'Grouped Target',
+                        GroupedBarTargetLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_target_line_full.png',
+                        'Single Taget',
+                        GroupedBarSingleTargetLineChart.withSampleData()),
+                    cards('assets/charts/bar_charts/horizontal_full.png',
+                        'Horizontal Bar', HorizontalBarChart.withRandomData()),
+                    cards(
+                        'assets/charts/bar_charts/horizontal_bar_label_full.png',
+                        'Horizontal Label',
+                        HorizontalBarLabelChart.withRandomData()),
+                    cards(
+                        'assets/charts/bar_charts/horizontal_bar_label_custom_full.png',
+                        'Horizontal Custom',
+                        HorizontalBarLabelCustomChart.withRandomData()),
+                    cards(
+                        'assets/charts/bar_charts/horizontal_pattern_forward_hatch_full.png',
+                        'Horizontal Forward',
+                        HorizontalPatternForwardHatchBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/pattern_forward_hatch_full.png',
+                        'Pattern Forward',
+                        PatternForwardHatchBarChart.withSampleData()),
+                    cards('assets/charts/bar_charts/spark_bar_full.png',
+                        'Spark Bar', SparkBar.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/stacked_fill_color_full.png',
+                        'Stacked Color',
+                        StackedFillColorBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/stacked_horizontal_full.png',
+                        'Stacked Horizontal',
+                        StackedHorizontalBarChart.withSampleData()),
+                    cards('assets/charts/bar_charts/stacked_full.png',
+                        'Stacked', StackedBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/stacked_target_line_full.png',
+                        'Stacked Line',
+                        StackedBarTargetLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/vertical_bar_label_full.png',
+                        'Vertical Bar',
+                        VerticalBarLabelChart.withSampleData()),
+  ]
+  ),
+  ),
+  ),
+  ),
+  Tabz(wijet: Tab(
+              icon: Icon(Icons.filter_1),
+              child: Container(
+                height: 500.0,
+                // width: MediaQuery.of(context).size.width,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.2,
+                  padding: const EdgeInsets.all(16.0),
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  children:
+   [
+
+    cards(
+                        'assets/charts/combo_charts/date_time_line_point_full.png',
+                        'Time Line',
+                        DateTimeComboLinePointChart.withSampleData()),
+                    cards(
+                        'assets/charts/combo_charts/numeric_line_bar_full.png',
+                        'Numeric Bar',
+                        NumericComboLineBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/combo_charts/numeric_line_point_full.png',
+                        'Numeric Point',
+                        NumericComboLinePointChart.withSampleData()),
+                    cards(
+                        'assets/charts/combo_charts/ordinal_bar_line_full.png',
+                        'Ordinal Line',
+                        OrdinalComboBarLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/combo_charts/scatter_plot_line_full.png',
+                        'Scatter Line',
+                        ScatterPlotComboLineChart.withSampleData()),
+  ]
+  ),
+  ),
+  ),
+  ),
+  Tabz(wijet: Tab(
+              icon: Icon(Icons.filter_1),
+              child: Container(
+                height: 500.0,
+                // width: MediaQuery.of(context).size.width,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.2,
+                  padding: const EdgeInsets.all(16.0),
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  children:
+  [
+    cards('assets/charts/legends/datum_legend_options_full.png',
+                        'Datum Options', DatumLegendOptions.withSampleData()),
+                    cards(
+                        'assets/charts/legends/datum_legend_with_measures_full.png',
+                        'Datum Measures',
+                        DatumLegendWithMeasures.withSampleData()),
+                    cards(
+                        'assets/charts/legends/default_hidden_series_legend_full.png',
+                        'Default Hidden',
+                        DefaultHiddenSeriesLegend.withSampleData()),
+                    cards(
+                        'assets/charts/legends/legend_custom_symbol_full.png',
+                        'Custom Legend',
+                        LegendWithCustomSymbol.withSampleData()),
+                    cards(
+                        'assets/charts/legends/series_legend_options_full.png',
+                        'Series Options',
+                        LegendOptions.withSampleData()),
+                    cards(
+                        'assets/charts/legends/series_legend_with_measures_full.png',
+                        'Series Measures',
+                        LegendWithMeasures.withSampleData()),
+                    cards('assets/charts/legends/simple_datum_legend_full.png',
+                        'Simple Datum', SimpleDatumLegend.withSampleData()),
+                    cards('assets/charts/legends/simple_series_legend_full.png',
+                        'Simple Series', SimpleSeriesLegend.withSampleData()),
+  ]
+  ),
+  ),
+  ),
+  ),
+  Tabz(wijet: Tab(
+              icon: Icon(Icons.filter_1),
+              child: Container(
+                height: 500.0,
+                // width: MediaQuery.of(context).size.width,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.2,
+                  padding: const EdgeInsets.all(16.0),
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  children:
+  [
+     cards(
+                        'assets/charts/line_charts/simple_full.png',
+                        'Animation Zoom',
+                        LineAnimationZoomChart.withSampleData()),
+                    cards('assets/charts/line_charts/area_and_line_full.png',
+                        'Area & Line', AreaAndLineChart.withSampleData()),
+                    cards('assets/charts/line_charts/dash_pattern_full.png',
+                        'Dash Pattern', DashPatternLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/line_annotation_full.png',
+                        'Line Annotation',
+                        LineLineAnnotationChart.withSampleData()),
+                    cards('assets/charts/line_charts/points_full.png', 'Points',
+                        PointsLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/range_annotation_margin_full.png',
+                        'Range Margin',
+                        LineRangeAnnotationMarginChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/range_annotation_full.png',
+                        'Range Annotation',
+                        LineRangeAnnotationChart.withSampleData()),
+                    cards('assets/charts/line_charts/segments_full.png',
+                        'Segments', SegmentsLineChart.withSampleData()),
+                    cards('assets/charts/line_charts/simple_nulls_full.png',
+                        'Simple Null', SimpleNullsLineChart.withSampleData()),
+                    cards('assets/charts/line_charts/simple_full.png', 'Simple',
+                        SimpleLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/stacked_area_custom_color_full.png',
+                        'Stacked Area Custom',
+                        StackedAreaCustomColorLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/stacked_area_nulls_full.png',
+                        'Stacked Area Null',
+                        StackedAreaNullsLineChart.withSampleData()),
+                    cards('assets/charts/line_charts/stacked_area_full.png',
+                        'Stacked Area', StackedAreaLineChart.withSampleData()),
+  ]
+  ),
+  ),
+  ),
+  ),
+  Tabz(wijet: Tab(
+              icon: Icon(Icons.filter_1),
+              child: Container(
+                height: 500.0,
+                // width: MediaQuery.of(context).size.width,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.2,
+                  padding: const EdgeInsets.all(16.0),
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  children:
+  [
+     cards('assets/charts/pie_charts/auto_label_full.png',
+                        'Auto Label', DonutAutoLabelChart.withSampleData()),
+                    cards('assets/charts/pie_charts/donut_full.png', 'Doughnut',
+                        DonutPieChart.withSampleData()),
+                    cards('assets/charts/pie_charts/gauge_full.png', 'Gauge',
+                        GaugeChart.withSampleData()),
+                    cards('assets/charts/pie_charts/outside_label_full.png',
+                        'Outside Label', PieOutsideLabelChart.withSampleData()),
+                    cards('assets/charts/pie_charts/partial_pie_full.png',
+                        'Partial Pie', PartialPieChart.withSampleData()),
+                    cards('assets/charts/pie_charts/simple_full.png',
+                        'Simple Pie', SimplePieChart.withSampleData()),
+  ]
+  ),
+  ),
+  ),
+  ),
+  Tabz(wijet: Tab(
+              icon: Icon(Icons.filter_1),
+              child: Container(
+                height: 500.0,
+                // width: MediaQuery.of(context).size.width,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.2,
+                  padding: const EdgeInsets.all(16.0),
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  children:
+  [
+     cards(
+                        'assets/charts/time_series_charts/confidence_interval_full.png',
+                        'Confidence Interval',
+                        TimeSeriesConfidenceInterval.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/end_points_axis_full.png',
+                        'End Point Axis',
+                        EndPointsAxisTimeSeriesChart.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/line_annotation_full.png',
+                        'Line Annotation',
+                        TimeSeriesLineAnnotationChart.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/range_annotation_full.png',
+                        'Range Annotation',
+                        TimeSeriesRangeAnnotationChart.withSampleData()),
+                    cards('assets/charts/time_series_charts/simple_full.png',
+                        'Simple', SimpleTimeSeriesChart.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/symbol_annotation_full.png',
+                        'Symbol Annotation',
+                        TimeSeriesSymbolAnnotationChart.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/with_bar_renderer_full.png',
+                        'Bar Render',
+                        TimeSeriesBar.withSampleData()),
+  ]
+  ),
+  ),
+  ),
+  ),
+  Tabz(wijet: Tab(
+              icon: Icon(Icons.filter_1),
+              child: Container(
+                height: 500.0,
+                // width: MediaQuery.of(context).size.width,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.2,
+                  padding: const EdgeInsets.all(16.0),
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  children:
+   [
+
+  ]
+  ),
+  ),
+  ),
+  ),
+  ];
+
+
+  final List<Widget> _tabs1 = [
+  
+  cards(
+                        'assets/charts/axes/bar_secondary_axis_only_full.png',
+                        'Bar Secondary Only',
+                        BarChartWithSecondaryAxisOnly.withSampleData()),
+                    cards(
+                        'assets/charts/axes/bar_secondary_axis_full.png',
+                        'Bar Secondary Axis',
+                        BarChartWithSecondaryAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/custom_axis_tick_formatters_full.png',
+                        'CustomAxis Tick',
+                        CustomAxisTickFormatters.withSampleData()),
+                    cards(
+                        'assets/charts/axes/custom_font_size_and_color_full.png',
+                        'FontSize Color',
+                        CustomFontSizeAndColor.withSampleData()),
+                    cards(
+                        'assets/charts/axes/custom_measure_tick_count_full.png',
+                        'Custom Measure Tick',
+                        CustomMeasureTickCount.withSampleData()),
+                    cards(
+                        'assets/charts/axes/flipped_vertical_axis_full.png',
+                        'Flipped Vertical',
+                        FlippedVerticalAxis.withSampleData()),
+                    cards('assets/charts/axes/gridline_dash_pattern_full.png',
+                        'Gridline Dash', GridlineDashPattern.withSampleData()),
+                    cards(
+                        'assets/charts/axes/hidden_ticks_and_labels_axis_full.png',
+                        'Hidden Ticks',
+                        HiddenTicksAndLabelsAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/horizontal_bar_secondary_axis_full.png',
+                        'Horizontal Bar',
+                        HorizontalBarChartWithSecondaryAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/integer_only_measure_axis_full.png',
+                        'Integer Only Axis',
+                        IntegerOnlyMeasureAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/line_disjoint_axis_full.png',
+                        'Disjoint Axis',
+                        DisjointMeasureAxisLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/axes/measure_axis_label_alignment_full.png',
+                        'Measure Axis Label',
+                        MeasureAxisLabelAlignment.withSampleData()),
+                    cards(
+                        'assets/charts/axes/nonzero_bound_measure_axis_full.png',
+                        'Nonzero Bound',
+                        NonzeroBoundMeasureAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/numeric_initial_viewport_full.png',
+                        'Numeric Initial',
+                        NumericInitialViewport.withSampleData()),
+                    cards(
+                        'assets/charts/axes/ordinal_initial_viewport_full.png',
+                        'Ordinal Initial',
+                        OrdinalInitialViewport.withSampleData()),
+                    cards(
+                        'assets/charts/axes/short_tick_length_axis_full.png',
+                        'Short Tick Length',
+                        ShortTickLengthAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/statically_provided_ticks_full.png',
+                        'Statically Ticks',
+                        StaticallyProvidedTicks.withSampleData()),
+];
+final List <Widget> _tabs2 = [
+  cards('assets/charts/bar_charts/simple_full.png',
+                        'Simple Bar', SimpleBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/custom_rounded_bars_full.png',
+                        'Custom Round',
+                        CustomRoundedBars.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_fill_color_full.png',
+                        'Grouped Fill Color',
+                        GroupedFillColorBarChart.withSampleData()),
+                    cards('assets/charts/bar_charts/grouped_full.png',
+                        'Grouped', GroupedBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_stacked_full.png',
+                        'Grouped Stacked',
+                        GroupedStackedBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_stacked_weight_pattern_full.png',
+                        'Weight Pattern',
+                        GroupedStackedWeightPatternBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_target_line_full.png',
+                        'Grouped Target',
+                        GroupedBarTargetLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_target_line_full.png',
+                        'Single Taget',
+                        GroupedBarSingleTargetLineChart.withSampleData()),
+                    cards('assets/charts/bar_charts/horizontal_full.png',
+                        'Horizontal Bar', HorizontalBarChart.withRandomData()),
+                    cards(
+                        'assets/charts/bar_charts/horizontal_bar_label_full.png',
+                        'Horizontal Label',
+                        HorizontalBarLabelChart.withRandomData()),
+                    cards(
+                        'assets/charts/bar_charts/horizontal_bar_label_custom_full.png',
+                        'Horizontal Custom',
+                        HorizontalBarLabelCustomChart.withRandomData()),
+                    cards(
+                        'assets/charts/bar_charts/horizontal_pattern_forward_hatch_full.png',
+                        'Horizontal Forward',
+                        HorizontalPatternForwardHatchBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/pattern_forward_hatch_full.png',
+                        'Pattern Forward',
+                        PatternForwardHatchBarChart.withSampleData()),
+                    cards('assets/charts/bar_charts/spark_bar_full.png',
+                        'Spark Bar', SparkBar.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/stacked_fill_color_full.png',
+                        'Stacked Color',
+                        StackedFillColorBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/stacked_horizontal_full.png',
+                        'Stacked Horizontal',
+                        StackedHorizontalBarChart.withSampleData()),
+                    cards('assets/charts/bar_charts/stacked_full.png',
+                        'Stacked', StackedBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/stacked_target_line_full.png',
+                        'Stacked Line',
+                        StackedBarTargetLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/vertical_bar_label_full.png',
+                        'Vertical Bar',
+                        VerticalBarLabelChart.withSampleData()),
+];
+final List <Widget> _tabs3 = [
+  cards(
+                        'assets/charts/combo_charts/date_time_line_point_full.png',
+                        'Time Line',
+                        DateTimeComboLinePointChart.withSampleData()),
+                    cards(
+                        'assets/charts/combo_charts/numeric_line_bar_full.png',
+                        'Numeric Bar',
+                        NumericComboLineBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/combo_charts/numeric_line_point_full.png',
+                        'Numeric Point',
+                        NumericComboLinePointChart.withSampleData()),
+                    cards(
+                        'assets/charts/combo_charts/ordinal_bar_line_full.png',
+                        'Ordinal Line',
+                        OrdinalComboBarLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/combo_charts/scatter_plot_line_full.png',
+                        'Scatter Line',
+                        ScatterPlotComboLineChart.withSampleData()),
+];
+final List <Widget> _tabs4 = [
+cards('assets/charts/legends/datum_legend_options_full.png',
+                        'Datum Options', DatumLegendOptions.withSampleData()),
+                    cards(
+                        'assets/charts/legends/datum_legend_with_measures_full.png',
+                        'Datum Measures',
+                        DatumLegendWithMeasures.withSampleData()),
+                    cards(
+                        'assets/charts/legends/default_hidden_series_legend_full.png',
+                        'Default Hidden',
+                        DefaultHiddenSeriesLegend.withSampleData()),
+                    cards(
+                        'assets/charts/legends/legend_custom_symbol_full.png',
+                        'Custom Legend',
+                        LegendWithCustomSymbol.withSampleData()),
+                    cards(
+                        'assets/charts/legends/series_legend_options_full.png',
+                        'Series Options',
+                        LegendOptions.withSampleData()),
+                    cards(
+                        'assets/charts/legends/series_legend_with_measures_full.png',
+                        'Series Measures',
+                        LegendWithMeasures.withSampleData()),
+                    cards('assets/charts/legends/simple_datum_legend_full.png',
+                        'Simple Datum', SimpleDatumLegend.withSampleData()),
+                    cards('assets/charts/legends/simple_series_legend_full.png',
+                        'Simple Series', SimpleSeriesLegend.withSampleData()),
+];
+final List <Widget> _tabs5 = [
+  cards(
+                        'assets/charts/line_charts/simple_full.png',
+                        'Animation Zoom',
+                        LineAnimationZoomChart.withSampleData()),
+                    cards('assets/charts/line_charts/area_and_line_full.png',
+                        'Area & Line', AreaAndLineChart.withSampleData()),
+                    cards('assets/charts/line_charts/dash_pattern_full.png',
+                        'Dash Pattern', DashPatternLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/line_annotation_full.png',
+                        'Line Annotation',
+                        LineLineAnnotationChart.withSampleData()),
+                    cards('assets/charts/line_charts/points_full.png', 'Points',
+                        PointsLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/range_annotation_margin_full.png',
+                        'Range Margin',
+                        LineRangeAnnotationMarginChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/range_annotation_full.png',
+                        'Range Annotation',
+                        LineRangeAnnotationChart.withSampleData()),
+                    cards('assets/charts/line_charts/segments_full.png',
+                        'Segments', SegmentsLineChart.withSampleData()),
+                    cards('assets/charts/line_charts/simple_nulls_full.png',
+                        'Simple Null', SimpleNullsLineChart.withSampleData()),
+                    cards('assets/charts/line_charts/simple_full.png', 'Simple',
+                        SimpleLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/stacked_area_custom_color_full.png',
+                        'Stacked Area Custom',
+                        StackedAreaCustomColorLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/stacked_area_nulls_full.png',
+                        'Stacked Area Null',
+                        StackedAreaNullsLineChart.withSampleData()),
+                    cards('assets/charts/line_charts/stacked_area_full.png',
+                        'Stacked Area', StackedAreaLineChart.withSampleData()),
+];
+final List <Widget> _tabs6 = [
+   cards('assets/charts/pie_charts/auto_label_full.png',
+                        'Auto Label', DonutAutoLabelChart.withSampleData()),
+                    cards('assets/charts/pie_charts/donut_full.png', 'Doughnut',
+                        DonutPieChart.withSampleData()),
+                    cards('assets/charts/pie_charts/gauge_full.png', 'Gauge',
+                        GaugeChart.withSampleData()),
+                    cards('assets/charts/pie_charts/outside_label_full.png',
+                        'Outside Label', PieOutsideLabelChart.withSampleData()),
+                    cards('assets/charts/pie_charts/partial_pie_full.png',
+                        'Partial Pie', PartialPieChart.withSampleData()),
+                    cards('assets/charts/pie_charts/simple_full.png',
+                        'Simple Pie', SimplePieChart.withSampleData()),
+];
+final List <Widget> _tabs7 = [
+  cards(
+                        'assets/charts/time_series_charts/confidence_interval_full.png',
+                        'Confidence Interval',
+                        TimeSeriesConfidenceInterval.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/end_points_axis_full.png',
+                        'End Point Axis',
+                        EndPointsAxisTimeSeriesChart.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/line_annotation_full.png',
+                        'Line Annotation',
+                        TimeSeriesLineAnnotationChart.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/range_annotation_full.png',
+                        'Range Annotation',
+                        TimeSeriesRangeAnnotationChart.withSampleData()),
+                    cards('assets/charts/time_series_charts/simple_full.png',
+                        'Simple', SimpleTimeSeriesChart.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/symbol_annotation_full.png',
+                        'Symbol Annotation',
+                        TimeSeriesSymbolAnnotationChart.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/with_bar_renderer_full.png',
+                        'Bar Render',
+                        TimeSeriesBar.withSampleData()),
+];
+final List <Widget> _tabs8 = [
+  
+];
+
+
+
+
+class ChoiceCard extends StatelessWidget {
+  ChoiceCard({Key key, this.tabs}) : super(key: key);
+
+  final Choice tabs;
+
+  @override
+  Widget build(BuildContext context) {
+    // final TabController controlle = TabController(length: 8, vsync: this);
+    return  TabBarView(
+      // controller: controlle, 
+      children: tabz.map(
+                    (Tabz choice) {
+                return choice.wijet;
+              }).toList(),
+            );
+  }
+}
+
+
+final List<Widget> _tabs1 = [
+  
+  cards(
+                        'assets/charts/axes/bar_secondary_axis_only_full.png',
+                        'Bar Secondary Only',
+                        BarChartWithSecondaryAxisOnly.withSampleData()),
+                    cards(
+                        'assets/charts/axes/bar_secondary_axis_full.png',
+                        'Bar Secondary Axis',
+                        BarChartWithSecondaryAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/custom_axis_tick_formatters_full.png',
+                        'CustomAxis Tick',
+                        CustomAxisTickFormatters.withSampleData()),
+                    cards(
+                        'assets/charts/axes/custom_font_size_and_color_full.png',
+                        'FontSize Color',
+                        CustomFontSizeAndColor.withSampleData()),
+                    cards(
+                        'assets/charts/axes/custom_measure_tick_count_full.png',
+                        'Custom Measure Tick',
+                        CustomMeasureTickCount.withSampleData()),
+                    cards(
+                        'assets/charts/axes/flipped_vertical_axis_full.png',
+                        'Flipped Vertical',
+                        FlippedVerticalAxis.withSampleData()),
+                    cards('assets/charts/axes/gridline_dash_pattern_full.png',
+                        'Gridline Dash', GridlineDashPattern.withSampleData()),
+                    cards(
+                        'assets/charts/axes/hidden_ticks_and_labels_axis_full.png',
+                        'Hidden Ticks',
+                        HiddenTicksAndLabelsAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/horizontal_bar_secondary_axis_full.png',
+                        'Horizontal Bar',
+                        HorizontalBarChartWithSecondaryAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/integer_only_measure_axis_full.png',
+                        'Integer Only Axis',
+                        IntegerOnlyMeasureAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/line_disjoint_axis_full.png',
+                        'Disjoint Axis',
+                        DisjointMeasureAxisLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/axes/measure_axis_label_alignment_full.png',
+                        'Measure Axis Label',
+                        MeasureAxisLabelAlignment.withSampleData()),
+                    cards(
+                        'assets/charts/axes/nonzero_bound_measure_axis_full.png',
+                        'Nonzero Bound',
+                        NonzeroBoundMeasureAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/numeric_initial_viewport_full.png',
+                        'Numeric Initial',
+                        NumericInitialViewport.withSampleData()),
+                    cards(
+                        'assets/charts/axes/ordinal_initial_viewport_full.png',
+                        'Ordinal Initial',
+                        OrdinalInitialViewport.withSampleData()),
+                    cards(
+                        'assets/charts/axes/short_tick_length_axis_full.png',
+                        'Short Tick Length',
+                        ShortTickLengthAxis.withSampleData()),
+                    cards(
+                        'assets/charts/axes/statically_provided_ticks_full.png',
+                        'Statically Ticks',
+                        StaticallyProvidedTicks.withSampleData()),
+];
+final List <Widget> _tabs2 = [
+  cards('assets/charts/bar_charts/simple_full.png',
+                        'Simple Bar', SimpleBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/custom_rounded_bars_full.png',
+                        'Custom Round',
+                        CustomRoundedBars.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_fill_color_full.png',
+                        'Grouped Fill Color',
+                        GroupedFillColorBarChart.withSampleData()),
+                    cards('assets/charts/bar_charts/grouped_full.png',
+                        'Grouped', GroupedBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_stacked_full.png',
+                        'Grouped Stacked',
+                        GroupedStackedBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_stacked_weight_pattern_full.png',
+                        'Weight Pattern',
+                        GroupedStackedWeightPatternBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_target_line_full.png',
+                        'Grouped Target',
+                        GroupedBarTargetLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/grouped_target_line_full.png',
+                        'Single Taget',
+                        GroupedBarSingleTargetLineChart.withSampleData()),
+                    cards('assets/charts/bar_charts/horizontal_full.png',
+                        'Horizontal Bar', HorizontalBarChart.withRandomData()),
+                    cards(
+                        'assets/charts/bar_charts/horizontal_bar_label_full.png',
+                        'Horizontal Label',
+                        HorizontalBarLabelChart.withRandomData()),
+                    cards(
+                        'assets/charts/bar_charts/horizontal_bar_label_custom_full.png',
+                        'Horizontal Custom',
+                        HorizontalBarLabelCustomChart.withRandomData()),
+                    cards(
+                        'assets/charts/bar_charts/horizontal_pattern_forward_hatch_full.png',
+                        'Horizontal Forward',
+                        HorizontalPatternForwardHatchBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/pattern_forward_hatch_full.png',
+                        'Pattern Forward',
+                        PatternForwardHatchBarChart.withSampleData()),
+                    cards('assets/charts/bar_charts/spark_bar_full.png',
+                        'Spark Bar', SparkBar.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/stacked_fill_color_full.png',
+                        'Stacked Color',
+                        StackedFillColorBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/stacked_horizontal_full.png',
+                        'Stacked Horizontal',
+                        StackedHorizontalBarChart.withSampleData()),
+                    cards('assets/charts/bar_charts/stacked_full.png',
+                        'Stacked', StackedBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/stacked_target_line_full.png',
+                        'Stacked Line',
+                        StackedBarTargetLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/bar_charts/vertical_bar_label_full.png',
+                        'Vertical Bar',
+                        VerticalBarLabelChart.withSampleData()),
+];
+final List <Widget> _tabs3 = [
+  cards(
+                        'assets/charts/combo_charts/date_time_line_point_full.png',
+                        'Time Line',
+                        DateTimeComboLinePointChart.withSampleData()),
+                    cards(
+                        'assets/charts/combo_charts/numeric_line_bar_full.png',
+                        'Numeric Bar',
+                        NumericComboLineBarChart.withSampleData()),
+                    cards(
+                        'assets/charts/combo_charts/numeric_line_point_full.png',
+                        'Numeric Point',
+                        NumericComboLinePointChart.withSampleData()),
+                    cards(
+                        'assets/charts/combo_charts/ordinal_bar_line_full.png',
+                        'Ordinal Line',
+                        OrdinalComboBarLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/combo_charts/scatter_plot_line_full.png',
+                        'Scatter Line',
+                        ScatterPlotComboLineChart.withSampleData()),
+];
+final List <Widget> _tabs4 = [
+cards('assets/charts/legends/datum_legend_options_full.png',
+                        'Datum Options', DatumLegendOptions.withSampleData()),
+                    cards(
+                        'assets/charts/legends/datum_legend_with_measures_full.png',
+                        'Datum Measures',
+                        DatumLegendWithMeasures.withSampleData()),
+                    cards(
+                        'assets/charts/legends/default_hidden_series_legend_full.png',
+                        'Default Hidden',
+                        DefaultHiddenSeriesLegend.withSampleData()),
+                    cards(
+                        'assets/charts/legends/legend_custom_symbol_full.png',
+                        'Custom Legend',
+                        LegendWithCustomSymbol.withSampleData()),
+                    cards(
+                        'assets/charts/legends/series_legend_options_full.png',
+                        'Series Options',
+                        LegendOptions.withSampleData()),
+                    cards(
+                        'assets/charts/legends/series_legend_with_measures_full.png',
+                        'Series Measures',
+                        LegendWithMeasures.withSampleData()),
+                    cards('assets/charts/legends/simple_datum_legend_full.png',
+                        'Simple Datum', SimpleDatumLegend.withSampleData()),
+                    cards('assets/charts/legends/simple_series_legend_full.png',
+                        'Simple Series', SimpleSeriesLegend.withSampleData()),
+];
+final List <Widget> _tabs5 = [
+  cards(
+                        'assets/charts/line_charts/simple_full.png',
+                        'Animation Zoom',
+                        LineAnimationZoomChart.withSampleData()),
+                    cards('assets/charts/line_charts/area_and_line_full.png',
+                        'Area & Line', AreaAndLineChart.withSampleData()),
+                    cards('assets/charts/line_charts/dash_pattern_full.png',
+                        'Dash Pattern', DashPatternLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/line_annotation_full.png',
+                        'Line Annotation',
+                        LineLineAnnotationChart.withSampleData()),
+                    cards('assets/charts/line_charts/points_full.png', 'Points',
+                        PointsLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/range_annotation_margin_full.png',
+                        'Range Margin',
+                        LineRangeAnnotationMarginChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/range_annotation_full.png',
+                        'Range Annotation',
+                        LineRangeAnnotationChart.withSampleData()),
+                    cards('assets/charts/line_charts/segments_full.png',
+                        'Segments', SegmentsLineChart.withSampleData()),
+                    cards('assets/charts/line_charts/simple_nulls_full.png',
+                        'Simple Null', SimpleNullsLineChart.withSampleData()),
+                    cards('assets/charts/line_charts/simple_full.png', 'Simple',
+                        SimpleLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/stacked_area_custom_color_full.png',
+                        'Stacked Area Custom',
+                        StackedAreaCustomColorLineChart.withSampleData()),
+                    cards(
+                        'assets/charts/line_charts/stacked_area_nulls_full.png',
+                        'Stacked Area Null',
+                        StackedAreaNullsLineChart.withSampleData()),
+                    cards('assets/charts/line_charts/stacked_area_full.png',
+                        'Stacked Area', StackedAreaLineChart.withSampleData()),
+];
+final List <Widget> _tabs6 = [
+   cards('assets/charts/pie_charts/auto_label_full.png',
+                        'Auto Label', DonutAutoLabelChart.withSampleData()),
+                    cards('assets/charts/pie_charts/donut_full.png', 'Doughnut',
+                        DonutPieChart.withSampleData()),
+                    cards('assets/charts/pie_charts/gauge_full.png', 'Gauge',
+                        GaugeChart.withSampleData()),
+                    cards('assets/charts/pie_charts/outside_label_full.png',
+                        'Outside Label', PieOutsideLabelChart.withSampleData()),
+                    cards('assets/charts/pie_charts/partial_pie_full.png',
+                        'Partial Pie', PartialPieChart.withSampleData()),
+                    cards('assets/charts/pie_charts/simple_full.png',
+                        'Simple Pie', SimplePieChart.withSampleData()),
+];
+final List <Widget> _tabs7 = [
+  cards(
+                        'assets/charts/time_series_charts/confidence_interval_full.png',
+                        'Confidence Interval',
+                        TimeSeriesConfidenceInterval.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/end_points_axis_full.png',
+                        'End Point Axis',
+                        EndPointsAxisTimeSeriesChart.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/line_annotation_full.png',
+                        'Line Annotation',
+                        TimeSeriesLineAnnotationChart.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/range_annotation_full.png',
+                        'Range Annotation',
+                        TimeSeriesRangeAnnotationChart.withSampleData()),
+                    cards('assets/charts/time_series_charts/simple_full.png',
+                        'Simple', SimpleTimeSeriesChart.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/symbol_annotation_full.png',
+                        'Symbol Annotation',
+                        TimeSeriesSymbolAnnotationChart.withSampleData()),
+                    cards(
+                        'assets/charts/time_series_charts/with_bar_renderer_full.png',
+                        'Bar Render',
+                        TimeSeriesBar.withSampleData()),
+];
+final List <Widget> _tabs8 = [];
