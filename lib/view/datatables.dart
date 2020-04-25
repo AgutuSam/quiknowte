@@ -121,8 +121,11 @@ class _Dtables extends State<Dtables> {
               Row(
                 children: <Widget>[
                   // Icon(Icons.mood_bad),
-                  Icon(Icons.sentiment_dissatisfied,size: 42,),
-                                //  CircularProgressIndicator(),
+                  Icon(
+                    Icons.sentiment_dissatisfied,
+                    size: 42,
+                  ),
+                  //  CircularProgressIndicator(),
                 ],
               ),
             ],
@@ -152,8 +155,37 @@ class _Dtables extends State<Dtables> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Expanded(
-              child: _getDataBody(),
-            ),
+                child: _retList == null ||
+                        _retList.isEmpty ||
+                        _tableList == null ||
+                        _tableList.isEmpty
+                    ? Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              '  No data has been added to this element yet!',
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(''),
+                            Row(
+                              children: <Widget>[
+                                // Icon(Icons.mood_bad),
+                                Icon(
+                                  Icons.sentiment_dissatisfied,
+                                  size: 42,
+                                ),
+                                //  CircularProgressIndicator(),
+                              ],
+                            ),
+                          ],
+                        ),
+                      )
+                    : _getDataBody()),
           ],
         ),
       ),
