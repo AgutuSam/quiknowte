@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sqfentity_sample/utils/oval-right-clipper.dart';
+import 'package:quiknowte/utils/oval-right-clipper.dart';
 
-import '../help.dart';
-import '../home.dart';
+import '../lib/help.dart';
+import '../lib/home.dart';
 
 class NavBar1 extends StatelessWidget{
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
