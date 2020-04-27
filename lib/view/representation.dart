@@ -1,7 +1,13 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
+import 'package:pdf/widgets.dart' as pw;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:pdf/pdf.dart';
 import 'package:quiknowte/charts/axes/bar_secondary_axis.dart';
 import 'package:quiknowte/charts/axes/bar_secondary_axis_only.dart';
 import 'package:quiknowte/charts/axes/custom_axis_tick_formatters.dart';
@@ -118,9 +124,8 @@ class _RepresentationSate extends State<Representation>
   final fileName = TextEditingController();
   final fileNote = TextEditingController();
   static const secondaryMeasureAxisId = 'secondaryMeasureAxisId';
-   dynamic file;
-  
-
+  dynamic file;
+  final pdf = pw.Document();
 
   List<Properties> globalData;
 
@@ -141,16 +146,24 @@ class _RepresentationSate extends State<Representation>
     }
   }
 
-//  Future<String> _capturePng() async {
-//    final RenderRepaintBoundary boundary =
-//           _globalKey.currentContext.findRenderObject() as RenderRepaintBoundary;
-//   final image = await boundary.toImage();
-//   final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-//   final pngBytes = byteData.buffer.asUint8List();
-//   final bs64 = base64Encode(pngBytes);
-//   print(pngBytes);
-//   return  bs64;
-//   }
+  Future<Uint8List> _capturePng() async {
+    // try {
+    //   print('inside');
+      final RenderRepaintBoundary boundary =
+          _globalKey.currentContext.findRenderObject() as RenderRepaintBoundary;
+      final ui.Image image = await boundary.toImage(pixelRatio: 3.0);
+      final ByteData byteData =
+          await image.toByteData(format: ui.ImageByteFormat.png);
+      final pngBytes = byteData.buffer.asUint8List();
+      final bs64 = base64Encode(pngBytes);
+      print(pngBytes);
+      print(bs64);
+      setState(() {});
+      return pngBytes;
+    // } catch (e) {
+    //   print(e);
+    // }
+  }
 
   void samplezTap() {
     setState(() {
@@ -234,8 +247,6 @@ class _RepresentationSate extends State<Representation>
       tableStructRad();
     });
   }
-
-  
 
   Padding canvas() {
     Padding _canvas;
@@ -1754,15 +1765,29 @@ class _RepresentationSate extends State<Representation>
                                           alignment: Alignment.bottomCenter,
                                           child: RaisedButton(
                                             onPressed: () {
-                                            // String image;
-                                            //   _capturePng().then((value) {
-                                            //    image = value;
-                                            //    exportPDF(
-                                            //       image,
-                                            //       fileName.text,
-                                            //       '/data/user/0/com.example.sqfentity/files/');
-                                            //   });
                                               
+                                            
+
+
+
+                                              Uint8List image;
+                                                _capturePng().then((value) async {
+                                                 image = value;
+                                                 final img = PdfImage.file(
+  pdf.document,
+  bytes: image,
+);
+                                                 pdf.addPage(pw.Page(
+    build: (pw.Context context) {
+      return pw.Center(
+        child: pw.Image(img),
+      ); // Center
+    }));
+
+    final file = File('/data/user/0/com.example.sqfentity/files/example.pdf');
+await file.writeAsBytes(pdf.save());
+                                                 
+                                                });
                                             },
                                             shape: RoundedRectangleBorder(
                                                 borderRadius:
