@@ -1,0 +1,46 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run -v
+
+## exception
+
+SentinelException: [Sentinel type: Sentinel, kind: Collected, valueAsString: <collected>] from getIsolate()
+
+```
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel master, 1.18.0-9.0.pre.39, on Microsoft Windows [Version 10.0.17763.1158], locale en-US)
+    • Flutter version 1.18.0-9.0.pre.39 at E:\xsystem\folders\flutter-sdk\flutter
+    • Framework revision c15aa87442 (29 hours ago), 2020-04-28 10:05:52 -0700
+    • Engine revision 4bcfae82c7
+    • Dart version 2.9.0 (build 2.9.0-3.0.dev a69cb6d700)
+
+[✓] Android toolchain - develop for Android devices (Android SDK version 29.0.3)
+    • Android SDK at E:\xsystem\folders\android-sdk
+    • Platform android-R, build-tools 29.0.3
+    • ANDROID_HOME = E:\xsystem\folders\android-sdk
+    • Java binary at: E:\xsystem\folders\android studio\jre\bin\java
+    • Java version OpenJDK Runtime Environment (build 1.8.0_212-release-1586-b04)
+    • All Android licenses accepted.
+
+[✓] Visual Studio - develop for Windows (Visual Studio Community 2019 16.4.4)
+    • Visual Studio at C:\Program Files (x86)\Microsoft Visual Studio\2019\Community
+    • Visual Studio Community 2019 version 16.4.29728.190
+
+[✓] Android Studio (version 3.6)
+    • Android Studio at E:\xsystem\folders\android studio
+    • Flutter plugin version 45.1.1
+    • Dart plugin version 192.7761
+    • Java version OpenJDK Runtime Environment (build 1.8.0_212-release-1586-b04)
+
+[✓] Connected device (2 available)
+    • Android SDK built for x86 • emulator-5554 • android-x86 • Android 10 (API 29) (emulator)
+    • Windows                   • Windows       • windows-x64 • Microsoft Windows [Version 10.0.17763.1158]
+
+• No issues found!
+```

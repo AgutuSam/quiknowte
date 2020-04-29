@@ -116,13 +116,22 @@ class _RepresentationSate extends State<Representation>
   List<dynamic> rett;
   String _axisXVal;
   String _axisYVal;
+  String selTab;
   Widget chartClass;
   var _radioValue;
+  var counter = 0;
   String _checkState;
   String radioRes;
   final _formKey = GlobalKey<FormState>();
   final fileName = TextEditingController();
   final fileNote = TextEditingController();
+  List<bool> barsSelected;
+  List<bool> axesSelected;
+  List<bool> comboSelected;
+  List<bool> legendsSelected;
+  List<bool> linesSelected;
+  List<bool> piesSelected;
+  List<bool> timesSelected;
   static const secondaryMeasureAxisId = 'secondaryMeasureAxisId';
   dynamic file;
   final pdf = pw.Document();
@@ -285,32 +294,72 @@ class _RepresentationSate extends State<Representation>
     rett = ['test'];
     _radioValue = -1;
     _checkState = 'radio';
+   axesSelected = List.generate(17, (index) => false);
+   barsSelected = List.generate(19, (index) => false);
+   comboSelected = List.generate(5, (index) => false);
+   legendsSelected = List.generate(8, (index) => false);
+   linesSelected = List.generate(13, (index) => false);
+   piesSelected = List.generate(6, (index) => false);
+   timesSelected = List.generate(7, (index) => false);
     fetchTables();
     tableStructRad();
     tableStructCheck();
     bull();
     // canvas();
+    print(selTab);
     super.initState();
     controlle = TabController(length: 8, vsync: this);
+  }
+
+  void onCapPress(int index){
+    setState(() {
+      // selected[index] = !selected[index];
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    Widget cards(String image, String title, Widget route, String check) {
+    Widget cards(String image, String title, Widget route, String check, int index) {
       return InkWell(
         onTap: () {
-          setState(() {
+          List<bool> selected;
+          if(image.substring(14, 18) == 'axes'){
+            selected = axesSelected;
+          } else if(image.substring(14, 23) == 'bar_chart'){
+            selected = barsSelected;
+          } else if(image.substring(14, 25) == 'combo_chart'){
+            selected = comboSelected;
+          }else if(image.substring(14, 21) == 'legends'){
+            selected = legendsSelected;
+          }else if(image.substring(14, 24) == 'line_chart'){
+            selected = linesSelected;
+          }else if(image.substring(14, 24) == 'pie_charts'){
+            selected = piesSelected;
+          }else if(image.substring(14, 32) == 'time_series_charts'){
+            selected = timesSelected;
+          }
+          
+           setState(() {
             chartClass = route;
             _checkState = check;
+           for (int buttonIndex = 0; buttonIndex < selected.length; buttonIndex++) {
+        if (buttonIndex == index) {
+          selected[buttonIndex] = !selected[buttonIndex];
+        } else {
+          selected[buttonIndex] = false;
+        }
+      }
           });
         },
+        child: Opacity(
+        opacity: 0.8,
         child: Container(
-          height: 200,
-          width: 200,
+          height: 180,
+          width: 150,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(30),
+            // borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey,
@@ -326,14 +375,14 @@ class _RepresentationSate extends State<Representation>
                 Image.asset(
                   image,
                   height: 80,
-                  width: 100,
+                  width: 120,
                 ),
                 SizedBox(
-                  height: 2,
+                  height: 1,
                 ),
                 Text(title,
                     style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
                 // Container(
                 //     padding: EdgeInsets.all(5),
                 //     margin: EdgeInsets.only(top: 4),
@@ -346,6 +395,7 @@ class _RepresentationSate extends State<Representation>
               ],
             ),
           ),
+        ),
         ),
       );
     }
@@ -419,9 +469,9 @@ class _RepresentationSate extends State<Representation>
                     child: GridView.count(
                         crossAxisCount: 2,
                         childAspectRatio: 1.2,
-                        padding: const EdgeInsets.all(16.0),
-                        mainAxisSpacing: 10.0,
-                        crossAxisSpacing: 10.0,
+                        padding: const EdgeInsets.all(36.0),
+                        mainAxisSpacing: 20.0,
+                        crossAxisSpacing: 8.0,
                         children: [
                           // cards(
                           //     'assets/charts/axes/bar_secondary_axis_only_full.png',
@@ -432,100 +482,114 @@ class _RepresentationSate extends State<Representation>
                               'Secondary Only',
                               BarChartWithSecondaryAxisOnly(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 0),
                           // VisibilityExample()),
                           cards(
                               'assets/charts/axes/bar_secondary_axis_full.png',
                               'Secondary Axis',
                               BarChartWithSecondaryAxis(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 1),
                           cards(
                               'assets/charts/axes/custom_axis_tick_formatters_full.png',
                               'CustomAxis Tick',
                               CustomAxisTickFormatters.withSampleData(),
-                              'box'),
+                              'box', 2),
                           cards(
                               'assets/charts/axes/custom_font_size_and_color_full.png',
                               'FontSize Color',
                               CustomFontSizeAndColor(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 3),
                           cards(
                               'assets/charts/axes/custom_measure_tick_count_full.png',
                               'Custom Measure',
                               CustomMeasureTickCount.withSampleData(),
-                              'box'),
+                              'box', 4),
                           cards(
                               'assets/charts/axes/flipped_vertical_axis_full.png',
                               'Flipped Vertical',
                               FlippedVerticalAxis(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 5),
                           cards(
                               'assets/charts/axes/gridline_dash_pattern_full.png',
                               'Gridline Dash',
                               GridlineDashPattern.withSampleData(),
-                              'box'),
+                              'box', 6),
                           cards(
                               'assets/charts/axes/hidden_ticks_and_labels_axis_full.png',
                               'Hidden Ticks',
                               HiddenTicksAndLabelsAxis(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 7),
                           cards(
                               'assets/charts/axes/horizontal_bar_secondary_axis_full.png',
                               'Horizontal Bar',
                               HorizontalBarChartWithSecondaryAxis(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 8),
                           cards(
                               'assets/charts/axes/integer_only_measure_axis_full.png',
                               'Integer Only Axis',
                               IntegerOnlyMeasureAxis.withSampleData(),
-                              'box'),
+                              'box', 9),
                           cards(
                               'assets/charts/axes/line_disjoint_axis_full.png',
                               'Disjoint Axis',
                               DisjointMeasureAxisLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 10),
                           cards(
                               'assets/charts/axes/measure_axis_label_alignment_full.png',
                               'Measure Axis',
                               MeasureAxisLabelAlignment(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 11),
                           cards(
                               'assets/charts/axes/nonzero_bound_measure_axis_full.png',
                               'Nonzero Bound',
                               NonzeroBoundMeasureAxis.withSampleData(),
-                              'box'),
+                              'box', 12),
                           cards(
                               'assets/charts/axes/numeric_initial_viewport_full.png',
                               'Numeric Initial',
                               NumericInitialViewport(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 13),
                           cards(
                               'assets/charts/axes/ordinal_initial_viewport_full.png',
                               'Ordinal Initial',
                               OrdinalInitialViewport(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 14),
                           cards(
                               'assets/charts/axes/short_tick_length_axis_full.png',
                               'Short Tick',
                               ShortTickLengthAxis(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 15),
                           cards(
                               'assets/charts/axes/statically_provided_ticks_full.png',
                               'Statically Ticks',
                               StaticallyProvidedTicks(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
-                        ]),
+                              'radio', 16),
+                        ].asMap().entries.map((widget) {
+          return ToggleButtons(
+            selectedColor: Colors.red,
+            splashColor: Colors.lightBlue,
+            selectedBorderColor: Colors.green,
+            fillColor: Colors.white,
+            borderColor: null,
+            borderWidth: 3.0,
+            hoverColor: Colors.orange,
+            highlightColor: Colors.blue,
+            isSelected: [axesSelected[widget.key]],
+            onPressed: (_) => onCapPress(widget.key),
+            children: [widget.value],
+          );
+        }).toList()),
                   ),
                 ),
                 Container(
@@ -624,127 +688,163 @@ class _RepresentationSate extends State<Representation>
                   child: Container(
                     height: 350.0,
                     // width: MediaQuery.of(context).size.width,
-                    child: GridView.count(
+                    child: 
+        //             GridView.count(
+        // crossAxisCount: 2,
+        // children: [
+        //   Icon(Icons.info),
+        //   Icon(Icons.title),
+        //   Icon(Icons.info),
+        //   Icon(Icons.title)
+        // ].asMap().entries.map((widget) {
+        
+
+        //   return ToggleButtons(
+        //     selectedColor: Colors.red,
+        //     splashColor: Colors.lightBlue,
+        //     selectedBorderColor: Colors.green,
+        //     fillColor: Colors.transparent,
+        //     isSelected: [selected[widget.key]],
+        //     onPressed: (_) => onCapPress(widget.key),
+        //     children: [widget.value],
+        //   );
+        // }).toList()
+                    GridView.count(
                         crossAxisCount: 2,
                         childAspectRatio: 1.2,
-                        padding: const EdgeInsets.all(16.0),
-                        mainAxisSpacing: 10.0,
-                        crossAxisSpacing: 10.0,
+                        padding: const EdgeInsets.all(36.0),
+                        mainAxisSpacing: 20.0,
+                        crossAxisSpacing: 8.0,
                         children: [
                           cards(
                               'assets/charts/bar_charts/simple_full.png',
                               'Simple Bar',
                               SimpleBarChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 0),
                           cards(
                               'assets/charts/bar_charts/custom_rounded_bars_full.png',
                               'Custom Round',
                               CustomRoundedBars(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 1),
                           cards(
                               'assets/charts/bar_charts/grouped_fill_color_full.png',
                               'Grouped Fill',
                               GroupedFillColorBarChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio',2),
                           cards(
                               'assets/charts/bar_charts/grouped_full.png',
                               'Grouped',
                               GroupedBarChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 3),
                           cards(
                               'assets/charts/bar_charts/grouped_stacked_full.png',
                               'Grouped Stacked',
                               GroupedStackedBarChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 4),
                           cards(
                               'assets/charts/bar_charts/grouped_stacked_weight_pattern_full.png',
                               'Weight Pattern',
                               GroupedStackedWeightPatternBarChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 5),
                           cards(
                               'assets/charts/bar_charts/grouped_target_line_full.png',
                               'Grouped Target',
                               GroupedBarTargetLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 6),
                           cards(
                               'assets/charts/bar_charts/grouped_target_line_full.png',
                               'Single Taget',
                               GroupedBarSingleTargetLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 7),
                           cards(
                               'assets/charts/bar_charts/horizontal_full.png',
                               'Horizontal Bar',
                               HorizontalBarChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 8),
                           cards(
                               'assets/charts/bar_charts/horizontal_bar_label_full.png',
                               'Horizontal Label',
                               HorizontalBarLabelChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 9),
                           cards(
                               'assets/charts/bar_charts/horizontal_bar_label_custom_full.png',
                               'Horizontal Custom',
                               HorizontalBarLabelCustomChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 10),
                           cards(
                               'assets/charts/bar_charts/horizontal_pattern_forward_hatch_full.png',
                               'Horizontal Forward',
                               HorizontalPatternForwardHatchBarChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 11),
                           cards(
                               'assets/charts/bar_charts/pattern_forward_hatch_full.png',
                               'Pattern Forward',
                               PatternForwardHatchBarChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 12),
                           cards(
                               'assets/charts/bar_charts/spark_bar_full.png',
                               'Spark Bar',
                               SparkBar(_createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 13),
                           cards(
                               'assets/charts/bar_charts/stacked_fill_color_full.png',
                               'Stacked Color',
                               StackedFillColorBarChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 14),
                           cards(
                               'assets/charts/bar_charts/stacked_horizontal_full.png',
                               'Stacked Horizontal',
                               StackedHorizontalBarChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 15),
                           cards(
                               'assets/charts/bar_charts/stacked_full.png',
                               'Stacked',
                               StackedBarChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 16),
                           cards(
                               'assets/charts/bar_charts/stacked_target_line_full.png',
                               'Stacked Line',
                               StackedBarTargetLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 17),
                           cards(
                               'assets/charts/bar_charts/vertical_bar_label_full.png',
                               'Vertical Bar',
                               VerticalBarLabelChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
-                        ]),
+                              'radio', 18),
+                        ].asMap().entries.map((widget) {
+          return ToggleButtons(
+            selectedColor: Colors.red,
+            splashColor: Colors.lightBlue,
+            selectedBorderColor: Colors.green,
+            fillColor: Colors.white,
+            borderColor: null,
+            borderWidth: 3.0,
+            hoverColor: Colors.orange,
+            highlightColor: Colors.blue,
+            isSelected: [barsSelected[widget.key]],
+            onPressed: (_) => onCapPress(widget.key),
+            children: [widget.value],
+          );
+        }).toList()
+                        ),
                   ),
                 ),
                 Container(
@@ -843,40 +943,54 @@ class _RepresentationSate extends State<Representation>
                     child: GridView.count(
                         crossAxisCount: 2,
                         childAspectRatio: 1.2,
-                        padding: const EdgeInsets.all(16.0),
-                        mainAxisSpacing: 10.0,
-                        crossAxisSpacing: 10.0,
+                        padding: const EdgeInsets.all(36.0),
+                        mainAxisSpacing: 20.0,
+                        crossAxisSpacing: 8.0,
                         children: [
                           cards(
                               'assets/charts/combo_charts/date_time_line_point_full.png',
                               'Time Line',
                               DateTimeComboLinePointChart.withSampleData(),
-                              'box'),
+                              'box', 0),
                           cards(
                               'assets/charts/combo_charts/numeric_line_bar_full.png',
                               'Numeric Bar',
                               NumericComboLineBarChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 1),
                           cards(
                               'assets/charts/combo_charts/numeric_line_point_full.png',
                               'Numeric Point',
                               NumericComboLinePointChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 2),
                           cards(
                               'assets/charts/combo_charts/ordinal_bar_line_full.png',
                               'Ordinal Line',
                               OrdinalComboBarLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 3),
                           cards(
                               'assets/charts/combo_charts/scatter_plot_line_full.png',
                               'Scatter Line',
                               ScatterPlotComboLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
-                        ]),
+                              'radio', 4),
+                        ].asMap().entries.map((widget) {
+          return ToggleButtons(
+            selectedColor: Colors.red,
+            splashColor: Colors.lightBlue,
+            selectedBorderColor: Colors.green,
+            fillColor: Colors.white,
+            borderColor: null,
+            borderWidth: 3.0,
+            hoverColor: Colors.orange,
+            highlightColor: Colors.blue,
+            isSelected: [comboSelected[widget.key]],
+            onPressed: (_) => onCapPress(widget.key),
+            children: [widget.value],
+          );
+        }).toList()),
                   ),
                 ),
                 Container(
@@ -975,58 +1089,72 @@ class _RepresentationSate extends State<Representation>
                     child: GridView.count(
                         crossAxisCount: 2,
                         childAspectRatio: 1.2,
-                        padding: const EdgeInsets.all(16.0),
-                        mainAxisSpacing: 10.0,
-                        crossAxisSpacing: 10.0,
+                        padding: const EdgeInsets.all(36.0),
+                        mainAxisSpacing: 20.0,
+                        crossAxisSpacing: 8.0,
                         children: [
                           cards(
                               'assets/charts/legends/datum_legend_options_full.png',
                               'Datum Options',
                               DatumLegendOptions(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 0),
                           cards(
                               'assets/charts/legends/datum_legend_with_measures_full.png',
                               'Datum Measures',
                               DatumLegendWithMeasures(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 1),
                           cards(
                               'assets/charts/legends/default_hidden_series_legend_full.png',
                               'Default Hidden',
                               DefaultHiddenSeriesLegend(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 2),
                           cards(
                               'assets/charts/legends/legend_custom_symbol_full.png',
                               'Custom Legend',
                               LegendWithCustomSymbol(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 3),
                           cards(
                               'assets/charts/legends/series_legend_options_full.png',
                               'Series Options',
                               LegendOptions(_createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 4),
                           cards(
                               'assets/charts/legends/series_legend_with_measures_full.png',
                               'Series Measures',
                               LegendWithMeasures(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 5),
                           cards(
                               'assets/charts/legends/simple_datum_legend_full.png',
                               'Simple Datum',
                               SimpleDatumLegend(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 6),
                           cards(
                               'assets/charts/legends/simple_series_legend_full.png',
                               'Simple Series',
                               SimpleSeriesLegend(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
-                        ]),
+                              'radio', 7),
+                        ].asMap().entries.map((widget) {
+          return ToggleButtons(
+            selectedColor: Colors.red,
+            splashColor: Colors.lightBlue,
+            selectedBorderColor: Colors.green,
+            fillColor: Colors.white,
+            borderColor: null,
+            borderWidth: 3.0,
+            hoverColor: Colors.orange,
+            highlightColor: Colors.blue,
+            isSelected: [legendsSelected[widget.key]],
+            onPressed: (_) => onCapPress(widget.key),
+            children: [widget.value],
+          );
+        }).toList()),
                   ),
                 ),
                 Container(
@@ -1125,89 +1253,103 @@ class _RepresentationSate extends State<Representation>
                     child: GridView.count(
                         crossAxisCount: 2,
                         childAspectRatio: 1.2,
-                        padding: const EdgeInsets.all(16.0),
-                        mainAxisSpacing: 10.0,
-                        crossAxisSpacing: 10.0,
+                        padding: const EdgeInsets.all(36.0),
+                        mainAxisSpacing: 20.0,
+                        crossAxisSpacing: 8.0,
                         children: [
                           cards(
                               'assets/charts/line_charts/simple_full.png',
                               'Animation Zoom',
                               LineAnimationZoomChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 0),
                           cards(
                               'assets/charts/line_charts/area_and_line_full.png',
                               'Area & Line',
                               AreaAndLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 1),
                           cards(
                               'assets/charts/line_charts/dash_pattern_full.png',
                               'Dash Pattern',
                               DashPatternLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 2),
                           cards(
                               'assets/charts/line_charts/line_annotation_full.png',
                               'Line Annotation',
                               LineLineAnnotationChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 3),
                           cards(
                               'assets/charts/line_charts/points_full.png',
                               'Points',
                               PointsLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 4),
                           cards(
                               'assets/charts/line_charts/range_annotation_margin_full.png',
                               'Range Margin',
                               LineRangeAnnotationMarginChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 5),
                           cards(
                               'assets/charts/line_charts/range_annotation_full.png',
                               'Range Annotation',
                               LineRangeAnnotationChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 6),
                           cards(
                               'assets/charts/line_charts/segments_full.png',
                               'Segments',
                               SegmentsLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 7),
                           cards(
                               'assets/charts/line_charts/simple_nulls_full.png',
                               'Simple Null',
                               SimpleNullsLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 8),
                           cards(
                               'assets/charts/line_charts/simple_full.png',
                               'Simple',
                               SimpleLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 9),
                           cards(
                               'assets/charts/line_charts/stacked_area_custom_color_full.png',
                               'Stacked Area Custom',
                               StackedAreaCustomColorLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 10),
                           cards(
                               'assets/charts/line_charts/stacked_area_nulls_full.png',
                               'Stacked Null',
                               StackedAreaNullsLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 11),
                           cards(
                               'assets/charts/line_charts/stacked_area_full.png',
                               'Stacked Area',
                               StackedAreaLineChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
-                        ]),
+                              'radio', 12),
+                        ].asMap().entries.map((widget) {
+          return ToggleButtons(
+            selectedColor: Colors.red,
+            splashColor: Colors.lightBlue,
+            selectedBorderColor: Colors.green,
+            fillColor: Colors.white,
+            borderColor: null,
+            borderWidth: 3.0,
+            hoverColor: Colors.orange,
+            highlightColor: Colors.blue,
+            isSelected: [linesSelected[widget.key]],
+            onPressed: (_) => onCapPress(widget.key),
+            children: [widget.value],
+          );
+        }).toList()),
                   ),
                 ),
                 Container(
@@ -1306,45 +1448,59 @@ class _RepresentationSate extends State<Representation>
                     child: GridView.count(
                         crossAxisCount: 2,
                         childAspectRatio: 1.2,
-                        padding: const EdgeInsets.all(16.0),
-                        mainAxisSpacing: 10.0,
-                        crossAxisSpacing: 10.0,
+                        padding: const EdgeInsets.all(36.0),
+                        mainAxisSpacing: 20.0,
+                        crossAxisSpacing: 8.0,
                         children: [
                           cards(
                               'assets/charts/pie_charts/auto_label_full.png',
                               'Auto Label',
                               DonutAutoLabelChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 0),
                           cards(
                               'assets/charts/pie_charts/donut_full.png',
                               'Doughnut',
                               DonutPieChart(_createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 1),
                           cards(
                               'assets/charts/pie_charts/gauge_full.png',
                               'Gauge',
                               GaugeChart(_createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 2),
                           cards(
                               'assets/charts/pie_charts/outside_label_full.png',
                               'Outside Label',
                               PieOutsideLabelChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 3),
                           cards(
                               'assets/charts/pie_charts/partial_pie_full.png',
                               'Partial Pie',
                               PartialPieChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
+                              'radio', 4),
                           cards(
                               'assets/charts/pie_charts/simple_full.png',
                               'Simple Pie',
                               SimplePieChart(
                                   _createData('Rubbing', globalData)),
-                              'radio'),
-                        ]),
+                              'radio', 5),
+                        ].asMap().entries.map((widget) {
+          return ToggleButtons(
+            selectedColor: Colors.red,
+            splashColor: Colors.lightBlue,
+            selectedBorderColor: Colors.green,
+            fillColor: Colors.white,
+            borderColor: null,
+            borderWidth: 3.0,
+            hoverColor: Colors.orange,
+            highlightColor: Colors.blue,
+            isSelected: [piesSelected[widget.key]],
+            onPressed: (_) => onCapPress(widget.key),
+            children: [widget.value],
+          );
+        }).toList()),
                   ),
                 ),
                 Container(
@@ -1443,46 +1599,60 @@ class _RepresentationSate extends State<Representation>
                     child: GridView.count(
                         crossAxisCount: 2,
                         childAspectRatio: 1.2,
-                        padding: const EdgeInsets.all(16.0),
-                        mainAxisSpacing: 10.0,
-                        crossAxisSpacing: 10.0,
+                        padding: const EdgeInsets.all(36.0),
+                        mainAxisSpacing: 20.0,
+                        crossAxisSpacing: 8.0,
                         children: [
                           cards(
                               'assets/charts/time_series_charts/confidence_interval_full.png',
                               'Confidence Interval',
                               TimeSeriesConfidenceInterval.withSampleData(),
-                              'box'),
+                              'box', 0),
                           cards(
                               'assets/charts/time_series_charts/end_points_axis_full.png',
                               'End Point',
                               EndPointsAxisTimeSeriesChart.withSampleData(),
-                              'box'),
+                              'box', 1),
                           cards(
                               'assets/charts/time_series_charts/line_annotation_full.png',
                               'Line Annotation',
                               TimeSeriesLineAnnotationChart.withSampleData(),
-                              'box'),
+                              'box', 2),
                           cards(
                               'assets/charts/time_series_charts/range_annotation_full.png',
                               'Range Annotation',
                               TimeSeriesRangeAnnotationChart.withSampleData(),
-                              'box'),
+                              'box', 3),
                           cards(
                               'assets/charts/time_series_charts/simple_full.png',
                               'Simple',
                               SimpleTimeSeriesChart.withSampleData(),
-                              'box'),
+                              'box', 4),
                           cards(
                               'assets/charts/time_series_charts/symbol_annotation_full.png',
                               'Symbol Annotation',
                               TimeSeriesSymbolAnnotationChart.withSampleData(),
-                              'box'),
+                              'box', 5),
                           cards(
                               'assets/charts/time_series_charts/with_bar_renderer_full.png',
                               'Bar Render',
                               TimeSeriesBar.withSampleData(),
-                              'box'),
-                        ]),
+                              'box', 6),
+                        ].asMap().entries.map((widget) {
+          return ToggleButtons(
+            selectedColor: Colors.red,
+            splashColor: Colors.lightBlue,
+            selectedBorderColor: Colors.green,
+            fillColor: Colors.white,
+            borderColor: null,
+            borderWidth: 3.0,
+            hoverColor: Colors.orange,
+            highlightColor: Colors.blue,
+            isSelected: [timesSelected[widget.key]],
+            onPressed: (_) => onCapPress(widget.key),
+            children: [widget.value],
+          );
+        }).toList()),
                   ),
                 ),
                 Container(
@@ -1581,9 +1751,9 @@ class _RepresentationSate extends State<Representation>
                     child: GridView.count(
                         crossAxisCount: 2,
                         childAspectRatio: 1.2,
-                        padding: const EdgeInsets.all(16.0),
-                        mainAxisSpacing: 10.0,
-                        crossAxisSpacing: 10.0,
+                        padding: const EdgeInsets.all(36.0),
+                        mainAxisSpacing: 20.0,
+                        crossAxisSpacing: 8.0,
                         children: []),
                   ),
                 ),
@@ -1932,6 +2102,7 @@ class Tabz {
   final Widget wijet;
   final String title;
   final IconData icon;
+  
 }
 
 class Choice {
