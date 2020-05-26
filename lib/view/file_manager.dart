@@ -234,7 +234,7 @@ class _FileManagerState extends State<FileManager> {
       context: context,
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
-          title: Text('Rename'),
+          title: Text('Sure!'),
           content: Text('Unrecoverable after deletion'),
           actions: <Widget>[
             CupertinoDialogAction(
@@ -244,7 +244,7 @@ class _FileManagerState extends State<FileManager> {
               },
             ),
             CupertinoDialogAction(
-              child: Text('determine', style: TextStyle(color: Colors.blue)),
+              child: Text('ok', style: TextStyle(color: Colors.blue)),
               onPressed: () {
                 if (file.statSync().type == FileSystemEntityType.directory) {
                   final Directory directory = Directory(file.path)
@@ -295,7 +295,7 @@ class _FileManagerState extends State<FileManager> {
                   },
                 ),
                 CupertinoDialogAction(
-                  child: Text('determine', style: TextStyle(color: Colors.blue)),
+                  child: Text('ok', style: TextStyle(color: Colors.blue)),
                   onPressed: () async {
                     final String newName = _controller.text;
                     if (newName.trim().isEmpty) {
