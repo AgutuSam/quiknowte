@@ -2138,12 +2138,12 @@ class _RepresentationSate extends State<Representation>
                               }));
 
                               final bool dirExists = await Directory(
-                                      '/data/user/0/com.example.sqfentity/$dbTime/')
+                                      '/data/user/0/com.example.quiknowte/$dbTime/')
                                   .exists();
                               // Common().sDCardDir = (await getExternalStorageDirectory()).path;
                               if (!dirExists) {
                                 Directory(
-                                        '/data/user/0/com.example.sqfentity/$dbTime/')
+                                        '/data/user/0/com.example.quiknowte/$dbTime/')
                                     .create()
                                     .then((Directory directory) {
                                   Common().sDCardDir = directory.path;
@@ -2151,7 +2151,7 @@ class _RepresentationSate extends State<Representation>
                               }
 
                               final file = File(
-                                  '/data/user/0/com.example.sqfentity/$dbTime/${fileName.text}');
+                                  '/data/user/0/com.example.quiknowte/$dbTime/${fileName.text}');
                               await file.writeAsBytes(pdf.save());
                             });
                           },

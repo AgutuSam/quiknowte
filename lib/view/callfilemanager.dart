@@ -15,17 +15,17 @@ void fileManagerMain() {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String dbTime = prefs.getString('projectTime');
     final bool dirExists =
-        await Directory('/data/user/0/com.example.sqfentity/$dbTime/').exists();
+        await Directory('/data/user/0/com.example.quiknowte/$dbTime/').exists();
     // Common().sDCardDir = (await getExternalStorageDirectory()).path;
     if (!dirExists) {
-      Directory('/data/user/0/com.example.sqfentity/$dbTime/')
+      Directory('/data/user/0/com.example.quiknowte/$dbTime/')
           .create()
           .then((Directory directory) {
         Common().sDCardDir = directory.path;
       });
     }
     Common().sDCardDir =
-        Directory('/data/user/0/com.example.sqfentity/$dbTime/').path;
+        Directory('/data/user/0/com.example.quiknowte/$dbTime/').path;
   }
 
   // Permission check

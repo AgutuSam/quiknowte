@@ -192,11 +192,59 @@ class _ProjectHome extends State<ProjectHome> {
                         ),
                       ),
                       RaisedButton(
-                        shape: RoundedRectangleBorder(
+                                               shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(22.0),
                           bottomRight: Radius.circular(22.0),
                           topLeft: Radius.circular(22.0),
+                        )),
+                        color: Colors.lightBlueAccent,
+                        onPressed: () {
+                          return null;
+                        },
+                        textColor: Colors.white,
+                        padding: const EdgeInsets.all(0.0),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(22.0),
+                              bottomRight: Radius.circular(22.0),
+                              topLeft: Radius.circular(22.0),
+                            ),
+                            image: DecorationImage(
+                              colorFilter: ColorFilter.mode(
+                                  Color.fromRGBO(255, 255, 255, 0.6),
+                                  BlendMode.dstATop),
+                              image: ExactAssetImage('assets/math.jpg'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: const <Widget>[
+                              Spacer(flex: 1),
+                              Icon(Icons.settings,
+                                  size: 60.0, color: Colors.white),
+                              Text(
+                                'Math',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  color: Colors.white,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              Spacer(flex: 1),
+                            ],
+                          ),
+                        ),
+                      ),
+                      RaisedButton(
+                         shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(22.0),
+                          bottomRight: Radius.circular(22.0),
+                          topRight: Radius.circular(22.0),
                         )),
                         color: Colors.greenAccent,
                         onPressed: () {
@@ -214,7 +262,7 @@ class _ProjectHome extends State<ProjectHome> {
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(22.0),
                               bottomRight: Radius.circular(22.0),
-                              topLeft: Radius.circular(22.0),
+                              topRight: Radius.circular(22.0),
                             ),
                             image: DecorationImage(
                               colorFilter: ColorFilter.mode(
@@ -243,54 +291,7 @@ class _ProjectHome extends State<ProjectHome> {
                           ),
                         ),
                       ),
-                      RaisedButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(22.0),
-                          bottomRight: Radius.circular(22.0),
-                          topRight: Radius.circular(22.0),
-                        )),
-                        color: Colors.lightBlueAccent,
-                        onPressed: () {
-                          return null;
-                        },
-                        textColor: Colors.white,
-                        padding: const EdgeInsets.all(0.0),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(22.0),
-                              bottomRight: Radius.circular(22.0),
-                              topRight: Radius.circular(22.0),
-                            ),
-                            image: DecorationImage(
-                              colorFilter: ColorFilter.mode(
-                                  Color.fromRGBO(255, 255, 255, 0.6),
-                                  BlendMode.dstATop),
-                              image: ExactAssetImage('assets/wheel.jpg'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: const <Widget>[
-                              Spacer(flex: 1),
-                              Icon(Icons.settings,
-                                  size: 60.0, color: Colors.white),
-                              Text(
-                                'Structure',
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  color: Colors.white,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                              Spacer(flex: 1),
-                            ],
-                          ),
-                        ),
-                      ),
+                      
                     ],
                   ),
                 ),

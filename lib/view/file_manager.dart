@@ -103,7 +103,7 @@ class _FileManagerState extends State<FileManager> {
               children: <Widget>[
                 CupertinoButton(
                   pressedOpacity: 0.6,
-                  child: Text('重命名', style: TextStyle(color: Color(0xff333333))),
+                  child: Text('rename', style: TextStyle(color: Color(0xff333333))),
                   onPressed: () {
                     Navigator.pop(context);
                     renameFile(file);
@@ -111,7 +111,7 @@ class _FileManagerState extends State<FileManager> {
                 ),
                 CupertinoButton(
                   pressedOpacity: 0.6,
-                  child: Text('删除', style: TextStyle(color: Color(0xff333333))),
+                  child: Text('delete', style: TextStyle(color: Color(0xff333333))),
                   onPressed: () {
                     Navigator.pop(context);
                     deleteFile(file);
@@ -139,7 +139,7 @@ class _FileManagerState extends State<FileManager> {
             children: <Widget>[
               Expanded(child: Text(file.path.substring(file.parent.path.length + 1))),
               Text(
-                '${_calculateFilesCountByFolder(file as Directory)}项',
+                '${_calculateFilesCountByFolder(file as Directory)} items',
                 style: TextStyle(color: Colors.grey),
               )
             ],
@@ -164,7 +164,7 @@ class _FileManagerState extends State<FileManager> {
               children: <Widget>[
                 CupertinoButton(
                   pressedOpacity: 0.6,
-                  child: Text('重命名', style: TextStyle(color: Color(0xff333333))),
+                  child: Text('rename', style: TextStyle(color: Color(0xff333333))),
                   onPressed: () {
                     Navigator.pop(context);
                     renameFile(file);
@@ -172,7 +172,7 @@ class _FileManagerState extends State<FileManager> {
                 ),
                 CupertinoButton(
                   pressedOpacity: 0.6,
-                  child: Text('删除', style: TextStyle(color: Color(0xff333333))),
+                  child: Text('delete', style: TextStyle(color: Color(0xff333333))),
                   onPressed: () {
                     Navigator.pop(context);
                     deleteFile(file);
@@ -234,17 +234,17 @@ class _FileManagerState extends State<FileManager> {
       context: context,
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
-          title: Text('重命名'),
-          content: Text('删除后不可恢复'),
+          title: Text('Rename'),
+          content: Text('Unrecoverable after deletion'),
           actions: <Widget>[
             CupertinoDialogAction(
-              child: Text('取消', style: TextStyle(color: Colors.blue)),
+              child: Text('cancel', style: TextStyle(color: Colors.blue)),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
             CupertinoDialogAction(
-              child: Text('确定', style: TextStyle(color: Colors.blue)),
+              child: Text('determine', style: TextStyle(color: Colors.blue)),
               onPressed: () {
                 if (file.statSync().type == FileSystemEntityType.directory) {
                   final Directory directory = Directory(file.path)
@@ -274,14 +274,14 @@ class _FileManagerState extends State<FileManager> {
           backgroundColor: Colors.transparent,
           body: Center(
             child: CupertinoAlertDialog(
-              title: Text('重命名'),
+              title: Text('rename'),
               content: Padding(
                 padding: EdgeInsets.only(top: 10.0),
                 child: TextField(
                   controller: _controller,
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(2.0)),
-                    hintText: '请输入新名称',
+                    hintText: 'Please enter a new name',
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(2.0)),
                     contentPadding: EdgeInsets.all(10.0),
                   ),
@@ -289,17 +289,17 @@ class _FileManagerState extends State<FileManager> {
               ),
               actions: <Widget>[
                 CupertinoDialogAction(
-                  child: Text('取消', style: TextStyle(color: Colors.blue)),
+                  child: Text('cancel', style: TextStyle(color: Colors.blue)),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                 ),
                 CupertinoDialogAction(
-                  child: Text('确定', style: TextStyle(color: Colors.blue)),
+                  child: Text('determine', style: TextStyle(color: Colors.blue)),
                   onPressed: () async {
                     final String newName = _controller.text;
                     if (newName.trim().isEmpty) {
-                      Fluttertoast.showToast(msg: '名字不能为空', gravity: ToastGravity.CENTER);
+                      Fluttertoast.showToast(msg: 'Name cannot be empty', gravity: ToastGravity.CENTER);
                       return;
                     }
                     final String slash = '/';
