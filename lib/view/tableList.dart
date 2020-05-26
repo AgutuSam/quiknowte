@@ -5,7 +5,6 @@ import 'package:quiknowte/view/data.dart';
 class Samples extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _Samples();
   }
 }

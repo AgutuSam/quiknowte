@@ -6,7 +6,6 @@ import 'package:quiknowte/model/dynsql.dart' as flex;
 class NavBar2 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _NavBar2();
   }
 }
@@ -93,7 +92,6 @@ class _NavBar2 extends State<NavBar2> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return _buildDrawer(context);
   }
 

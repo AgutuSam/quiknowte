@@ -1,7 +1,4 @@
-#Wed Apr 29 20:18:42 EAT 2020
-base.0=E\:\\W\\sqfEntity-master\\build\\app\\intermediates\\dex\\debug\\out\\classes.dex
-path.1=classes2.dex
-renamed.1=classes2.dex
+#Tue May 26 02:16:19 EAT 2020
+base.0=E\:\\W\\sqfEntity-master\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
-base.1=E\:\\W\\sqfEntity-master\\build\\app\\intermediates\\dex\\debug\\out\\classes2.dex

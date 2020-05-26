@@ -4,7 +4,7 @@
             "outputFile": "E:\\W\\sqfEntity-master\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\FOLIO 9470M\\.gradle\\caches\\transforms-2\\files-2.1\\c65c14a2cbfe75266459643a1679c2da\\media-1.0.0\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\FOLIO 9470M\\.gradle\\caches\\transforms-2\\files-2.1\\6d35bbbe327ef689c582d1173367f0ed\\media-1.0.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
                         "startColumns": "4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\FOLIO 9470M\\.gradle\\caches\\transforms-2\\files-2.1\\da95e0dd41fd0c634661df2a0f122634\\core-1.1.0\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\FOLIO 9470M\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

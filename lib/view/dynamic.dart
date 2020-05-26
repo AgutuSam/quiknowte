@@ -19,7 +19,6 @@ class Mydine extends StatefulWidget {
   final int id;
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _Dine(dbName: extended,projName: text, dbid: id);
   }
 }

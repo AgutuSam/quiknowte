@@ -60,7 +60,6 @@ class _Projects extends State<Projects> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.blue.shade100,
       appBar: AppBar(title: const Text('Projects')),

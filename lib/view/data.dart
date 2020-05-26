@@ -8,7 +8,6 @@ class DataView extends StatefulWidget {
   final String text;
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _DataView(tableName: text);
   }
 }
@@ -32,7 +31,6 @@ class _DataView extends State<DataView> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
             home: Scaffold(
         appBar: AppBar(

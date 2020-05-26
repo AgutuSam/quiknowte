@@ -4,6 +4,7 @@ import 'package:quiknowte/utils/oval-right-clipper.dart';
 
 import '../help.dart';
 import '../home.dart';
+import '../info.dart';
 
 class NavBar1 extends StatelessWidget{
   // final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
@@ -15,7 +16,6 @@ class NavBar1 extends StatelessWidget{
   final Color divider = Colors.grey.shade600;
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return _buildDrawer(context);
   }
   
@@ -82,7 +82,9 @@ Widget _buildDrawer(BuildContext context) {
                   _buildDivider(),
                   _buildRow(Icons.star, 'Rate us', context, StartHomePage()),
                   _buildDivider(),
-                  _buildRow(Icons.info_outline, 'Help', context, Help()),
+                  _buildRow(Icons.help_outline, 'Help', context, Help()),
+                  _buildDivider(),
+                  _buildRow(Icons.info_outline, 'Info', context, Info()),
                   _buildDivider(),
                 ],
               ),

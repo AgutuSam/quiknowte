@@ -7,18 +7,32 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:quiknowte/samples/common.dart';
 import 'package:quiknowte/view/file_manager.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void fileManagerMain() {
   WidgetsFlutterBinding.ensureInitialized();
   Future<void> getSDCardDir() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String dbTime = prefs.getString('projectTime');
+    final bool dirExists =
+        await Directory('/data/user/0/com.example.sqfentity/$dbTime/').exists();
     // Common().sDCardDir = (await getExternalStorageDirectory()).path;
-    Common().sDCardDir = (Directory('/data/user/0/com.example.sqfentity/files/')).path;
+    if (!dirExists) {
+      Directory('/data/user/0/com.example.sqfentity/$dbTime/')
+          .create()
+          .then((Directory directory) {
+        Common().sDCardDir = directory.path;
+      });
+    }
+    Common().sDCardDir =
+        Directory('/data/user/0/com.example.sqfentity/$dbTime/').path;
   }
 
   // Permission check
   Future<void> getPermission() async {
     if (Platform.isAndroid) {
-      final PermissionStatus permission = await PermissionHandler().checkPermissionStatus(PermissionGroup.storage);
+      final PermissionStatus permission = await PermissionHandler()
+          .checkPermissionStatus(PermissionGroup.storage);
       if (permission != PermissionStatus.granted) {
         await PermissionHandler().requestPermissions([PermissionGroup.storage]);
       }
@@ -28,7 +42,8 @@ void fileManagerMain() {
     }
   }
 
-  Future.wait([initializeDateFormatting('zh_CN', null), getPermission()]).then((result) {
+  Future.wait([initializeDateFormatting('zh_CN', null), getPermission()])
+      .then((result) {
     runApp(CallFileManager());
   });
 }

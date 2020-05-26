@@ -5,7 +5,6 @@ import 'package:quiknowte/model/dynsql.dart' as flex;
 class Dtables extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _Dtables();
   }
 }
@@ -148,7 +147,6 @@ class _Dtables extends State<Dtables> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       body: Container(
         child: Column(

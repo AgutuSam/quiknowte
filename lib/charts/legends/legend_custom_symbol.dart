@@ -199,6 +199,7 @@ class LegendWithCustomSymbol extends StatelessWidget {
         measureFn: (OrdinalSales sales, _) => sales.sales,
         data: otherSalesData,
       )
+      
     ];
   }
 }

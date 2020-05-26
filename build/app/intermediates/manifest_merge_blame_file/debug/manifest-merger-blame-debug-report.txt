@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.sqfentity"
+3    package="com.example.quiknowte"
 4    android:versionCode="1"
 5    android:versionName="1.2.0" >
 6
@@ -31,90 +31,115 @@
 23         FlutterApplication and put your custom class here.
 24    -->
 25    <application
-25-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:9:5-32:19
+25-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:8:5-47:19
 26        android:name="io.flutter.app.FlutterApplication"
-26-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:10:9-57
+26-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:9:9-57
 27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-27-->[androidx.core:core:1.1.0] C:\Users\FOLIO 9470M\.gradle\caches\transforms-2\files-2.1\da95e0dd41fd0c634661df2a0f122634\core-1.1.0\AndroidManifest.xml:24:18-86
+27-->[androidx.core:core:1.1.0] C:\Users\FOLIO 9470M\.gradle\caches\transforms-2\files-2.1\a528b13ac93e64cafa3d0480e2c93207\core-1.1.0\AndroidManifest.xml:24:18-86
 28        android:debuggable="true"
 29        android:icon="@mipmap/ic_launcher"
-29-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:12:9-43
-30        android:label="sqfentity" >
-30-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:11:9-34
+29-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:11:9-43
+30        android:label="quiknowte" >
+30-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:10:9-34
 31        <activity
-31-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:13:9-31:20
-32            android:name="com.example.sqfentity.MainActivity"
-32-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:14:13-41
-33            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-33-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:17:13-144
+31-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:12:9-41:20
+32            android:name="com.example.quiknowte.MainActivity"
+32-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:13:13-41
+33            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+33-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:16:13-163
 34            android:hardwareAccelerated="true"
-34-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:18:13-47
+34-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:17:13-47
 35            android:launchMode="singleTop"
-35-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:15:13-43
+35-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:14:13-43
 36            android:theme="@style/LaunchTheme"
-36-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:16:13-47
+36-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:15:13-47
 37            android:windowSoftInputMode="adjustResize" >
-37-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:19:13-55
+37-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:18:13-55
 38
 39            <!--
-40                 This keeps the window background of the activity showing
-41                 until Flutter renders its first frame. It can be removed if
-42                 there is no splash screen (such as the default splash screen
-43                 defined in @style/LaunchTheme).
+40                 Specifies an Android theme to apply to this Activity as soon as
+41                 the Android process has started. This theme is visible to the user
+42                 while the Flutter UI initializes. After that, this theme continues
+43                 to determine the Window background behind the Flutter UI.
 44            -->
 45            <meta-data
-45-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:24:13-26:40
-46                android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"
-46-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:25:17-82
-47                android:value="true" />
-47-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:26:17-37
-48
-49            <intent-filter>
-49-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:27:13-30:29
-50                <action android:name="android.intent.action.MAIN" />
-50-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:28:17-68
-50-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:28:25-66
-51
-52                <category android:name="android.intent.category.LAUNCHER" />
-52-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:29:17-76
-52-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:29:27-74
-53            </intent-filter>
-54        </activity>
-55
-56        <provider
-56-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-19:20
-57            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-57-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-82
-58            android:authorities="com.example.sqfentity.flutter.image_provider"
-58-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-74
-59            android:exported="false"
-59-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
-60            android:grantUriPermissions="true" >
-60-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-47
-61            <meta-data
-61-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
-62                android:name="android.support.FILE_PROVIDER_PATHS"
-62-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
-63                android:resource="@xml/flutter_image_picker_file_paths" />
-63-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
-64        </provider>
-65        <provider
-65-->[:open_file] E:\W\sqfEntity-master\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-21:20
-66            android:name="androidx.core.content.FileProvider"
-66-->[:open_file] E:\W\sqfEntity-master\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-62
-67            android:authorities="com.example.sqfentity.fileProvider"
-67-->[:open_file] E:\W\sqfEntity-master\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-64
-68            android:exported="false"
-68-->[:open_file] E:\W\sqfEntity-master\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
-69            android:grantUriPermissions="true" >
-69-->[:open_file] E:\W\sqfEntity-master\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
-70            <meta-data
-70-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
-71                android:name="android.support.FILE_PROVIDER_PATHS"
-71-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
-72                android:resource="@xml/filepaths" />
-72-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
-73        </provider>
-74    </application>
-75
-76</manifest>
+45-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:23:13-27:17
+46                android:name="io.flutter.embedding.android.NormalTheme"
+46-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:24:15-70
+47                android:resource="@style/NormalTheme"
+47-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:25:15-52
+48                android:value="true" />
+48-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:26:15-35
+49            <!--
+50                 Displays an Android View that continues showing the launch screen
+51                 Drawable until Flutter paints its first frame, then this splash
+52                 screen fades out. A splash screen is useful to avoid any visual
+53                 gap between the end of Android's launch screen and the painting of
+54                 Flutter's first frame.
+55            -->
+56            <meta-data
+56-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:33:13-36:17
+57                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+57-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:34:15-79
+58                android:resource="@drawable/launch_background" />
+58-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:35:15-61
+59
+60            <intent-filter>
+60-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:37:13-40:29
+61                <action android:name="android.intent.action.MAIN" />
+61-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:38:17-68
+61-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:38:25-66
+62
+63                <category android:name="android.intent.category.LAUNCHER" />
+63-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:39:17-76
+63-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:39:27-74
+64            </intent-filter>
+65        </activity>
+66        <!--
+67             Don't delete the meta-data below.
+68             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+69        -->
+70        <meta-data
+70-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:44:9-46:33
+71            android:name="flutterEmbedding"
+71-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:45:13-44
+72            android:value="2" />
+72-->E:\W\sqfEntity-master\android\app\src\main\AndroidManifest.xml:46:13-30
+73
+74        <provider
+74-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-19:20
+75            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+75-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-82
+76            android:authorities="com.example.quiknowte.flutter.image_provider"
+76-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-74
+77            android:exported="false"
+77-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+78            android:grantUriPermissions="true" >
+78-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-47
+79            <meta-data
+79-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
+80                android:name="android.support.FILE_PROVIDER_PATHS"
+80-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
+81                android:resource="@xml/flutter_image_picker_file_paths" />
+81-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
+82        </provider>
+83        <provider
+83-->[:open_file] E:\W\sqfEntity-master\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-21:20
+84            android:name="androidx.core.content.FileProvider"
+84-->[:open_file] E:\W\sqfEntity-master\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-62
+85            android:authorities="com.example.quiknowte.fileProvider"
+85-->[:open_file] E:\W\sqfEntity-master\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-64
+86            android:exported="false"
+86-->[:open_file] E:\W\sqfEntity-master\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
+87            android:grantUriPermissions="true" >
+87-->[:open_file] E:\W\sqfEntity-master\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
+88            <meta-data
+88-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
+89                android:name="android.support.FILE_PROVIDER_PATHS"
+89-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
+90                android:resource="@xml/filepaths" />
+90-->[:image_picker] E:\W\sqfEntity-master\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
+91        </provider>
+92    </application>
+93
+94</manifest>

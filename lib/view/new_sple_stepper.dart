@@ -6,7 +6,6 @@ import 'package:toast/toast.dart';
 class NewSample extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _NewSample();
   }
 }
@@ -78,7 +77,6 @@ class _NewSample extends State<NewSample> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Form(
       key: _stepFormKey,
       child: Stepper(

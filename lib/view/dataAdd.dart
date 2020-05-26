@@ -12,7 +12,6 @@ import '../screen_size.dart';
 class DataAdd extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _DataAdd();
   }
 }
@@ -59,7 +58,6 @@ class _DataAdd extends State<DataAdd> {
   @override
   Widget build(BuildContext context) {
     // final TextStyle valueStyle = Theme.of(context).textTheme.bodyText2;
-    // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.blue.shade100,
       body: SingleChildScrollView(

@@ -16,7 +16,6 @@ class ProjectHome extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _ProjectHome(pTime: ptime, pName: pname, pId: pid);
   }
 }
@@ -40,6 +39,7 @@ class _ProjectHome extends State<ProjectHome> {
   void initState() {
     super.initState();
     projectDetails();
+    
   }
 
   @override
