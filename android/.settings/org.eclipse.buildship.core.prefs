@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-connection.project.dir=
-eclipse.preferences.version=1
-=======
 arguments=
 auto.sync=false
 build.scans.enabled=false
-connection.gradle.distribution=GRADLE_DISTRIBUTION(VERSION(6.3))
-connection.project.dir=..
+connection.gradle.distribution=GRADLE_DISTRIBUTION(WRAPPER)
+connection.project.dir=
 eclipse.preferences.version=1
 gradle.user.home=
 java.home=C\:/Program Files/Java/jdk-12
@@ -15,4 +11,3 @@ offline.mode=false
 override.workspace.settings=true
 show.console.view=true
 show.executions.view=true
->>>>>>> 6076eabd2876ba71b5409873774bd53cd772767c
