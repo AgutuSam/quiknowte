@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-connection.project.dir=
-eclipse.preferences.version=1
-=======
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=6076eabd2876ba71b5409873774bd53cd772767c
 arguments=
 auto.sync=false
 build.scans.enabled=false
@@ -15,4 +14,3 @@ offline.mode=false
 override.workspace.settings=true
 show.console.view=true
 show.executions.view=true
->>>>>>> 6076eabd2876ba71b5409873774bd53cd772767c
