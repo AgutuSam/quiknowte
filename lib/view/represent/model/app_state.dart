@@ -1,130 +1,94 @@
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:quiknowte/model/dynsql.dart' as flex;
 import 'package:quiknowte/charts/chartproperties.dart';
+// import 'package:meta/meta.dart';
 
+import '../../../screen_size.dart';
+import '../../representation.dart';
+
+// @immutable
 class AppState {
-  AppState(
-      {this.chartzVisible = false,
-      this.counter = 0,
-      this.monVal = false,
-      this.sampleVisible = false,
-      this.axisXVisible = false,
-      this.axisYVisible = false,
-      this.tableList = const [],
-      this.selTable = const [],
-      this.checkVal = const [],
-      this.samplez = const [],
-      this.globalData = const [],
-      this.globalMultiData = const [],
-      this.multiDataVal = const [],
-      this.rett = const ['test'],
-      this.radioValue = -1,
-      this.checkState = 'radio',
-      this.axesSelected = const [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ],
-      this.barsSelected = const [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ],
-      this.comboSelected = const [false, false, false, false, false],
-      this.legendsSelected = const [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ],
-      this.linesSelected = const [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ],
-      this.piesSelected = const [false, false, false, false, false, false],
-      this.timesSelected = const [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ],
-      this.globalDataChooser = 'default'});
+  AppState({
+    this.chartzVisible,
+    this.counter,
+    this.monVal,
+    this.sampleVisible,
+    this.axisXVisible,
+    this.axisYVisible,
+    this.tableList,
+    this.selTable,
+    this.checkVal,
+    this.samplez,
+    this.globalData,
+    this.globalMultiData,
+    this.multiDataVal,
+    this.rett,
+    this.radioValue,
+    this.checkState,
+    this.chartState,
+    this.axesSelected,
+    this.barsSelected,
+    this.comboSelected,
+    this.legendsSelected,
+    this.linesSelected,
+    this.piesSelected,
+    this.timesSelected,
+    this.tablesSelected,
+    this.tabzSelected,
+    this.globalDataChooser,
+    this.canvas,
+    this.globCreateData,
+    this.globCreateMultiData,
+    this.globalCreateMultiIntData,
+    this.globalCreateMultiTimeData,
+    this.tabz,
+  });
 
-  AppState.fromAppstate(AppState update) {
-    chartzVisible = update.chartzVisible;
-    counter = update.counter;
-    monVal = update.monVal;
-    sampleVisible = update.sampleVisible;
-    axisXVisible = update.axisXVisible;
-    axisYVisible = update.axisYVisible;
-    tableList = update.tableList;
-    selTable = update.selTable;
-    checkVal = update.checkVal;
-    samplez = update.samplez;
-    globalData = update.globalData;
-    globalMultiData = update.globalMultiData;
-    multiDataVal = update.multiDataVal;
-    rett = update.rett;
-    radioValue = update.radioValue;
-    checkState = update.checkState;
-    axesSelected = update.axesSelected;
-    barsSelected = update.barsSelected;
-    comboSelected = update.comboSelected;
-    legendsSelected = update.legendsSelected;
-    linesSelected = update.linesSelected;
-    piesSelected = update.piesSelected;
-    timesSelected = update.timesSelected;
-    globalDataChooser = update.globalDataChooser;
-  }
+factory AppState.initial() => AppState(
+  chartzVisible : false,
+    counter : 0,
+    monVal : false,
+    sampleVisible : false,
+    axisXVisible : false,
+    axisYVisible : false,
+    tableList : fetchTables(),
+    selTable : [],
+    checkVal : [],
+    samplez : [],
+    globalData : [],
+    globalMultiData : [],
+    multiDataVal : [],
+    rett : ['test'],
+    radioValue : -1,
+    checkState : 'radio',
+    chartState : 'default!',
+    axesSelected : List.generate(17, (index) => false),
+    barsSelected : List.generate(19, (index) => false),
+    comboSelected : List.generate(5, (index) => false),
+    legendsSelected : List.generate(8, (index) => false),
+    linesSelected : List.generate(13, (index) => false),
+    piesSelected : List.generate(6, (index) => false),
+    timesSelected : List.generate(7, (index) => false),
+    tablesSelected : List.generate(1, (index) => false),
+    tabzSelected : [],
+    globalDataChooser : 'default',
+    canvas : Padding(padding: EdgeInsets.all(16),
+        child: Container(
+          height: SizeConfig.blockSizeVertical * 55,
+          padding: EdgeInsets.all(8),
+          color: Colors.white,
+        ),
+      ),
+      globCreateData : [],
+      globCreateMultiData : [],
+      globalCreateMultiIntData : [],
+      globalCreateMultiTimeData : [],
+      tabz : [],
+      );
+
+ 
 
   List<DropdownMenuItem> samplez;
   List<DropdownMenuItem> axezex;
@@ -140,6 +104,7 @@ class AppState {
   Widget chartClass;
   var radioValue;
   String checkState;
+  String chartState;
   String radioRes;
   String globalDataChooser;
   List<bool> barsSelected;
@@ -149,6 +114,8 @@ class AppState {
   List<bool> linesSelected;
   List<bool> piesSelected;
   List<bool> timesSelected;
+  List<bool> tablesSelected;
+  List<bool> tabzSelected;
   // static const secondaryMeasureAxisId = 'secondaryMeasureAxisId';
   dynamic file;
   final pdf = pw.Document();
@@ -165,4 +132,21 @@ class AppState {
   List<List<PropertiesDateTime>> globalMultiTimeData;
   List<List<PropertiesInt>> globalMultiIntData;
   List<charts.Series<Properties, String>> multiDataVal;
+  Padding canvas;
+  List<charts.Series<Properties, String>> globCreateData;
+  List<charts.Series<Properties, String>> globCreateMultiData;
+  List<charts.Series<PropertiesInt, int>> globalCreateMultiIntData;
+  List<charts.Series<PropertiesDateTime, DateTime>> globalCreateMultiTimeData;
+  List<Tabz> tabz;
+
+ static List<dynamic> fetchTables() {
+   List ret;
+    flex.DatabaseHelper().getAllTables().then((val) {
+        ret = val;
+      // print('UUUUUUU');
+      // print('Length: ${_tableList.length}');
+    });
+    return ret;
+  }
+
 }

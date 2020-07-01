@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiknowte/view/dataAdd.dart';
+import 'package:quiknowte/view/dataAdd/page.dart';
 import 'package:quiknowte/view/datatables.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
