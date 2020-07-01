@@ -19,7 +19,7 @@
 12-->E:\xsystem\folders\flutter-sdk\flutter\.pub-cache\hosted\pub.dartlang.org\open_file-3.0.1\android\src\main\AndroidManifest.xml:9:9-19:20
 13            android:name="androidx.core.content.FileProvider"
 13-->E:\xsystem\folders\flutter-sdk\flutter\.pub-cache\hosted\pub.dartlang.org\open_file-3.0.1\android\src\main\AndroidManifest.xml:10:13-62
-14            android:authorities="dollar_openBracket_applicationId_closeBracket.fileProvider"
+14            android:authorities="${applicationId}.fileProvider"
 14-->E:\xsystem\folders\flutter-sdk\flutter\.pub-cache\hosted\pub.dartlang.org\open_file-3.0.1\android\src\main\AndroidManifest.xml:11:13-64
 15            android:exported="false"
 15-->E:\xsystem\folders\flutter-sdk\flutter\.pub-cache\hosted\pub.dartlang.org\open_file-3.0.1\android\src\main\AndroidManifest.xml:12:13-37

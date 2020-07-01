@@ -224,7 +224,7 @@ Future createTabConst(Database dyn, int newVersion) async {
   }
 
   // GET ALLFROM TABLE!
-  Future<List<Map>> getAllSamples(String tabName) async {
+  Future<List<Map>> getAllSamples(String tabName) async { 
     final dyClient = await dyn;
 //    var result = await dyClient.query(
 //        tableName, columns: [columnId, columnInt[], columnText[]]);
@@ -235,6 +235,14 @@ Future createTabConst(Database dyn, int newVersion) async {
 
   // GET TABLE STRUCTURE!
   Future<List<Map>> getTableInfo(String tabName) async {
+    final dyClient = await dyn;
+    final result = await dyClient.rawQuery('PRAGMA table_info($tabName)');
+    print('HHHHHHHHHHHH');
+    print(result.toList());
+    return result.toList();
+  }
+
+  Future<List> getTableInfoList(String tabName) async {
     final dyClient = await dyn;
     final result = await dyClient.rawQuery('PRAGMA table_info($tabName)');
     print('HHHHHHHHHHHH');
