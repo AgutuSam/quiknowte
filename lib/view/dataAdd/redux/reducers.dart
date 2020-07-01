@@ -1,10 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:quiknowte/view/dataAdd/model/app_state.dart';
 import 'package:quiknowte/view/dataAdd/redux/actions.dart';
 import 'package:quiknowte/model/dynsql.dart' as flex;
-
-import '../../../screen_size.dart';
 
 AppState reducer(AppState prev, dynamic action) {
   if (action is InitInputVals) {

@@ -9,81 +9,6 @@ import 'package:flutter/widgets.dart' as wig;
 import 'package:flutter/rendering.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:quiknowte/charts/axes/bar_secondary_axis.dart';
-import 'package:quiknowte/charts/axes/bar_secondary_axis_only.dart';
-import 'package:quiknowte/charts/axes/custom_axis_tick_formatters.dart';
-import 'package:quiknowte/charts/axes/custom_font_size_and_color.dart';
-import 'package:quiknowte/charts/axes/custom_measure_tick_count.dart';
-import 'package:quiknowte/charts/axes/flipped_vertical_axis.dart';
-import 'package:quiknowte/charts/axes/gridline_dash_pattern.dart';
-import 'package:quiknowte/charts/axes/hidden_ticks_and_labels_axis.dart';
-import 'package:quiknowte/charts/axes/horizontal_bar_secondary_axis.dart';
-import 'package:quiknowte/charts/axes/integer_only_measure_axis.dart';
-import 'package:quiknowte/charts/axes/line_disjoint_axis.dart';
-import 'package:quiknowte/charts/axes/measure_axis_label_alignment.dart';
-import 'package:quiknowte/charts/axes/nonzero_bound_measure_axis.dart';
-import 'package:quiknowte/charts/axes/numeric_initial_viewport.dart';
-import 'package:quiknowte/charts/axes/ordinal_initial_viewport.dart';
-import 'package:quiknowte/charts/axes/short_tick_length_axis.dart';
-import 'package:quiknowte/charts/axes/statically_provided_ticks.dart';
-import 'package:quiknowte/charts/bar_chart/custom_rounded_bars.dart';
-import 'package:quiknowte/charts/bar_chart/grouped.dart';
-import 'package:quiknowte/charts/bar_chart/grouped_fill_color.dart';
-import 'package:quiknowte/charts/bar_chart/grouped_single_target_line.dart';
-import 'package:quiknowte/charts/bar_chart/grouped_stacked.dart';
-import 'package:quiknowte/charts/bar_chart/grouped_stacked_weight_pattern.dart';
-import 'package:quiknowte/charts/bar_chart/grouped_target_line.dart';
-import 'package:quiknowte/charts/bar_chart/horizontal.dart';
-import 'package:quiknowte/charts/bar_chart/horizontal_bar_label.dart';
-import 'package:quiknowte/charts/bar_chart/horizontal_bar_label_custom.dart';
-import 'package:quiknowte/charts/bar_chart/horizontal_pattern_forward_hatch.dart';
-import 'package:quiknowte/charts/bar_chart/pattern_forward_hatch.dart';
-import 'package:quiknowte/charts/bar_chart/simple.dart';
-import 'package:quiknowte/charts/bar_chart/spark_bar.dart';
-import 'package:quiknowte/charts/bar_chart/stacked.dart';
-import 'package:quiknowte/charts/bar_chart/stacked_fill_color.dart';
-import 'package:quiknowte/charts/bar_chart/stacked_horizontal.dart';
-import 'package:quiknowte/charts/bar_chart/stacked_target_line.dart';
-import 'package:quiknowte/charts/bar_chart/vertical_bar_label.dart';
-import 'package:quiknowte/charts/chartproperties.dart';
-import 'package:quiknowte/charts/combo_chart/numeric_line_bar.dart';
-import 'package:quiknowte/charts/combo_chart/numeric_line_point.dart';
-import 'package:quiknowte/charts/combo_chart/ordinal_bar_line.dart';
-import 'package:quiknowte/charts/combo_chart/scatter_plot_line.dart';
-import 'package:quiknowte/charts/legends/datum_legend_options.dart';
-import 'package:quiknowte/charts/legends/datum_legend_with_measures.dart';
-import 'package:quiknowte/charts/legends/default_hidden_series_legend.dart';
-import 'package:quiknowte/charts/legends/legend_custom_symbol.dart';
-import 'package:quiknowte/charts/legends/series_legend_options.dart';
-import 'package:quiknowte/charts/legends/series_legend_with_measures.dart';
-import 'package:quiknowte/charts/legends/simple_datum_legend.dart';
-import 'package:quiknowte/charts/legends/simple_series_legend.dart';
-import 'package:quiknowte/charts/line_chart/animation_zoom.dart';
-import 'package:quiknowte/charts/line_chart/area_and_line.dart';
-import 'package:quiknowte/charts/line_chart/dash_pattern.dart';
-import 'package:quiknowte/charts/line_chart/line_annotation.dart';
-import 'package:quiknowte/charts/line_chart/points.dart';
-import 'package:quiknowte/charts/line_chart/range_annotation.dart';
-import 'package:quiknowte/charts/line_chart/range_annotation_margin.dart';
-import 'package:quiknowte/charts/line_chart/segments.dart';
-import 'package:quiknowte/charts/line_chart/simple.dart';
-import 'package:quiknowte/charts/line_chart/simple_nulls.dart';
-import 'package:quiknowte/charts/line_chart/stacked_area.dart';
-import 'package:quiknowte/charts/line_chart/stacked_area_custom_color.dart';
-import 'package:quiknowte/charts/line_chart/stacked_area_nulls.dart';
-import 'package:quiknowte/charts/pie_chart/auto_label.dart';
-import 'package:quiknowte/charts/pie_chart/donut.dart';
-import 'package:quiknowte/charts/pie_chart/gauge.dart';
-import 'package:quiknowte/charts/pie_chart/outside_label.dart';
-import 'package:quiknowte/charts/pie_chart/partial_pie.dart';
-import 'package:quiknowte/charts/pie_chart/simple.dart';
-import 'package:quiknowte/charts/time_series_chart/confidence_interval.dart';
-import 'package:quiknowte/charts/time_series_chart/end_points_axis.dart';
-import 'package:quiknowte/charts/time_series_chart/line_annotation.dart';
-import 'package:quiknowte/charts/time_series_chart/range_annotation.dart';
-import 'package:quiknowte/charts/time_series_chart/simple.dart';
-import 'package:quiknowte/charts/time_series_chart/symbol_annotation.dart';
-import 'package:quiknowte/charts/time_series_chart/with_bar_renderer.dart';
 import 'package:quiknowte/model/dynsql.dart' as flex;
 import 'package:quiknowte/samples/common.dart';
 import 'package:quiknowte/screen_size.dart';
@@ -360,7 +285,7 @@ List<Widget> checkb() {
   }
 
 
-Widget cards(String image, String title, Widget route, String check, int index) {
+Widget cards(String image, String title, String route, String check, int index) {
       return StoreConnector<AppState, List<bool>>(
           converter: (Store<AppState> store) => store.state.tabzSelected,
           builder: (BuildContext context, List<bool> listBool) {
@@ -412,8 +337,10 @@ Widget chartChuzzer(String title, double tl, double tr, double bl, double br){
           converter: (Store<AppState> store) => store.state.chartzVisible,
           builder: (BuildContext context, bool initial) {
              return InkWell(
-        onTap: () => StoreProvider.of<AppState>(context).dispatch(ChartzTap()),
-        // onTap: StoreProvider.of<AppState>(context).dispatch(ChartzTap()),
+        onTap: () { 
+          StoreProvider.of<AppState>(context).dispatch(ChartzTap());
+          StoreProvider.of<AppState>(context).dispatch(Canvas());
+          },
         child: Container(
           height: SizeConfig.blockSizeVertical * 7,
           // width: SizeConfig.blockSizeHorizontal * 5,
@@ -446,8 +373,11 @@ Widget sampleChuzzer(String title, double tl, double tr, double bl, double br){
           converter: (Store<AppState> store) => AppState.initial(),
           builder: (BuildContext context, AppState initial) {
              return InkWell(
-         onTap: () => StoreProvider.of<AppState>(context).dispatch(SamplezTap()),
-        // onTap: StoreProvider.of<AppState>(context).dispatch(SamplezTap()),
+         onTap: () { 
+           StoreProvider.of<AppState>(context).dispatch(SamplezTap());
+           StoreProvider.of<AppState>(context).dispatch(GlobalCreateData(eyedee: StoreProvider.of<AppState>(context).state.radioRes));
+           StoreProvider.of<AppState>(context).dispatch(Canvas());
+         },
         child: Container(
           height: SizeConfig.blockSizeVertical * 7,
           // width: SizeConfig.blockSizeHorizontal * 5,
@@ -516,184 +446,105 @@ Widget sampleChuzzer(String title, double tl, double tr, double bl, double br){
                           cards(
                               'assets/charts/axes/bar_secondary_axis_only_full.png',
                               'Secondary Only',
-                               BarChartWithSecondaryAxisOnly(
-                                 StoreProvider.of<AppState>(context).state.globCreateData,
-                               ),    
+                               'BarChartWithSecondaryAxisOnly',    
                               'radio',
                               0),
                           // VisibilityExample()),
                           cards(
                               'assets/charts/axes/bar_secondary_axis_full.png',
                               'Secondary Axis',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return BarChartWithSecondaryAxis(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'BarChartWithSecondaryAxis',
                               'radio',
                               1),
                           cards(
                               'assets/charts/axes/custom_axis_tick_formatters_full.png',
                               'CustomAxis Tick',
-                              CustomAxisTickFormatters.withSampleData(),
+                              'CustomAxisTickFormatters',
                               'box',
                               2),
                           cards(
                               'assets/charts/axes/custom_font_size_and_color_full.png',
                               'FontSize Color',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return CustomFontSizeAndColor(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'CustomFontSizeAndColor',
                               'radio',
                               3),
                           cards(
                               'assets/charts/axes/custom_measure_tick_count_full.png',
                               'Custom Measure',
-                              CustomMeasureTickCount.withSampleData(),
+                              'CustomMeasureTickCount',
                               'box',
                               4),
                           cards(
                               'assets/charts/axes/flipped_vertical_axis_full.png',
                               'Flipped Vertical',
-                               StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return FlippedVerticalAxis(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                               'FlippedVerticalAxis',
                               'radio',
                               5),
                           cards(
                               'assets/charts/axes/gridline_dash_pattern_full.png',
                               'Gridline Dash',
-                              GridlineDashPattern.withSampleData(),
+                              'GridlineDashPatter',
                               'box',
                               6),
                           cards(
                               'assets/charts/axes/hidden_ticks_and_labels_axis_full.png',
                               'Hidden Ticks',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return HiddenTicksAndLabelsAxis(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'HiddenTicksAndLabelsAxis',
                               'radio',
                               7),
                           cards(
                               'assets/charts/axes/horizontal_bar_secondary_axis_full.png',
                               'Horizontal Bar',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return HorizontalBarChartWithSecondaryAxis(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'HorizontalBarChartWithSecondaryAxis',
                               'radio',
                               8),
                           cards(
                               'assets/charts/axes/integer_only_measure_axis_full.png',
                               'Integer Only Axis',
-                              IntegerOnlyMeasureAxis.withSampleData(),
+                              'IntegerOnlyMeasureAxis',
                               'box',
                               9),
                           cards(
                               'assets/charts/axes/line_disjoint_axis_full.png',
                               'Disjoint Axis',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return DisjointMeasureAxisLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'DisjointMeasureAxisLineChart',
                               'radio',
                               10),
                           cards(
                               'assets/charts/axes/measure_axis_label_alignment_full.png',
                               'Measure Axis',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return MeasureAxisLabelAlignment(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'MeasureAxisLabelAlignment',
                               
                               'radio',
                               11),
                           cards(
                               'assets/charts/axes/nonzero_bound_measure_axis_full.png',
                               'Nonzero Bound',
-                              NonzeroBoundMeasureAxis.withSampleData(),
+                              'NonzeroBoundMeasureAxis',
                               'box',
                               12),
                           cards(
                               'assets/charts/axes/numeric_initial_viewport_full.png',
                               'Numeric Initial',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return NumericInitialViewport(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'NumericInitialViewport',
                               'radio',
                               13),
                           cards(
                               'assets/charts/axes/ordinal_initial_viewport_full.png',
                               'Ordinal Initial',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return OrdinalInitialViewport(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'OrdinalInitialViewport',
                               'radio',
                               14),
                           cards(
                               'assets/charts/axes/short_tick_length_axis_full.png',
                               'Short Tick',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return ShortTickLengthAxis(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'ShortTickLengthAxis',
                               'radio',
                               15),
                           cards(
                               'assets/charts/axes/statically_provided_ticks_full.png',
                               'Statically Ticks',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return StaticallyProvidedTicks(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'StaticallyProvidedTicks',
                               'radio',
                               16),
                         ].asMap().entries.map((widget) {
@@ -710,8 +561,7 @@ Widget sampleChuzzer(String title, double tl, double tr, double bl, double br){
                             hoverColor: Colors.orange,
                             highlightColor: Colors.blue,
                             isSelected: [StoreProvider.of<AppState>(context).state.axesSelected[widget.key]],
-                            onPressed: (_) => StoreProvider.of<AppState>(context)
-                        .dispatch(CapPress()),
+                            onPressed: (_) => StoreProvider.of<AppState>(context).dispatch(CapPress()),
                             children: [widget.value],
                           );
                           },
@@ -767,7 +617,6 @@ StoreConnector<AppState, bool>(
                             style: TextStyle(color: Colors.black, fontSize: 16),
                             onChanged: (value) => StoreProvider.of<AppState>(context).dispatch(AxisXVAL(value.toString())),
                             hint: Text('X Axis'),
-                            // items: listtype == true ? samplesList() : samplesString()),
                             items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id').toList().asMap().entries.map((widget) {                              
                          return DropdownMenuItem(
             value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
@@ -800,13 +649,10 @@ StoreConnector<AppState, bool>(
                             onChanged: (value) {
                             StoreProvider.of<AppState>(context).dispatch(AxisYVAL(value.toString()));
                             StoreProvider.of<AppState>(context).dispatch(CreateGlobalData());
-                            StoreProvider.of<AppState>(context).dispatch(GlobalCreateData(
-                              eyedee: StoreProvider.of<AppState>(context).state.radioRes, 
-                              globalData: StoreProvider.of<AppState>(context).state.globalData)
-                              );
+                            StoreProvider.of<AppState>(context).dispatch(GlobalCreateData(eyedee: StoreProvider.of<AppState>(context).state.radioRes));
                             },
                             hint: Text('Y Axis'),
-                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id').toList().asMap().entries.map((widget) {                              
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id' ).toList().asMap().entries.map((widget) {                              
                          return DropdownMenuItem(
             value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
             child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
@@ -892,248 +738,115 @@ StoreConnector<AppState, bool>(
                               cards(
                                   'assets/charts/bar_charts/simple_full.png',
                                   'Simple Bar',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return SimpleBarChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'SimpleBarChart',
                                   'radio',
                                   0),
                               cards(
                                   'assets/charts/bar_charts/custom_rounded_bars_full.png',
                                   'Custom Round',
-                                   StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return CustomRoundedBars(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                   'CustomRoundedBars',
                                   'radio',
                                   1),
                               cards(
                                   'assets/charts/bar_charts/grouped_fill_color_full.png',
                                   'Grouped Fill',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return GroupedFillColorBarChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'GroupedFillColorBarChart',
                                   'radio',
                                   2),
                               cards(
                                   'assets/charts/bar_charts/grouped_full.png',
                                   'Grouped',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return GroupedBarChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'GroupedBarChart',
                                   'radio',
                                   3),
                               cards(
                                   'assets/charts/bar_charts/grouped_stacked_full.png',
                                   'Grouped Stacked',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return GroupedStackedBarChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'GroupedStackedBarChart',
                                   'radio',
                                   4),
                               cards(
                                   'assets/charts/bar_charts/grouped_stacked_weight_pattern_full.png',
                                   'Weight Pattern',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return GroupedStackedWeightPatternBarChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'GroupedStackedWeightPatternBarChart',
                                   'radio',
                                   5),
                               cards(
                                   'assets/charts/bar_charts/grouped_target_line_full.png',
                                   'Grouped Target',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return GroupedBarTargetLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'GroupedBarTargetLineChart',
                                   'radio',
                                   6),
                               cards(
                                   'assets/charts/bar_charts/grouped_target_line_full.png',
                                   'Single Taget',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return GroupedBarSingleTargetLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'GroupedBarSingleTargetLineChart',
                                   'radio',
                                   7),
                               cards(
                                   'assets/charts/bar_charts/horizontal_full.png',
                                   'Horizontal Bar',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return HorizontalBarChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'HorizontalBarChart',
                                   'radio',
                                   8),
                               cards(
                                   'assets/charts/bar_charts/horizontal_bar_label_full.png',
                                   'Horizontal Label',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return HorizontalBarLabelChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'HorizontalBarLabelChart',
                                   'radio',
                                   9),
                               cards(
                                   'assets/charts/bar_charts/horizontal_bar_label_custom_full.png',
                                   'Horizontal Custom',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return HorizontalBarLabelCustomChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'HorizontalBarLabelCustomChart',
                                   'radio',
                                   10),
                               cards(
                                   'assets/charts/bar_charts/horizontal_pattern_forward_hatch_full.png',
                                   'Horizontal Forward',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return HorizontalPatternForwardHatchBarChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'HorizontalPatternForwardHatchBarChart',
                                   'radio',
                                   11),
                               cards(
                                   'assets/charts/bar_charts/pattern_forward_hatch_full.png',
                                   'Pattern Forward',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return PatternForwardHatchBarChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'PatternForwardHatchBarChart',
                                   'radio',
                                   12),
                               cards(
                                   'assets/charts/bar_charts/spark_bar_full.png',
                                   'Spark Bar',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return SparkBar(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'SparkBar',
                                   'radio',
                                   13),
                               cards(
                                   'assets/charts/bar_charts/stacked_fill_color_full.png',
                                   'Stacked Color',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return StackedFillColorBarChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'StackedFillColorBarChart',
                                   'radio',
                                   14),
                               cards(
                                   'assets/charts/bar_charts/stacked_horizontal_full.png',
                                   'Stacked Horizontal',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return StackedHorizontalBarChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'StackedHorizontalBarChart',
                                   'radio',
                                   15),
                               cards(
                                   'assets/charts/bar_charts/stacked_full.png',
                                   'Stacked',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return StackedBarChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'StackedBarChart',
                                   'radio',
                                   16),
                               cards(
                                   'assets/charts/bar_charts/stacked_target_line_full.png',
                                   'Stacked Line',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return StackedBarTargetLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'StackedBarTargetLineChart',
                                   'radio',
                                   17),
                               cards(
                                   'assets/charts/bar_charts/vertical_bar_label_full.png',
                                   'Vertical Bar',
-                                  StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return VerticalBarLabelChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                                  'VerticalBarLabelChart',
                                   'radio',
                                   18),
                             ].asMap().entries.map((widget) {
@@ -1153,7 +866,7 @@ StoreConnector<AppState, bool>(
                                 onPressed: (_) => StoreProvider.of<AppState>(context).dispatch(CapPress()),
                                 children: [widget.value],
                               );
-          },
+                              },
                               );
                             }).toList()),
                   ),
@@ -1205,8 +918,12 @@ StoreConnector<AppState, bool>(
                             style: TextStyle(color: Colors.black, fontSize: 16),
                             onChanged: (value) => StoreProvider.of<AppState>(context).dispatch(AxisXVAL(value.toString())),
                             hint: Text('X Axis'),
-                            // items: listtype == true ? samplesList() : samplesString()),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id').toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -1235,7 +952,12 @@ StoreConnector<AppState, bool>(
                             StoreProvider.of<AppState>(context).dispatch(Canvas());
                             },
                             hint: Text('Y Axis'),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id' ).toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -1293,62 +1015,34 @@ StoreConnector<AppState, bool>(
                         mainAxisSpacing: 20.0,
                         crossAxisSpacing: 8.0,
                         children: [
-                          // cards(
-                          //     'assets/charts/combo_charts/date_time_line_point_full.png',
-                          //     'Time Line',
-                          //     DateTimeComboLinePointChart.withSampleData(),
-                          //     'box',
-                          //     0),
+                          cards(
+                              'assets/charts/combo_charts/date_time_line_point_full.png',
+                              'Time Line',
+                              'DateTimeComboLinePointChart',
+                              'box',
+                              0),
                           cards(
                               'assets/charts/combo_charts/numeric_line_bar_full.png',
                               'Numeric Bar',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return NumericComboLineBarChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'NumericComboLineBarChart',
                               'radio',
                               1),
                           cards(
                               'assets/charts/combo_charts/numeric_line_point_full.png',
                               'Numeric Point',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return NumericComboLinePointChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'NumericComboLinePointChart',
                               'radio',
                               2),
                           cards(
                               'assets/charts/combo_charts/ordinal_bar_line_full.png',
                               'Ordinal Line',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return OrdinalComboBarLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'OrdinalComboBarLineChart',
                               'radio',
                               3),
                           cards(
                               'assets/charts/combo_charts/scatter_plot_line_full.png',
                               'Scatter Line',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return ScatterPlotComboLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'ScatterPlotComboLineChart',
                               'radio',
                               4),
                         ].asMap().entries.map((widget) {
@@ -1420,8 +1114,12 @@ StoreConnector<AppState, bool>(
                             style: TextStyle(color: Colors.black, fontSize: 16),
                             onChanged: (value) => StoreProvider.of<AppState>(context).dispatch(AxisXVAL(value.toString())),
                             hint: Text('X Axis'),
-                            // items: listtype == true ? samplesList() : samplesString()),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id').toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -1450,7 +1148,12 @@ StoreConnector<AppState, bool>(
                             StoreProvider.of<AppState>(context).dispatch(Canvas());
                             },
                             hint: Text('Y Axis'),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id' ).toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -1511,105 +1214,49 @@ StoreConnector<AppState, bool>(
                           cards(
                               'assets/charts/legends/datum_legend_options_full.png',
                               'Datum Options',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return DatumLegendOptions(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'DatumLegendOptions',
                               'radio',
                               0),
                           cards(
                               'assets/charts/legends/datum_legend_with_measures_full.png',
                               'Datum Measures',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return DatumLegendWithMeasures(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'DatumLegendWithMeasures',
                               'radio',
                               1),
                           cards(
                               'assets/charts/legends/default_hidden_series_legend_full.png',
                               'Default Hidden',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return DefaultHiddenSeriesLegend(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'DefaultHiddenSeriesLegend',
                               'radio',
                               2),
                           cards(
                               'assets/charts/legends/legend_custom_symbol_full.png',
                               'Custom Legend',
-                              StoreConnector<AppState, List<List<Properties>>>(
-          converter: (Store<AppState> store) => store.state.globalMultiData,
-          builder: (BuildContext context, List<List<Properties>> data) {
-            return LegendWithCustomSymbol(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateMultiData(eyedee:'Rubbing', globalMultiData: data )),
-                                  );          }
-                              ),
+                              'LegendWithCustomSymbol',
                               'box',
                               3),
                           cards(
                               'assets/charts/legends/series_legend_options_full.png',
                               'Series Options',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return LegendOptions(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'LegendOptions',
                               'radio',
                               4),
                           cards(
                               'assets/charts/legends/series_legend_with_measures_full.png',
                               'Series Measures',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return LegendWithMeasures(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'LegendWithMeasures',
                               'radio',
                               5),
                           cards(
                               'assets/charts/legends/simple_datum_legend_full.png',
                               'Simple Datum',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return SimpleDatumLegend(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'SimpleDatumLegend',
                               'radio',
                               6),
                           cards(
                               'assets/charts/legends/simple_series_legend_full.png',
                               'Simple Series',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return SimpleSeriesLegend(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'SimpleSeriesLegend',
                               'radio',
                               7),
                         ].asMap().entries.map((widget) {
@@ -1681,8 +1328,12 @@ StoreConnector<AppState, bool>(
                             style: TextStyle(color: Colors.black, fontSize: 16),
                             onChanged: (value) => StoreProvider.of<AppState>(context).dispatch(AxisXVAL(value.toString())),
                             hint: Text('X Axis'),
-                            // items: listtype == true ? samplesList() : samplesString()),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id').toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -1711,7 +1362,12 @@ StoreConnector<AppState, bool>(
                             StoreProvider.of<AppState>(context).dispatch(Canvas());
                             },
                             hint: Text('Y Axis'),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id' ).toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -1772,170 +1428,79 @@ StoreConnector<AppState, bool>(
                           cards(
                               'assets/charts/line_charts/simple_full.png',
                               'Animation Zoom',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return LineAnimationZoomChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'LineAnimationZoomChart',
                               'radio',
                               0),
                           cards(
                               'assets/charts/line_charts/area_and_line_full.png',
                               'Area & Line',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return AreaAndLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'AreaAndLineChart',
                               'radio',
                               1),
                           cards(
                               'assets/charts/line_charts/dash_pattern_full.png',
                               'Dash Pattern',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return DashPatternLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'DashPatternLineChart',
                               'radio',
                               2),
                           cards(
                               'assets/charts/line_charts/line_annotation_full.png',
                               'Line Annotation',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return LineLineAnnotationChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'LineLineAnnotationChart',
                               'radio',
                               3),
                           cards(
                               'assets/charts/line_charts/points_full.png',
                               'Points',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return PointsLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'PointsLineChart',
                               'radio',
                               4),
                           cards(
                               'assets/charts/line_charts/range_annotation_margin_full.png',
                               'Range Margin',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return LineRangeAnnotationMarginChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'LineRangeAnnotationMarginChart',
                               'radio',
                               5),
                           cards(
                               'assets/charts/line_charts/range_annotation_full.png',
                               'Range Annotation',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return LineRangeAnnotationChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'LineRangeAnnotationChart',
                               'radio',
                               6),
                           cards(
                               'assets/charts/line_charts/segments_full.png',
                               'Segments',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return SegmentsLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'SegmentsLineChart',
                               'radio',
                               7),
                           cards(
                               'assets/charts/line_charts/simple_nulls_full.png',
                               'Simple Null',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return SimpleNullsLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'SimpleNullsLineChart',
                               'radio',
                               8),
                           cards(
                               'assets/charts/line_charts/simple_full.png',
                               'Simple',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return SimpleLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'SimpleLineChart',
                               'radio',
                               9),
                           cards(
                               'assets/charts/line_charts/stacked_area_custom_color_full.png',
                               'Stacked Area Custom',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return StackedAreaCustomColorLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'StackedAreaCustomColorLineChart',
                               'radio',
                               10),
                           cards(
                               'assets/charts/line_charts/stacked_area_nulls_full.png',
                               'Stacked Null',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return StackedAreaNullsLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'StackedAreaNullsLineChart',
                               'radio',
                               11),
                           cards(
                               'assets/charts/line_charts/stacked_area_full.png',
                               'Stacked Area',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return StackedAreaLineChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'StackedAreaLineChart',
                               'radio',
                               12),
                         ].asMap().entries.map((widget) {
@@ -2007,8 +1572,12 @@ StoreConnector<AppState, bool>(
                             style: TextStyle(color: Colors.black, fontSize: 16),
                             onChanged: (value) => StoreProvider.of<AppState>(context).dispatch(AxisXVAL(value.toString())),
                             hint: Text('X Axis'),
-                            // items: listtype == true ? samplesList() : samplesString()),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id').toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -2037,7 +1606,12 @@ StoreConnector<AppState, bool>(
                             StoreProvider.of<AppState>(context).dispatch(Canvas());
                             },
                             hint: Text('Y Axis'),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id' ).toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -2098,79 +1672,37 @@ StoreConnector<AppState, bool>(
                           cards(
                               'assets/charts/pie_charts/auto_label_full.png',
                               'Auto Label',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return DonutAutoLabelChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'DonutAutoLabelChart',
                               'radio',
                               0),
                           cards(
                               'assets/charts/pie_charts/donut_full.png',
                               'Doughnut',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return DonutPieChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'DonutPieChart',
                               'radio',
                               1),
                           cards(
                               'assets/charts/pie_charts/gauge_full.png',
                               'Gauge',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return GaugeChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'GaugeChart',
                               'radio',
                               2),
                           cards(
                               'assets/charts/pie_charts/outside_label_full.png',
                               'Outside Label',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return PieOutsideLabelChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'PieOutsideLabelChart',
                               'radio',
                               3),
                           cards(
                               'assets/charts/pie_charts/partial_pie_full.png',
                               'Partial Pie',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return PartialPieChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'PartialPieChart',
                               'radio',
                               4),
                           cards(
                               'assets/charts/pie_charts/simple_full.png',
                               'Simple Pie',
-                              StoreConnector<AppState, List<Properties>>(
-          converter: (Store<AppState> store) => store.state.globalData,
-          builder: (BuildContext context, List<Properties> data) {
-            return SimplePieChart(
-              StoreProvider.of<AppState>(context)
-                        .dispatch(GlobalCreateData(eyedee:'Rubbing', globalData: data )),
-                                  );          }
-                              ),
+                              'SimplePieChart',
                               'radio',
                               5),
                         ].asMap().entries.map((widget) {
@@ -2242,8 +1774,12 @@ StoreConnector<AppState, bool>(
                             style: TextStyle(color: Colors.black, fontSize: 16),
                             onChanged: (value) => StoreProvider.of<AppState>(context).dispatch(AxisXVAL(value.toString())),
                             hint: Text('X Axis'),
-                            // items: listtype == true ? samplesList() : samplesString()),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id').toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -2272,7 +1808,12 @@ StoreConnector<AppState, bool>(
                             StoreProvider.of<AppState>(context).dispatch(Canvas());
                             },
                             hint: Text('Y Axis'),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id' ).toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -2333,43 +1874,43 @@ StoreConnector<AppState, bool>(
                           cards(
                               'assets/charts/time_series_charts/confidence_interval_full.png',
                               'Confidence Interval',
-                              TimeSeriesConfidenceInterval.withSampleData(),
+                              'TimeSeriesConfidenceInterval',
                               'box',
                               0),
                           cards(
                               'assets/charts/time_series_charts/end_points_axis_full.png',
                               'End Point',
-                              EndPointsAxisTimeSeriesChart.withSampleData(),
+                              'EndPointsAxisTimeSeriesChart',
                               'box',
                               1),
                           cards(
                               'assets/charts/time_series_charts/line_annotation_full.png',
                               'Line Annotation',
-                              TimeSeriesLineAnnotationChart.withSampleData(),
+                              'TimeSeriesLineAnnotationChart',
                               'box',
                               2),
                           cards(
                               'assets/charts/time_series_charts/range_annotation_full.png',
                               'Range Annotation',
-                              TimeSeriesRangeAnnotationChart.withSampleData(),
+                              'TimeSeriesRangeAnnotationChart',
                               'box',
                               3),
                           cards(
                               'assets/charts/time_series_charts/simple_full.png',
                               'Simple',
-                              SimpleTimeSeriesChart.withSampleData(),
+                              'SimpleTimeSeriesChart',
                               'box',
                               4),
                           cards(
                               'assets/charts/time_series_charts/symbol_annotation_full.png',
                               'Symbol Annotation',
-                              TimeSeriesSymbolAnnotationChart.withSampleData(),
+                              'TimeSeriesSymbolAnnotationChart',
                               'box',
                               5),
                           cards(
                               'assets/charts/time_series_charts/with_bar_renderer_full.png',
                               'Bar Render',
-                              TimeSeriesBar.withSampleData(),
+                              'TimeSeriesBar',
                               'box',
                               6),
                         ].asMap().entries.map((widget) {
@@ -2441,8 +1982,12 @@ StoreConnector<AppState, bool>(
                             style: TextStyle(color: Colors.black, fontSize: 16),
                             onChanged: (value) => StoreProvider.of<AppState>(context).dispatch(AxisXVAL(value.toString())),
                             hint: Text('X Axis'),
-                            // items: listtype == true ? samplesList() : samplesString()),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id').toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -2471,7 +2016,12 @@ StoreConnector<AppState, bool>(
                             StoreProvider.of<AppState>(context).dispatch(Canvas());
                             },
                             hint: Text('Y Axis'),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id' ).toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -2582,8 +2132,12 @@ StoreConnector<AppState, bool>(
                             style: TextStyle(color: Colors.black, fontSize: 16),
                             onChanged: (value) => StoreProvider.of<AppState>(context).dispatch(AxisXVAL(value.toString())),
                             hint: Text('X Axis'),
-                            // items: listtype == true ? samplesList() : samplesString()),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id').toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),
@@ -2613,7 +2167,12 @@ StoreConnector<AppState, bool>(
                             StoreProvider.of<AppState>(context).dispatch(Canvas());
                             },
                             hint: Text('Y Axis'),
-                            items: StoreProvider.of<AppState>(context).state.samplez,
+                            items: StoreProvider.of<AppState>(context).state.rett.where((col) => col['name'].toString() != 'Id' ).toList().asMap().entries.map((widget) {                              
+                         return DropdownMenuItem(
+            value: StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString(),
+            child: Text(StoreProvider.of<AppState>(context).state.rett[widget.key]['name'].toString())
+            );
+                }).toList(),
                             );
           },
                         ),

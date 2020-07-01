@@ -43,7 +43,7 @@ class CardzTap {
   CardzTap({this.image, this.check, this.index, this.route, this.title});
   final String image;
   final String title; 
-  final Widget route;
+  final String route;
   final String check;
   final int index;
 }

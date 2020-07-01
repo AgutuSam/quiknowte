@@ -3,7 +3,81 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:quiknowte/charts/axes/bar_secondary_axis.dart';
+import 'package:quiknowte/charts/axes/bar_secondary_axis_only.dart';
+import 'package:quiknowte/charts/axes/custom_axis_tick_formatters.dart';
+import 'package:quiknowte/charts/axes/custom_font_size_and_color.dart';
+import 'package:quiknowte/charts/axes/custom_measure_tick_count.dart';
+import 'package:quiknowte/charts/axes/flipped_vertical_axis.dart';
+import 'package:quiknowte/charts/axes/gridline_dash_pattern.dart';
+import 'package:quiknowte/charts/axes/hidden_ticks_and_labels_axis.dart';
+import 'package:quiknowte/charts/axes/horizontal_bar_secondary_axis.dart';
+import 'package:quiknowte/charts/axes/integer_only_measure_axis.dart';
+import 'package:quiknowte/charts/axes/line_disjoint_axis.dart';
+import 'package:quiknowte/charts/axes/measure_axis_label_alignment.dart';
+import 'package:quiknowte/charts/axes/nonzero_bound_measure_axis.dart';
+import 'package:quiknowte/charts/axes/numeric_initial_viewport.dart';
+import 'package:quiknowte/charts/axes/ordinal_initial_viewport.dart';
+import 'package:quiknowte/charts/axes/short_tick_length_axis.dart';
+import 'package:quiknowte/charts/axes/statically_provided_ticks.dart';
+import 'package:quiknowte/charts/bar_chart/custom_rounded_bars.dart';
+import 'package:quiknowte/charts/bar_chart/grouped.dart';
+import 'package:quiknowte/charts/bar_chart/grouped_fill_color.dart';
+import 'package:quiknowte/charts/bar_chart/grouped_single_target_line.dart';
+import 'package:quiknowte/charts/bar_chart/grouped_stacked.dart';
+import 'package:quiknowte/charts/bar_chart/grouped_stacked_weight_pattern.dart';
+import 'package:quiknowte/charts/bar_chart/grouped_target_line.dart';
+import 'package:quiknowte/charts/bar_chart/horizontal.dart';
+import 'package:quiknowte/charts/bar_chart/horizontal_bar_label.dart';
+import 'package:quiknowte/charts/bar_chart/horizontal_bar_label_custom.dart';
+import 'package:quiknowte/charts/bar_chart/horizontal_pattern_forward_hatch.dart';
+import 'package:quiknowte/charts/bar_chart/pattern_forward_hatch.dart';
+import 'package:quiknowte/charts/bar_chart/simple.dart';
+import 'package:quiknowte/charts/bar_chart/spark_bar.dart';
+import 'package:quiknowte/charts/bar_chart/stacked.dart';
+import 'package:quiknowte/charts/bar_chart/stacked_fill_color.dart';
+import 'package:quiknowte/charts/bar_chart/stacked_horizontal.dart';
+import 'package:quiknowte/charts/bar_chart/stacked_target_line.dart';
+import 'package:quiknowte/charts/bar_chart/vertical_bar_label.dart';
 import 'package:quiknowte/charts/chartproperties.dart';
+import 'package:quiknowte/charts/combo_chart/date_time_line_point.dart';
+import 'package:quiknowte/charts/combo_chart/numeric_line_bar.dart';
+import 'package:quiknowte/charts/combo_chart/numeric_line_point.dart';
+import 'package:quiknowte/charts/combo_chart/ordinal_bar_line.dart';
+import 'package:quiknowte/charts/combo_chart/scatter_plot_line.dart';
+import 'package:quiknowte/charts/legends/datum_legend_with_measures.dart';
+import 'package:quiknowte/charts/legends/default_hidden_series_legend.dart';
+import 'package:quiknowte/charts/legends/legend_custom_symbol.dart';
+import 'package:quiknowte/charts/legends/series_legend_options.dart';
+import 'package:quiknowte/charts/legends/series_legend_with_measures.dart';
+import 'package:quiknowte/charts/legends/simple_datum_legend.dart';
+import 'package:quiknowte/charts/legends/simple_series_legend.dart';
+import 'package:quiknowte/charts/line_chart/animation_zoom.dart';
+import 'package:quiknowte/charts/line_chart/area_and_line.dart';
+import 'package:quiknowte/charts/line_chart/dash_pattern.dart';
+import 'package:quiknowte/charts/line_chart/line_annotation.dart';
+import 'package:quiknowte/charts/line_chart/points.dart';
+import 'package:quiknowte/charts/line_chart/range_annotation.dart';
+import 'package:quiknowte/charts/line_chart/range_annotation_margin.dart';
+import 'package:quiknowte/charts/line_chart/segments.dart';
+import 'package:quiknowte/charts/line_chart/simple.dart';
+import 'package:quiknowte/charts/line_chart/simple_nulls.dart';
+import 'package:quiknowte/charts/line_chart/stacked_area.dart';
+import 'package:quiknowte/charts/line_chart/stacked_area_custom_color.dart';
+import 'package:quiknowte/charts/line_chart/stacked_area_nulls.dart';
+import 'package:quiknowte/charts/pie_chart/auto_label.dart';
+import 'package:quiknowte/charts/pie_chart/donut.dart';
+import 'package:quiknowte/charts/pie_chart/gauge.dart';
+import 'package:quiknowte/charts/pie_chart/outside_label.dart';
+import 'package:quiknowte/charts/pie_chart/partial_pie.dart';
+import 'package:quiknowte/charts/pie_chart/simple.dart';
+import 'package:quiknowte/charts/time_series_chart/confidence_interval.dart';
+import 'package:quiknowte/charts/time_series_chart/end_points_axis.dart';
+import 'package:quiknowte/charts/time_series_chart/line_annotation.dart';
+import 'package:quiknowte/charts/time_series_chart/range_annotation.dart';
+import 'package:quiknowte/charts/time_series_chart/simple.dart';
+import 'package:quiknowte/charts/time_series_chart/symbol_annotation.dart';
+import 'package:quiknowte/charts/time_series_chart/with_bar_renderer.dart';
 import 'package:quiknowte/model/dynsql.dart' as flex;
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:quiknowte/view/represent/model/models.dart';
@@ -91,21 +165,6 @@ AppState reducer(AppState prev, dynamic action) {
     }
   } else if (action is SamplezTap) {
     prev.sampleVisible = !prev.sampleVisible;
-    if (prev.globalData.isNotEmpty) {
-      print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
-      print(prev.globalData[1].domain.toString() + ' : ' + prev.globalData[1].measure.toString());
-      print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
-      prev.chartClass = prev.chartClass;
-      prev.canvas = Padding(
-        padding: EdgeInsets.all(16),
-        child: Container(
-          height: SizeConfig.blockSizeVertical * 55,
-          padding: EdgeInsets.all(8),
-          color: Colors.white,
-          child: prev.chartClass,
-        ),
-      );
-    } 
   } else if (action is ChartzTap) {
     prev.chartzVisible = !prev.chartzVisible;
   } else if (action is FetchTables) {
@@ -156,19 +215,101 @@ AppState reducer(AppState prev, dynamic action) {
     prev.radioValue = action.i;
   } else if (action is Canvas) {
     if (prev.globalData.isNotEmpty) {
-      print('*******************************************************');
-      print(prev.globalData[1].domain.toString() + ' : ' + prev.globalData[1].measure.toString());
-      print('*******************************************************');
+      // print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+      // print(prev.globalData[1].domain.toString() + ' : ' + prev.globalData[1].measure.toString());
+      // print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
       prev.canvas = Padding(
         padding: EdgeInsets.all(16),
         child: Container(
           height: SizeConfig.blockSizeVertical * 55,
           padding: EdgeInsets.all(8),
           color: Colors.white,
-          child: prev.chartClass,
+          child: 
+          //Axes
+            prev.chartState == 'BarChartWithSecondaryAxisOnly' ? BarChartWithSecondaryAxisOnly(prev.globCreateData,)
+          : prev.chartState == 'BarChartWithSecondaryAxis' ? BarChartWithSecondaryAxis(prev.globCreateData,)
+          : prev.chartState == 'CustomAxisTickFormatters' ? CustomAxisTickFormatters.withSampleData()
+          : prev.chartState == 'CustomFontSizeAndColor' ? CustomFontSizeAndColor(prev.globCreateData,)
+          : prev.chartState == 'CustomMeasureTickCount' ? CustomMeasureTickCount.withSampleData()
+          : prev.chartState == 'FlippedVerticalAxis' ? FlippedVerticalAxis(prev.globCreateData,)
+          : prev.chartState == 'GridlineDashPattern' ?  GridlineDashPattern.withSampleData()
+          : prev.chartState == 'HiddenTicksAndLabelsAxis' ? HiddenTicksAndLabelsAxis(prev.globCreateData)
+          : prev.chartState == 'HorizontalBarChartWithSecondaryAxis' ? HorizontalBarChartWithSecondaryAxis(prev.globCreateData)
+          : prev.chartState == 'IntegerOnlyMeasureAxis' ? IntegerOnlyMeasureAxis.withSampleData()
+          : prev.chartState == 'DisjointMeasureAxisLineChart' ? DisjointMeasureAxisLineChart(prev.globCreateData) 
+          : prev.chartState == 'MeasureAxisLabelAlignment' ? MeasureAxisLabelAlignment(prev.globCreateData)  
+          : prev.chartState == 'NonzeroBoundMeasureAxis' ? NonzeroBoundMeasureAxis.withSampleData()  
+          : prev.chartState == 'NumericInitialViewport' ? NumericInitialViewport(prev.globCreateData) 
+          : prev.chartState == 'OrdinalInitialViewport' ?  OrdinalInitialViewport(prev.globCreateData)  
+          : prev.chartState == 'ShortTickLengthAxis' ? ShortTickLengthAxis(prev.globCreateData)                                    
+          : prev.chartState == 'StaticallyProvidedTicks' ? StaticallyProvidedTicks(prev.globCreateData)  
+          //Bars
+          : prev.chartState == 'SimpleBarChart' ? SimpleBarChart(prev.globCreateData) 
+          : prev.chartState == 'CustomRoundedBars' ? CustomRoundedBars(prev.globCreateData) 
+          : prev.chartState == 'GroupedFillColorBarChart' ? GroupedFillColorBarChart(prev.globCreateData)  
+          : prev.chartState == 'GroupedBarChart' ? GroupedBarChart(prev.globCreateData)  
+          : prev.chartState == 'GroupedStackedBarChart' ? GroupedStackedBarChart(prev.globCreateData)  
+          : prev.chartState == 'GroupedStackedWeightPatternBarChart' ? GroupedStackedWeightPatternBarChart(prev.globCreateData)  
+          : prev.chartState == 'GroupedBarTargetLineChart' ? GroupedBarTargetLineChart(prev.globCreateData) 
+          : prev.chartState == 'GroupedBarSingleTargetLineChart' ? GroupedBarSingleTargetLineChart(prev.globCreateData) 
+          : prev.chartState == 'HorizontalBarChart' ? HorizontalBarChart(prev.globCreateData) 
+          : prev.chartState == 'HorizontalBarLabelChart' ? HorizontalBarLabelChart(prev.globCreateData) 
+          : prev.chartState == 'HorizontalBarLabelCustomChart' ? HorizontalBarLabelCustomChart(prev.globCreateData)  
+          : prev.chartState == 'HorizontalPatternForwardHatchBarChart' ? HorizontalPatternForwardHatchBarChart(prev.globCreateData) 
+          : prev.chartState == 'PatternForwardHatchBarChart' ? PatternForwardHatchBarChart(prev.globCreateData) 
+          : prev.chartState == 'SparkBar' ? SparkBar(prev.globCreateData) 
+          : prev.chartState == 'StackedFillColorBarChart' ? StackedFillColorBarChart(prev.globCreateData) 
+          : prev.chartState == 'StackedHorizontalBarChart' ? StackedHorizontalBarChart(prev.globCreateData)  
+          : prev.chartState == 'StackedBarChart' ? StackedBarChart(prev.globCreateData) 
+          : prev.chartState == 'StackedBarTargetLineChart' ? StackedBarTargetLineChart(prev.globCreateData)  
+          : prev.chartState == 'VerticalBarLabelChart' ? VerticalBarLabelChart(prev.globCreateData)
+          // Combo  
+          : prev.chartState == 'DateTimeComboLinePointChart' ? DateTimeComboLinePointChart.withSampleData()  
+          : prev.chartState == 'NumericComboLineBarChart' ? NumericComboLineBarChart(prev.globCreateData)  
+          : prev.chartState == 'NumericComboLinePointChart' ? NumericComboLinePointChart(prev.globCreateData)  
+          : prev.chartState == 'OrdinalComboBarLineChart' ? OrdinalComboBarLineChart(prev.globCreateData)  
+          : prev.chartState == 'ScatterPlotComboLineChart' ? ScatterPlotComboLineChart(prev.globCreateData)
+          // Legends
+          : prev.chartState == 'DatumLegendWithMeasures' ? DatumLegendWithMeasures(prev.globCreateData)  
+          : prev.chartState == 'DefaultHiddenSeriesLegend' ? DefaultHiddenSeriesLegend(prev.globCreateData)  
+          : prev.chartState == 'LegendWithCustomSymbol' ? LegendWithCustomSymbol(prev.globCreateData)  
+          : prev.chartState == 'LegendOptions' ? LegendOptions(prev.globCreateData)  
+          : prev.chartState == 'LegendWithMeasures' ? LegendWithMeasures(prev.globCreateData)  
+          : prev.chartState == 'SimpleDatumLegend' ? SimpleDatumLegend(prev.globCreateData)  
+          : prev.chartState == 'SimpleSeriesLegend' ? SimpleSeriesLegend(prev.globCreateData) 
+          // Lines 
+          : prev.chartState == 'LineAnimationZoomChart' ? LineAnimationZoomChart(prev.globCreateData)  
+          : prev.chartState == 'AreaAndLineChart' ? AreaAndLineChart(prev.globCreateData)  
+          : prev.chartState == 'DashPatternLineChart' ? DashPatternLineChart(prev.globCreateData)  
+          : prev.chartState == 'LineLineAnnotationChart' ? LineLineAnnotationChart(prev.globCreateData)  
+          : prev.chartState == 'PointsLineChart' ? PointsLineChart(prev.globCreateData)  
+          : prev.chartState == 'LineRangeAnnotationMarginChart' ? LineRangeAnnotationMarginChart(prev.globCreateData)  
+          : prev.chartState == 'LineRangeAnnotationChart' ? LineRangeAnnotationChart(prev.globCreateData)  
+          : prev.chartState == 'SegmentsLineChart' ? SegmentsLineChart(prev.globCreateData)  
+          : prev.chartState == 'SimpleNullsLineChart' ? SimpleNullsLineChart(prev.globCreateData)  
+          : prev.chartState == 'SimpleLineChart' ? SimpleLineChart(prev.globCreateData)  
+          : prev.chartState == 'StackedAreaCustomColorLineChart' ? StackedAreaCustomColorLineChart(prev.globCreateData)  
+          : prev.chartState == 'StackedAreaNullsLineChart' ? StackedAreaNullsLineChart(prev.globCreateData)  
+          : prev.chartState == 'StackedAreaLineChart' ? StackedAreaLineChart(prev.globCreateData)
+          // Pie  
+          : prev.chartState == 'DonutAutoLabelChart' ? DonutAutoLabelChart(prev.globCreateData)  
+          : prev.chartState == 'DonutPieChart' ? DonutPieChart(prev.globCreateData)  
+          : prev.chartState == 'GaugeChart' ? GaugeChart(prev.globCreateData)  
+          : prev.chartState == 'PieOutsideLabelChart' ? PieOutsideLabelChart(prev.globCreateData)  
+          : prev.chartState == 'PartialPieChart' ? PartialPieChart(prev.globCreateData) 
+          : prev.chartState == 'SimplePieChart' ? SimplePieChart(prev.globCreateData)
+          // Series
+          : prev.chartState == 'TimeSeriesConfidenceInterval' ? TimeSeriesConfidenceInterval.withSampleData()
+          : prev.chartState == 'EndPointsAxisTimeSeriesChart' ? EndPointsAxisTimeSeriesChart.withSampleData()
+          : prev.chartState == 'TimeSeriesLineAnnotationChart' ? TimeSeriesLineAnnotationChart.withSampleData()
+          : prev.chartState == 'TimeSeriesRangeAnnotationChart' ? TimeSeriesRangeAnnotationChart.withSampleData()
+          : prev.chartState == 'SimpleTimeSeriesChart' ? SimpleTimeSeriesChart.withSampleData()
+          : prev.chartState == 'TimeSeriesSymbolAnnotationChart' ? TimeSeriesSymbolAnnotationChart.withSampleData()
+          : prev.chartState == 'TimeSeriesBar' ? TimeSeriesBar.withSampleData() 
+          : null
         ),
       );
-    } else {
+    }  else {
       prev.canvas = Padding(
         padding: EdgeInsets.all(16),
         child: Container(
@@ -326,7 +467,7 @@ AppState reducer(AppState prev, dynamic action) {
       prev.tabzSelected = prev.timesSelected;
     }
 
-    prev.chartClass = action.route;
+    prev.chartState = action.route;
     prev.checkState = action.check;
     for (int buttonIndex = 0;
         buttonIndex < prev.tabzSelected.length;

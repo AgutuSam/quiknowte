@@ -27,6 +27,7 @@ class AppState {
     this.rett,
     this.radioValue,
     this.checkState,
+    this.chartState,
     this.axesSelected,
     this.barsSelected,
     this.comboSelected,
@@ -62,6 +63,7 @@ factory AppState.initial() => AppState(
     rett : ['test'],
     radioValue : -1,
     checkState : 'radio',
+    chartState : 'default!',
     axesSelected : List.generate(17, (index) => false),
     barsSelected : List.generate(19, (index) => false),
     comboSelected : List.generate(5, (index) => false),
@@ -102,6 +104,7 @@ factory AppState.initial() => AppState(
   Widget chartClass;
   var radioValue;
   String checkState;
+  String chartState;
   String radioRes;
   String globalDataChooser;
   List<bool> barsSelected;
