@@ -117,16 +117,10 @@ class _Dtables extends State<Dtables> {
                 ),
               ),
               Text(''),
-              Row(
-                children: <Widget>[
-                  // Icon(Icons.mood_bad),
-                  Icon(
-                    Icons.sentiment_dissatisfied,
-                    size: 42,
-                  ),
-                  //  CircularProgressIndicator(),
-                ],
-              ),
+              Container(
+                    alignment: AlignmentDirectional.center,
+                    child: CircularProgressIndicator(),
+                  )
             ],
           ));
     } else {
@@ -170,16 +164,10 @@ class _Dtables extends State<Dtables> {
                               ),
                             ),
                             Text(''),
-                            Row(
-                              children: <Widget>[
-                                // Icon(Icons.mood_bad),
-                                Icon(
-                                  Icons.sentiment_dissatisfied,
-                                  size: 42,
-                                ),
-                                //  CircularProgressIndicator(),
-                              ],
-                            ),
+                            Container(
+                    alignment: AlignmentDirectional.center,
+                    child: CircularProgressIndicator(),
+                  )
                           ],
                         ),
                       )

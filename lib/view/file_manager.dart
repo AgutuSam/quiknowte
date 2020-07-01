@@ -138,10 +138,14 @@ class _FileManagerState extends State<FileManager> {
           title: Row(
             children: <Widget>[
               Expanded(child: Text(file.path.substring(file.parent.path.length + 1))),
+              _calculateFilesCountByFolder(file as Directory) > 1 ? 
               Text(
                 '${_calculateFilesCountByFolder(file as Directory)} items',
                 style: TextStyle(color: Colors.grey),
-              )
+              ) : Text(
+                '${_calculateFilesCountByFolder(file as Directory)} item',
+                style: TextStyle(color: Colors.grey),
+              ) 
             ],
           ),
           subtitle: Text(modifiedTime, style: TextStyle(fontSize: 12.0)),

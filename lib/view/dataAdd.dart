@@ -108,14 +108,15 @@ class _DataAdd extends State<DataAdd> {
                       ),
                       showTitleActions: true,
                       minTime: DateTime(2000, 1, 1),
-                      maxTime: DateTime(2022, 12, 31), onConfirm: (date) {
+                      maxTime: DateTime(2022, 12, 31), 
+                      onConfirm: (date) {
                     print('confirm $date');
                     // _date = '${date.year}-${date.month}-${date.day}';
                     inputVal[index] = '${date.year} - ${date.month} - ${date.day}';
-                    setState(() {
+                    // setState(() {
                       _date = '${date.year}-${date.month}-${date.day}';
                       inputVal[index] = '${date.year} - ${date.month} - ${date.day}';
-                    });
+                    // });
                   }, currentTime: DateTime.now(), locale: LocaleType.en);
                   // setState(() {});
                   print('TTTTTTTTTTTTTTTT');

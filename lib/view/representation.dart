@@ -403,8 +403,7 @@ class _RepresentationSate extends State<Representation>
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    Widget cards(
-        String image, String title, Widget route, String check, int index) {
+    Widget cards(String image, String title, Widget route, String check, int index) {
       return InkWell(
         onTap: () {
           List<bool> selected;
@@ -537,7 +536,7 @@ class _RepresentationSate extends State<Representation>
     List<charts.Series<PropertiesInt, int>> 
     _createMultiIntData(String eyedee, List<List<PropertiesInt>> globalMultiIntData) {
       List<charts.Series<PropertiesInt, int>>  val;
-      for(var i = 0; i < globalMultiTimeData.length; i++){
+      for(var i = 0; i < globalMultiIntData.length; i++){
         val = [
         charts.Series<PropertiesInt, int>(
         id: eyedee[i],
@@ -1356,7 +1355,8 @@ class _RepresentationSate extends State<Representation>
                             onPressed: (_) => onCapPress(widget.key),
                             children: [widget.value],
                           );
-                        }).toList()),
+                        }).toList()
+                        ),
                   ),
                 ),
                 Container(
