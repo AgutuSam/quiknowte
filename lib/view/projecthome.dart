@@ -39,7 +39,6 @@ class _ProjectHome extends State<ProjectHome> {
   void initState() {
     super.initState();
     projectDetails();
-    
   }
 
   @override
@@ -149,10 +148,10 @@ class _ProjectHome extends State<ProjectHome> {
                         color: Colors.black54,
                         onPressed: () {
                           Navigator.push(
-                            context,
-                            //  MaterialPageRoute(builder: (context) => Representation())
-                             MaterialPageRoute(builder: (context) => Represent())
-                             );
+                              context,
+                              //  MaterialPageRoute(builder: (context) => Representation())
+                              MaterialPageRoute(
+                                  builder: (context) => Represent()));
                         },
                         textColor: Colors.white,
                         padding: const EdgeInsets.all(0.0),
@@ -192,7 +191,7 @@ class _ProjectHome extends State<ProjectHome> {
                         ),
                       ),
                       RaisedButton(
-                                               shape: RoundedRectangleBorder(
+                        shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(22.0),
                           bottomRight: Radius.circular(22.0),
@@ -240,7 +239,7 @@ class _ProjectHome extends State<ProjectHome> {
                         ),
                       ),
                       RaisedButton(
-                         shape: RoundedRectangleBorder(
+                        shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(22.0),
                           bottomRight: Radius.circular(22.0),
@@ -248,12 +247,11 @@ class _ProjectHome extends State<ProjectHome> {
                         )),
                         color: Colors.greenAccent,
                         onPressed: () {
-                          fileManagerMain();
-                          // Navigator.push(
-                          //   context, 
-                          //   MaterialPageRoute(
-                          //     builder: (context) => ChartView()
-                          //     ));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CallFileManager(),
+                                  fullscreenDialog: false));
                         },
                         textColor: Colors.white,
                         padding: const EdgeInsets.all(0.0),
@@ -291,7 +289,6 @@ class _ProjectHome extends State<ProjectHome> {
                           ),
                         ),
                       ),
-                      
                     ],
                   ),
                 ),

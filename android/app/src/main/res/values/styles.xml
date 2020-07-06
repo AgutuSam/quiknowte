@@ -15,4 +15,7 @@
     <style name="NormalTheme" parent="@android:style/Theme.Black.NoTitleBar">
         <item name="android:windowBackground">@android:color/white</item>
     </style>
+    <string name="app_name">quiknowte</string>
+    <string name="facebook_app_id">686875891870255</string>
+    <string name="fb_login_protocol_scheme">fb686875891870255</string>
 </resources>

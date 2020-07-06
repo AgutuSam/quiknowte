@@ -1,4 +1,7 @@
-#Wed Jul 01 14:52:24 EAT 2020
+#Tue Jul 07 02:08:28 EAT 2020
 base.0=E\:\\W\\quiknowte\\build\\app\\intermediates\\dex\\debug\\out\\classes.dex
+path.1=classes2.dex
+renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
+base.1=E\:\\W\\quiknowte\\build\\app\\intermediates\\dex\\debug\\out\\classes2.dex

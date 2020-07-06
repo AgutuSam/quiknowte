@@ -1,30 +1,20 @@
-
 import 'package:flutter/material.dart';
 import 'package:quiknowte/view/projects.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
 /// This Widget is the main application widget.
-class Home extends StatelessWidget {
-  static const String _title = 'Quiknowte';
+class Home extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _HomeState();
+}
 
+// ||
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
+      title: 'Quiknowte',
       home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: _Home(),
-      ),
-    );
-  }
-}
-
-/// This is the stateless widget that the main application instantiates.
-class _Home extends StatelessWidget {
-  
-  @override
-  Widget build(BuildContext context) {
-    return  Scaffold(
         body: SafeArea(
           child: GestureDetector(
             child: Container(
@@ -41,7 +31,6 @@ class _Home extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.only(left: 75.0),
@@ -268,6 +257,7 @@ class _Home extends StatelessWidget {
             ),
           ),
         ),
+      ),
     );
   }
 }

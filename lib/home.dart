@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:quiknowte/auth/auth.dart';
 import 'package:quiknowte/utils/navbar1.dart';
 import 'package:quiknowte/view/newproject.dart';
 import 'package:quiknowte/view/projects.dart';
 
-class StartHomePage extends StatelessWidget {
-  static final String path = 'lib/src/pages/todo/todo_home1.dart';
+class StartHomePage extends StatefulWidget {
+  StartHomePage({this.auth, this.onSignedOut});
+  final BaseAuth auth;
+  final VoidCallback onSignedOut;
+  @override
+  State<StatefulWidget> createState() => _StartHomePageState();
+}
+
+class _StartHomePageState extends State<StartHomePage> {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
   final Color color1 = Color(0xffFA696C);
   final Color color2 = Color(0xffFA8165);
@@ -14,11 +22,24 @@ class StartHomePage extends StatelessWidget {
   final Color divider = Colors.grey.shade600;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  void _signedOut() {
+    try {
+      widget.onSignedOut();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade100,
+      backgroundColor: Colors.blue.shade300,
       key: _key,
-      drawer: NavBar1(),
+      drawer: NavBar1(auth: widget.auth, onSignedOut: _signedOut),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,42 +61,9 @@ class StartHomePage extends StatelessWidget {
                     highlightElevation: 2.0,
                     onPressed: () {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => NewProject()),
-                            );
-                                          },
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    color: Colors.white,
-                    textColor: Colors.white70,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(Icons.create_new_folder, color: Colors.black45, size: 32),
-                        SizedBox(height: 5.0),
-                        Text(
-                          'Create New Project',
-                          textAlign: TextAlign.center,
-                          maxLines: 3,
-                          style: TextStyle(
-                            color: Colors.black45,
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.w700
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  RaisedButton(
-                    elevation: 2.0,
-                    highlightElevation: 2.0,
-                    onPressed: () {
-                       Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Projects()));
+                        context,
+                        MaterialPageRoute(builder: (context) => NewProject()),
+                      );
                     },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -85,17 +73,47 @@ class StartHomePage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.dashboard, color: Colors.black45, size: 32),
+                        Icon(Icons.create_new_folder,
+                            color: Colors.blue.shade300, size: 32),
+                        SizedBox(height: 5.0),
+                        Text(
+                          'Create New Project',
+                          textAlign: TextAlign.center,
+                          maxLines: 3,
+                          style: TextStyle(
+                              color: Colors.blue.shade400,
+                              fontSize: 32.0,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+                  ),
+                  RaisedButton(
+                    elevation: 2.0,
+                    highlightElevation: 2.0,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Projects()));
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    color: Colors.white,
+                    textColor: Colors.white70,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(Icons.dashboard,
+                            color: Colors.blue.shade300, size: 32),
                         SizedBox(height: 5.0),
                         Text(
                           'View Projects',
                           textAlign: TextAlign.center,
                           maxLines: 3,
                           style: TextStyle(
-                            color: Colors.black45,
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.w700
-                          ),
+                              color: Colors.blue.shade400,
+                              fontSize: 32.0,
+                              fontWeight: FontWeight.w700),
                         ),
                       ],
                     ),
@@ -164,11 +182,10 @@ class StartHomePage extends StatelessWidget {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
-                      // colors: [color1, color2]
-                      colors: [Colors.blueGrey, Colors.cyan]),
+                      colors: [Colors.blue.shade500, Colors.blue.shade300]),
                   boxShadow: [
                     BoxShadow(
-                        color: color2,
+                        color: Colors.black54,
                         offset: Offset(4.0, 4.0),
                         blurRadius: 10.0)
                   ]),
@@ -181,10 +198,16 @@ class StartHomePage extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
                     // colors: [color3,color2]
-                    colors: [Colors.cyan, Colors.blueGrey]),
+                    colors: [
+                      Colors.blue.shade300,
+                      Colors.blue.shade400,
+                      Colors.blue.shade800
+                    ]),
                 boxShadow: [
                   BoxShadow(
-                      color: color3, offset: Offset(1.0, 1.0), blurRadius: 4.0)
+                      color: Colors.black87,
+                      offset: Offset(1.0, 1.0),
+                      blurRadius: 4.0)
                 ]),
           ),
           Positioned(
@@ -196,11 +219,10 @@ class StartHomePage extends StatelessWidget {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   gradient: LinearGradient(
-                      // colors: [color3,color2]
-                      colors: [Colors.deepPurple.shade200, Colors.blueGrey]),
+                      colors: [Colors.blue.shade300, Colors.blue.shade800]),
                   boxShadow: [
                     BoxShadow(
-                        color: color3,
+                        color: Colors.black45,
                         offset: Offset(1.0, 1.0),
                         blurRadius: 4.0)
                   ]),

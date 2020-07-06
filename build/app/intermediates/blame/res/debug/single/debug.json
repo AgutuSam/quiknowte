@@ -20,6 +20,10 @@
         "source": "E:\\W\\quiknowte\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
+        "merged": "E:\\W\\quiknowte\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ori_ic_launcher.png.flat",
+        "source": "E:\\W\\quiknowte\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ori_ic_launcher.png"
+    },
+    {
         "merged": "E:\\W\\quiknowte\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "E:\\W\\quiknowte\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
@@ -28,16 +32,12 @@
         "source": "E:\\W\\quiknowte\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "E:\\W\\quiknowte\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ori_ic_launcher.png.flat",
-        "source": "E:\\W\\quiknowte\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ori_ic_launcher.png"
+        "merged": "E:\\W\\quiknowte\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ori_ic_launcher.png.flat",
+        "source": "E:\\W\\quiknowte\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ori_ic_launcher.png"
     },
     {
         "merged": "E:\\W\\quiknowte\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "E:\\W\\quiknowte\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "E:\\W\\quiknowte\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ori_ic_launcher.png.flat",
-        "source": "E:\\W\\quiknowte\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ori_ic_launcher.png"
     },
     {
         "merged": "E:\\W\\quiknowte\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_u_ic_launcher.png.flat",

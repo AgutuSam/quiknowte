@@ -4,9 +4,12 @@ import 'dart:async';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart';
+import 'package:quiknowte/auth/route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:quiknowte/home.dart';
+
+import 'auth/auth.dart';
 
 void main() {
   // debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
@@ -36,7 +39,9 @@ class SplashState extends State<Splash> {
 
     if (_seen) {
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (context) => StartHomePage()));
+          // .pushReplacement(MaterialPageRoute(builder: (context) => StartHomePage()));
+          .pushReplacement(
+              MaterialPageRoute(builder: (context) => RoutePage(auth: Auth())));
     } else {
       prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(
@@ -73,16 +78,16 @@ class _SplashScreenState extends State<SplashScreen> {
     return Timer(_duration, navigationPage);
   }
 
-
   Future navigationPage() async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => StartHomePage()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => StartHomePage()));
   }
 
   @override
   void initState() {
     super.initState();
     startTime();
-      }
+  }
 
   @override
   Widget build(BuildContext context) {

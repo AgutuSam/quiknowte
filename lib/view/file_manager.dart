@@ -46,17 +46,22 @@ class _FileManagerState extends State<FileManager> {
     return WillPopScope(
       onWillPop: onWillPop,
       child: Scaffold(
+        backgroundColor: Colors.blue.shade300,
         appBar: AppBar(
+          backgroundColor: Colors.blue.shade500,
           title: Text(
-            parentDir?.path == Common().sDCardDir ? 'Project Files' : p.basename(parentDir.path),
+            parentDir?.path == Common().sDCardDir
+                ? 'Project Files'
+                : p.basename(parentDir.path),
             style: TextStyle(color: Colors.black),
           ),
           centerTitle: true,
-          backgroundColor: Color(0xffeeeeee),
           elevation: 0.0,
           leading: parentDir?.path == Common().sDCardDir
               ? Container()
-              : IconButton(icon: Icon(Icons.chevron_left, color: Colors.black), onPressed: onWillPop),
+              : IconButton(
+                  icon: Icon(Icons.chevron_left, color: Colors.black),
+                  onPressed: onWillPop),
         ),
         body: files.isEmpty
             ? Center(child: Text('The folder is empty'))
@@ -78,17 +83,21 @@ class _FileManagerState extends State<FileManager> {
   }
 
   Widget _buildFileItem(FileSystemEntity file) {
-    final String modifiedTime = DateFormat('yyyy-MM-dd HH:mm:ss', 'zh_CN').format(file.statSync().modified.toLocal());
+    final String modifiedTime = DateFormat('yyyy-MM-dd HH:mm:ss', 'zh_CN')
+        .format(file.statSync().modified.toLocal());
 
     return InkWell(
       child: Container(
         decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(width: 0.5, color: Color(0xffe5e5e5))),
+          border:
+              Border(bottom: BorderSide(width: 0.5, color: Color(0xffe5e5e5))),
         ),
         child: ListTile(
           leading: Image.asset(Common().selectIcon(p.extension(file.path))),
           title: Text(file.path.substring(file.parent.path.length + 1)),
-          subtitle: Text('$modifiedTime  ${Common().getFileSize(file.statSync().size)}', style: TextStyle(fontSize: 12.0)),
+          subtitle: Text(
+              '$modifiedTime  ${Common().getFileSize(file.statSync().size)}',
+              style: TextStyle(fontSize: 12.0)),
         ),
       ),
       onTap: () {
@@ -103,7 +112,8 @@ class _FileManagerState extends State<FileManager> {
               children: <Widget>[
                 CupertinoButton(
                   pressedOpacity: 0.6,
-                  child: Text('rename', style: TextStyle(color: Color(0xff333333))),
+                  child: Text('rename',
+                      style: TextStyle(color: Color(0xff333333))),
                   onPressed: () {
                     Navigator.pop(context);
                     renameFile(file);
@@ -111,7 +121,8 @@ class _FileManagerState extends State<FileManager> {
                 ),
                 CupertinoButton(
                   pressedOpacity: 0.6,
-                  child: Text('delete', style: TextStyle(color: Color(0xff333333))),
+                  child: Text('delete',
+                      style: TextStyle(color: Color(0xff333333))),
                   onPressed: () {
                     Navigator.pop(context);
                     deleteFile(file);
@@ -126,26 +137,31 @@ class _FileManagerState extends State<FileManager> {
   }
 
   Widget _buildFolderItem(FileSystemEntity file) {
-    final String modifiedTime = DateFormat('yyyy-MM-dd HH:mm:ss', 'zh_CN').format(file.statSync().modified.toLocal());
+    final String modifiedTime = DateFormat('yyyy-MM-dd HH:mm:ss', 'zh_CN')
+        .format(file.statSync().modified.toLocal());
 
     return InkWell(
       child: Container(
         decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(width: 0.5, color: Color(0xffe5e5e5))),
+          border:
+              Border(bottom: BorderSide(width: 0.5, color: Color(0xffe5e5e5))),
         ),
         child: ListTile(
           leading: Image.asset('assets/images/folder.png'),
           title: Row(
             children: <Widget>[
-              Expanded(child: Text(file.path.substring(file.parent.path.length + 1))),
-              _calculateFilesCountByFolder(file as Directory) > 1 ? 
-              Text(
-                '${_calculateFilesCountByFolder(file as Directory)} items',
-                style: TextStyle(color: Colors.grey),
-              ) : Text(
-                '${_calculateFilesCountByFolder(file as Directory)} item',
-                style: TextStyle(color: Colors.grey),
-              ) 
+              Expanded(
+                  child:
+                      Text(file.path.substring(file.parent.path.length + 1))),
+              _calculateFilesCountByFolder(file as Directory) > 1
+                  ? Text(
+                      '${_calculateFilesCountByFolder(file as Directory)} items',
+                      style: TextStyle(color: Colors.grey),
+                    )
+                  : Text(
+                      '${_calculateFilesCountByFolder(file as Directory)} item',
+                      style: TextStyle(color: Colors.grey),
+                    )
             ],
           ),
           subtitle: Text(modifiedTime, style: TextStyle(fontSize: 12.0)),
@@ -168,7 +184,8 @@ class _FileManagerState extends State<FileManager> {
               children: <Widget>[
                 CupertinoButton(
                   pressedOpacity: 0.6,
-                  child: Text('rename', style: TextStyle(color: Color(0xff333333))),
+                  child: Text('rename',
+                      style: TextStyle(color: Color(0xff333333))),
                   onPressed: () {
                     Navigator.pop(context);
                     renameFile(file);
@@ -176,7 +193,8 @@ class _FileManagerState extends State<FileManager> {
                 ),
                 CupertinoButton(
                   pressedOpacity: 0.6,
-                  child: Text('delete', style: TextStyle(color: Color(0xff333333))),
+                  child: Text('delete',
+                      style: TextStyle(color: Color(0xff333333))),
                   onPressed: () {
                     Navigator.pop(context);
                     deleteFile(file);
@@ -215,7 +233,9 @@ class _FileManagerState extends State<FileManager> {
       try {
         await Future.delayed(Duration(milliseconds: 1));
         controller?.jumpTo(position[position.length - 1]);
-      } catch (e) { return null;}
+      } catch (e) {
+        return null;
+      }
       position.removeLast();
     }
   }
@@ -252,7 +272,7 @@ class _FileManagerState extends State<FileManager> {
               onPressed: () {
                 if (file.statSync().type == FileSystemEntityType.directory) {
                   final Directory directory = Directory(file.path)
-                  ..deleteSync(recursive: true);
+                    ..deleteSync(recursive: true);
                 } else if (file.statSync().type == FileSystemEntityType.file) {
                   file.deleteSync();
                 }
@@ -284,9 +304,11 @@ class _FileManagerState extends State<FileManager> {
                 child: TextField(
                   controller: _controller,
                   decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(2.0)),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(2.0)),
                     hintText: 'Please enter a new name',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(2.0)),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(2.0)),
                     contentPadding: EdgeInsets.all(10.0),
                   ),
                 ),
@@ -303,11 +325,16 @@ class _FileManagerState extends State<FileManager> {
                   onPressed: () async {
                     final String newName = _controller.text;
                     if (newName.trim().isEmpty) {
-                      Fluttertoast.showToast(msg: 'Name cannot be empty', gravity: ToastGravity.CENTER);
+                      Fluttertoast.showToast(
+                          msg: 'Name cannot be empty',
+                          gravity: ToastGravity.CENTER);
                       return;
                     }
                     final String slash = '/';
-                    final String newPath = file.parent.path + slash + newName + p.extension(file.path);
+                    final String newPath = file.parent.path +
+                        slash +
+                        newName +
+                        p.extension(file.path);
                     file.renameSync(newPath);
                     initPathFiles(file.parent.path);
 
@@ -339,9 +366,11 @@ class _FileManagerState extends State<FileManager> {
     }
 
     _files.sort((a, b) => a.path.toLowerCase().compareTo(b.path.toLowerCase()));
-    _folder.sort((a, b) => a.path.toLowerCase().compareTo(b.path.toLowerCase()));
-    files..clear()
-    ..addAll(_folder)
-    ..addAll(_files);
+    _folder
+        .sort((a, b) => a.path.toLowerCase().compareTo(b.path.toLowerCase()));
+    files
+      ..clear()
+      ..addAll(_folder)
+      ..addAll(_files);
   }
 }
