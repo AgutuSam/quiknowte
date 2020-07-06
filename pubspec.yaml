@@ -36,6 +36,11 @@ dependencies:
   redux: ^4.0.0
   flutter_redux: ^0.6.0
   stats: ^1.0.0
+  wave: ^0.0.8
+  firebase_auth: ^0.16.1
+  google_sign_in: ^4.5.1
+  flutter_facebook_login: ^3.0.0
+  firebase_storage: ^3.1.6
 
   
 dev_dependencies:

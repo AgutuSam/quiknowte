@@ -46,14 +46,14 @@ class _FileManagerState extends State<FileManager> {
     return WillPopScope(
       onWillPop: onWillPop,
       child: Scaffold(
-        backgroundColor: Colors.blue.shade300,
+        backgroundColor: Colors.blue.shade200,
         appBar: AppBar(
-          backgroundColor: Colors.blue.shade500,
+          backgroundColor: Colors.blue.shade600,
           title: Text(
             parentDir?.path == Common().sDCardDir
                 ? 'Project Files'
                 : p.basename(parentDir.path),
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
           elevation: 0.0,
@@ -90,11 +90,14 @@ class _FileManagerState extends State<FileManager> {
       child: Container(
         decoration: BoxDecoration(
           border:
-              Border(bottom: BorderSide(width: 0.5, color: Color(0xffe5e5e5))),
+              Border(bottom: BorderSide(width: 1.5, color: Color(0xffe5e5e5))),
         ),
         child: ListTile(
           leading: Image.asset(Common().selectIcon(p.extension(file.path))),
-          title: Text(file.path.substring(file.parent.path.length + 1)),
+          title: Text(
+            file.path.substring(file.parent.path.length + 1),
+            style: TextStyle(color: Colors.black, fontSize: 25),
+          ),
           subtitle: Text(
               '$modifiedTime  ${Common().getFileSize(file.statSync().size)}',
               style: TextStyle(fontSize: 12.0)),
