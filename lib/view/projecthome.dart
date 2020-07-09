@@ -247,17 +247,7 @@ class _ProjectHome extends State<ProjectHome> {
                           topRight: Radius.circular(22.0),
                         )),
                         color: Colors.greenAccent,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CallFileManager(
-                                        extended: pTime,
-                                        text: pName,
-                                        id: pId,
-                                      ),
-                                  fullscreenDialog: false));
-                        },
+                        onPressed: () => fileManagerMain(context),
                         textColor: Colors.white,
                         padding: const EdgeInsets.all(0.0),
                         child: Container(

@@ -9,60 +9,47 @@ import 'package:quiknowte/samples/common.dart';
 import 'package:quiknowte/view/file_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CallFileManager extends StatefulWidget {
-  CallFileManager({this.extended, this.text, this.id});
-  final String extended;
-  final String text;
-  final int id;
-
-  @override
-  State<StatefulWidget> createState() => _CallFileManagerState();
-}
-
-class _CallFileManagerState extends State<CallFileManager> {
-  void fileManagerMain() {
-    WidgetsFlutterBinding.ensureInitialized();
-    Future<void> getSDCardDir() async {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      final String dbTime = prefs.getString('projectTime');
-      // final String dbTime = widget.extended;
-      final bool dirExists =
-          await Directory('/data/user/0/com.example.quiknowte/$dbTime/')
-              .exists();
-      // Common().sDCardDir = (await getExternalStorageDirectory()).path;
-      if (!dirExists) {
-        Directory('/data/user/0/com.example.quiknowte/$dbTime/')
-            .create()
-            .then((Directory directory) {
-          Common().sDCardDir = directory.path;
-        });
-      }
-      Common().sDCardDir =
-          Directory('/data/user/0/com.example.quiknowte/$dbTime/').path;
+void fileManagerMain(BuildContext context) {
+  WidgetsFlutterBinding.ensureInitialized();
+  Future<void> getSDCardDir() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String dbTime = prefs.getString('projectTime');
+    final bool dirExists =
+        await Directory('/data/user/0/com.example.quiknowte/$dbTime/').exists();
+    // Common().sDCardDir = (await getExternalStorageDirectory()).path;
+    if (!dirExists) {
+      Directory('/data/user/0/com.example.quiknowte/$dbTime/')
+          .create()
+          .then((Directory directory) {
+        Common().sDCardDir = directory.path;
+      });
     }
-
-    // Permission check
-    Future<void> getPermission() async {
-      if (Platform.isAndroid) {
-        final PermissionStatus permission = await PermissionHandler()
-            .checkPermissionStatus(PermissionGroup.storage);
-        if (permission != PermissionStatus.granted) {
-          await PermissionHandler()
-              .requestPermissions([PermissionGroup.storage]);
-        }
-        await getSDCardDir();
-      } else if (Platform.isIOS) {
-        await getSDCardDir();
-      }
-    }
-
-    Future.wait([initializeDateFormatting('zh_CN', null), getPermission()])
-        //     .then((result) {
-        //   runApp(CallFM());
-        // })
-        ;
+    Common().sDCardDir =
+        Directory('/data/user/0/com.example.quiknowte/$dbTime/').path;
   }
 
+  // Permission check
+  Future<void> getPermission() async {
+    if (Platform.isAndroid) {
+      final PermissionStatus permission = await PermissionHandler()
+          .checkPermissionStatus(PermissionGroup.storage);
+      if (permission != PermissionStatus.granted) {
+        await PermissionHandler().requestPermissions([PermissionGroup.storage]);
+      }
+      await getSDCardDir();
+    } else if (Platform.isIOS) {
+      await getSDCardDir();
+    }
+  }
+
+  Future.wait([initializeDateFormatting('zh_CN', null), getPermission()])
+      .then((result) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => CallFileManager()));
+  });
+}
+
+class CallFileManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
