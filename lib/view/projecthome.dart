@@ -151,7 +151,8 @@ class _ProjectHome extends State<ProjectHome> {
                               context,
                               //  MaterialPageRoute(builder: (context) => Representation())
                               MaterialPageRoute(
-                                  builder: (context) => Represent()));
+                                  builder: (context) => Represent(
+                                      extended: pTime, text: pName, id: pId)));
                         },
                         textColor: Colors.white,
                         padding: const EdgeInsets.all(0.0),
@@ -250,7 +251,11 @@ class _ProjectHome extends State<ProjectHome> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CallFileManager(),
+                                  builder: (context) => CallFileManager(
+                                        extended: pTime,
+                                        text: pName,
+                                        id: pId,
+                                      ),
                                   fullscreenDialog: false));
                         },
                         textColor: Colors.white,

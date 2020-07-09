@@ -10,6 +10,11 @@ import 'package:quiknowte/view/file_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CallFileManager extends StatefulWidget {
+  CallFileManager({this.extended, this.text, this.id});
+  final String extended;
+  final String text;
+  final int id;
+
   @override
   State<StatefulWidget> createState() => _CallFileManagerState();
 }
@@ -20,6 +25,7 @@ class _CallFileManagerState extends State<CallFileManager> {
     Future<void> getSDCardDir() async {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       final String dbTime = prefs.getString('projectTime');
+      // final String dbTime = widget.extended;
       final bool dirExists =
           await Directory('/data/user/0/com.example.quiknowte/$dbTime/')
               .exists();
@@ -52,15 +58,9 @@ class _CallFileManagerState extends State<CallFileManager> {
 
     Future.wait([initializeDateFormatting('zh_CN', null), getPermission()])
         //     .then((result) {
-        //   runApp(CallFileManager());
+        //   runApp(CallFM());
         // })
         ;
-  }
-
-  @override
-  void initState() {
-    fileManagerMain();
-    super.initState();
   }
 
   @override

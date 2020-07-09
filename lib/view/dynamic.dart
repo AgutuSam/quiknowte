@@ -13,18 +13,27 @@ import 'new_sple_stepper.dart';
 String popper;
 
 class Mydine extends StatefulWidget {
-  Mydine({Key key, @required this.extended,@required this.text, @required this.id}) : super(key: key);
+  Mydine(
+      {Key key,
+      @required this.extended,
+      @required this.text,
+      @required this.id})
+      : super(key: key);
   final String text;
   final String extended;
   final int id;
   @override
   State<StatefulWidget> createState() {
-    return _Dine(dbName: extended,projName: text, dbid: id);
+    return _Dine(dbName: extended, projName: text, dbid: id);
   }
 }
 
 class _Dine extends State<Mydine> {
-  _Dine({Key key,@required this.dbName, @required this.projName, @required this.dbid});
+  _Dine(
+      {Key key,
+      @required this.dbName,
+      @required this.projName,
+      @required this.dbid});
   final String dbName;
   final String projName;
   final int dbid;
@@ -120,7 +129,9 @@ class _Dine extends State<Mydine> {
                         content: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            Text(sure + dbName.substring(0,dbName.length-14) + quest),
+                            Text(sure +
+                                dbName.substring(0, dbName.length - 14) +
+                                quest),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Row(
@@ -154,9 +165,7 @@ class _Dine extends State<Mydine> {
               // Icon(Icons.delete_forever),
             ),
           ],
-          
         ),
-        
         bottomNavigationBar: BottomNavigationBar(
           onTap: onTabTapped,
           currentIndex: _currentIndex,

@@ -26,6 +26,10 @@ class Represent extends StatefulWidget {
     reducer,
     initialState: AppState.initial(),
   );
+  Represent({this.extended, this.text, this.id});
+  final String extended;
+  final String text;
+  final int id;
   @override
   State<StatefulWidget> createState() {
     return _RepresentSate(store: store);
