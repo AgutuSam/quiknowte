@@ -5,6 +5,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:quiknowte/view/dataAdd/page.dart';
 
 class Picture extends StatefulWidget {
   @override
@@ -16,12 +17,15 @@ class _PictureState extends State {
   List cameras;
   int selectedCameraIdx;
   String imagePath;
+  bool img;
+  String imgName;
 
   final GlobalKey _scaffoldKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
+    img = false;
 
     // Get the list of available cameras.
     // Then set the first camera as selected.
@@ -45,8 +49,8 @@ class _PictureState extends State {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: const Text('Camera Example'),
-      ),
+          // title: const Text('Camera Example'),
+          ),
       body: Column(
         children: [
           Expanded(
@@ -54,7 +58,9 @@ class _PictureState extends State {
               child: Padding(
                 padding: const EdgeInsets.all(1.0),
                 child: Center(
-                  child: _cameraPreviewWidget(),
+                  child: img == false
+                      ? _cameraPreviewWidget()
+                      : _imageDisplayWidget(),
                 ),
               ),
               decoration: BoxDecoration(
@@ -101,18 +107,91 @@ class _PictureState extends State {
     );
   }
 
+  ///Display the image
+  Widget _imageDisplayWidget() {
+    return Stack(children: <Widget>[
+      Expanded(
+        child: Align(
+          alignment: Alignment.center,
+          child: imagePath == null
+              ? SizedBox()
+              : SizedBox(
+                  child: Image.file(File(imagePath)),
+                  // width: 64.0,
+                  // height: 64.0,
+                ),
+        ),
+      ),
+      SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ClipOval(
+                child: Material(
+                  color: Colors.orange[100], // button color
+                  child: InkWell(
+                    splashColor: Colors.orange, // inkwell color
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: Icon(Icons.check),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context, imgName);
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              ClipOval(
+                child: Material(
+                  color: Colors.orange[100], // button color
+                  child: InkWell(
+                    splashColor: Colors.orange, // inkwell color
+                    child: SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: Icon(Icons.remove),
+                    ),
+                    onTap: () {
+                      final dir = Directory(imagePath);
+                      dir.deleteSync(recursive: true);
+                      setState(() {
+                        img = !img;
+                        imagePath = null;
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    ]);
+  }
+
   /// Display the thumbnail of the captured image
   Widget _thumbnailWidget() {
-    return Expanded(
-      child: Align(
-        alignment: Alignment.centerRight,
-        child: imagePath == null
-            ? SizedBox()
-            : SizedBox(
-                child: Image.file(File(imagePath)),
-                width: 64.0,
-                height: 64.0,
-              ),
+    return FlatButton(
+      onPressed: () {
+        setState(() {
+          img = !img;
+        });
+      },
+      child: Expanded(
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: imagePath == null
+              ? SizedBox()
+              : SizedBox(
+                  child: Image.file(File(imagePath)),
+                  width: 64.0,
+                  height: 64.0,
+                ),
+        ),
       ),
     );
   }
@@ -242,7 +321,8 @@ class _PictureState extends State {
     final String pictureDirectory = '${appDirectory.path}/Pictures';
     await Directory(pictureDirectory).create(recursive: true);
     final String currentTime = DateTime.now().millisecondsSinceEpoch.toString();
-    final String filePath = '$pictureDirectory/$currentTime.jpg';
+    setState(() => imgName = '$currentTime.jpg');
+    final String filePath = '$pictureDirectory/$imgName';
 
     try {
       await controller.takePicture(filePath);

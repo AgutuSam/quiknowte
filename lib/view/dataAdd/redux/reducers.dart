@@ -11,6 +11,11 @@ AppState reducer(AppState prev, dynamic action) {
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
         .then((cordinates) {
       prev.location = cordinates;
+      Geolocator()
+          .placemarkFromCoordinates(cordinates.latitude, cordinates.longitude)
+          .then((address) {
+        prev.placemark = address;
+      });
       print('______________________________________________________________');
       print(cordinates);
       print('______________________________________________________________');

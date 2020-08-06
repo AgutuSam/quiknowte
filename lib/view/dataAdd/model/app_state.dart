@@ -6,6 +6,7 @@ class AppState {
       {this.currentTable,
       this.date,
       this.location,
+      this.placemark,
       this.inputVal,
       this.inputBool,
       this.labelText,
@@ -16,11 +17,16 @@ class AppState {
       this.columns,
       this.valuez,
       this.snapshot,
+      this.image,
+      this.audio,
+      this.video,
       this.inForm});
 
   factory AppState.initial() => AppState(
         date: 'Not set',
+        image: 'No Image set',
         location: null,
+        placemark: null,
         columns: [],
         valuez: [],
         inputVal: [],
@@ -32,7 +38,11 @@ class AppState {
 
   String currentTable;
   String date;
+  String audio;
+  String image;
+  String video;
   Position location;
+  List<Placemark> placemark;
   List inputVal;
   bool inputBool;
   List columns;
@@ -45,4 +55,5 @@ class AppState {
   TimeOfDay selectedTime;
   ValueChanged<DateTime> selectDate;
   ValueChanged<TimeOfDay> selectTime;
+  Position locat;
 }

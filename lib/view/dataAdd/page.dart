@@ -8,6 +8,8 @@ import 'package:quiknowte/view/dataAdd/redux/reducers.dart';
 import 'package:redux/redux.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:quiknowte/model/dynsql.dart' as flex;
+import 'package:quiknowte/view/extras/modules/picture.dart';
+import 'package:toast/toast.dart';
 import '../../screen_size.dart';
 
 class DataAdd extends StatefulWidget {
@@ -33,6 +35,8 @@ class _DataAdd extends State<DataAdd> {
   TimeOfDay selectedTime;
   ValueChanged<DateTime> selectDate;
   ValueChanged<TimeOfDay> selectTime;
+  int picNo;
+  String imgName;
 
   Future dbTableName() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -43,6 +47,19 @@ class _DataAdd extends State<DataAdd> {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     currentTable = prefs.getString('dbTable');
     return flex.DatabaseHelper().getTableInfo(currentTable);
+  }
+
+  void updateInformation(String information) {
+    setState(() => imgName = information);
+  }
+
+  void moveToPic() async {
+    final information = await Navigator.push(
+      context,
+      MaterialPageRoute(
+          fullscreenDialog: true, builder: (context) => Picture()),
+    );
+    updateInformation(information);
   }
 
   @override
@@ -101,18 +118,18 @@ class _DataAdd extends State<DataAdd> {
                                                                     AppState,
                                                                     String>(
                                                                 converter:
-                                                                    (Store<AppState> store) => store
-                                                                        .state
-                                                                        .date,
-                                                                builder: (BuildContext context,
-                                                                    String
-                                                                        date) {
-                                                                  return RaisedButton(
+                                                                    (Store<AppState> store) =>
+                                                                        store
+                                                                            .state
+                                                                            .date,
+                                                                builder:
+                                                                    (BuildContext context,
+                                                                        String
+                                                                            date) {
+                                                                  return FlatButton(
                                                                     shape: RoundedRectangleBorder(
                                                                         borderRadius:
                                                                             BorderRadius.circular(5.0)),
-                                                                    elevation:
-                                                                        4.0,
                                                                     onPressed:
                                                                         () {
                                                                       DatePicker.showDatePicker(
@@ -199,26 +216,24 @@ class _DataAdd extends State<DataAdd> {
                                                                 })
                                                             : snapshot.data[index]['type']
                                                                         .toString() ==
-                                                                    'VARCHAR(100)'
+                                                                    'VARCHAR(127)'
                                                                 ? StoreConnector<
                                                                         AppState,
-                                                                        Position>(
-                                                                    converter: (Store<AppState> store) => store
-                                                                        .state
-                                                                        .location,
-                                                                    builder: (BuildContext context, Position location) {
-                                                                      return RaisedButton(
+                                                                        String>(
+                                                                    converter:
+                                                                        (Store<AppState> store) =>
+                                                                            store.state.image,
+                                                                    builder: (BuildContext context, String date) {
+                                                                      return FlatButton(
                                                                         shape: RoundedRectangleBorder(
                                                                             borderRadius:
                                                                                 BorderRadius.circular(5.0)),
-                                                                        elevation:
-                                                                            4.0,
-                                                                        onPressed: () => StoreProvider.of<AppState>(context).dispatch(Location()),
-                                                                        // .whenComplete(() => inputVal[
-                                                                        //     index] = StoreProvider.of<AppState>(
-                                                                        //         context)
-                                                                        //     .state
-                                                                        //     .location),
+                                                                        onPressed:
+                                                                            () {
+                                                                          setState(() =>
+                                                                              picNo = index);
+                                                                          moveToPic();
+                                                                        },
                                                                         child:
                                                                             Container(
                                                                           alignment:
@@ -226,92 +241,154 @@ class _DataAdd extends State<DataAdd> {
                                                                           height:
                                                                               50.0,
                                                                           child:
-                                                                              Column(children: <Widget>[
-                                                                            Row(
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                              children: <Widget>[
-                                                                                Text(
-                                                                                  ' Latitude',
-                                                                                  style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold, fontSize: 18.0),
-                                                                                ),
-                                                                                Text(
-                                                                                  StoreProvider.of<AppState>(context).state?.location?.latitude == null ? 'Not Set' : StoreProvider.of<AppState>(context).state.location.latitude.toString(),
-                                                                                  style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold, fontSize: 18.0),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                            Row(
-                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                              children: <Widget>[
-                                                                                Text(
-                                                                                  ' Longitude',
-                                                                                  style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold, fontSize: 18.0),
-                                                                                ),
-                                                                                Text(
-                                                                                  StoreProvider.of<AppState>(context).state?.location?.longitude == null ? 'Not Set' : StoreProvider.of<AppState>(context).state.location.longitude.toString(),
-                                                                                  style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold, fontSize: 18.0),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                          ]),
+                                                                              Row(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceBetween,
+                                                                            children: <Widget>[
+                                                                              Row(
+                                                                                children: <Widget>[
+                                                                                  Container(
+                                                                                    child: Row(
+                                                                                      children: <Widget>[
+                                                                                        Icon(
+                                                                                          Icons.camera_alt,
+                                                                                          size: 18.0,
+                                                                                          color: Colors.teal,
+                                                                                        ),
+                                                                                        Text(
+                                                                                          imgName == null ? 'No Image Set' : imgName,
+                                                                                          style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold, fontSize: 18.0),
+                                                                                        ),
+                                                                                      ],
+                                                                                    ),
+                                                                                  )
+                                                                                ],
+                                                                              ),
+                                                                              Text(
+                                                                                '  Change',
+                                                                                style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold, fontSize: 18.0),
+                                                                              ),
+                                                                            ],
+                                                                          ),
                                                                         ),
                                                                         color: Colors
                                                                             .white,
                                                                       );
                                                                     })
-                                                                : TextFormField(
-                                                                    style: TextStyle(
-                                                                        color: Colors
-                                                                            .blue),
-                                                                    onChanged:
-                                                                        (value) {
-                                                                      // if (snapshot.data[index]
-                                                                      //             ['type']
-                                                                      //         .toString() !=
-                                                                      //     'DATETIME') {
-                                                                      inputVal[
-                                                                              index] =
-                                                                          value;
-                                                                      // }
-                                                                    },
-                                                                    onTap: snapshot.data[index]['type'].toString() ==
-                                                                            'DATETIME'
-                                                                        ? () {
-                                                                            showDatePicker(
-                                                                              context: context,
-                                                                              initialDate: DateTime.now(),
-                                                                              firstDate: DateTime(1900),
-                                                                              lastDate: DateTime(2100),
-                                                                              locale: Locale('en'),
-                                                                            ).then((val) {
-                                                                              inputVal[index] = '${val.day.toString()}-${val.month.toString().padLeft(2, '0')}-${val.year.toString().padLeft(2, '0')}';
-                                                                              print('MMMMMMMM>>>>>>>>>MMMMMMM');
-                                                                              print(val);
-                                                                              print(inputVal[index]);
-                                                                            });
-                                                                          }
-                                                                        : null,
-                                                                    keyboardType: snapshot.data[index]['type'].toString() ==
-                                                                            'TEXT'
-                                                                        ? TextInputType
-                                                                            .text
-                                                                        : snapshot.data[index]['type'].toString() ==
+                                                                : snapshot.data[index]['type'].toString() == 'VARCHAR(100)'
+                                                                    ? StoreConnector<AppState, Position>(
+                                                                        converter: (Store<AppState> store) => store.state.location,
+                                                                        builder: (BuildContext context, Position location) {
+                                                                          return RaisedButton(
+                                                                            shape:
+                                                                                RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                                                                            elevation:
+                                                                                4.0,
+                                                                            onPressed:
+                                                                                () {
+                                                                              StoreProvider.of<AppState>(context).dispatch(Location());
+                                                                              inputVal[index] = "${StoreProvider.of<AppState>(context).state.placemark[0].name}, ${StoreProvider.of<AppState>(context).state.placemark[0].locality}, ${StoreProvider.of<AppState>(context).state.placemark[0].country}";
+                                                                              setState(() {});
+                                                                            },
+                                                                            child:
+                                                                                Container(
+                                                                              alignment: Alignment.center,
+                                                                              height: 100.0,
+                                                                              child: Column(children: <Widget>[
+                                                                                Row(
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                  children: <Widget>[
+                                                                                    Text(
+                                                                                      ' Latitude',
+                                                                                      style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold, fontSize: 18.0),
+                                                                                    ),
+                                                                                    Text(
+                                                                                      StoreProvider.of<AppState>(context).state?.location?.latitude == null ? 'Not Set' : StoreProvider.of<AppState>(context).state.location.latitude.toString(),
+                                                                                      style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold, fontSize: 18.0),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                                Divider(
+                                                                                  color: Colors.blue,
+                                                                                ),
+                                                                                Row(
+                                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                  children: <Widget>[
+                                                                                    Text(
+                                                                                      ' Longitude',
+                                                                                      style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold, fontSize: 18.0),
+                                                                                    ),
+                                                                                    Text(
+                                                                                      StoreProvider.of<AppState>(context).state?.location?.longitude == null ? 'Not Set' : StoreProvider.of<AppState>(context).state.location.longitude.toString(),
+                                                                                      style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold, fontSize: 18.0),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                                Divider(
+                                                                                  color: Colors.blue,
+                                                                                ),
+                                                                                Row(
+                                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                                  children: <Widget>[
+                                                                                    Text(
+                                                                                      StoreProvider.of<AppState>(context).state?.placemark == null ? 'No Address Yet!' : "${StoreProvider.of<AppState>(context).state.placemark[0].name}, ${StoreProvider.of<AppState>(context).state.placemark[0].locality}, ${StoreProvider.of<AppState>(context).state.placemark[0].country}",
+                                                                                      style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold, fontSize: 18.0),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              ]),
+                                                                            ),
+                                                                            color:
+                                                                                Colors.white,
+                                                                          );
+                                                                        })
+                                                                    : TextFormField(
+                                                                        style: TextStyle(
+                                                                            color:
+                                                                                Colors.blue),
+                                                                        onChanged:
+                                                                            (value) {
+                                                                          // if (snapshot.data[index]
+                                                                          //             ['type']
+                                                                          //         .toString() !=
+                                                                          //     'DATETIME') {
+                                                                          inputVal[index] =
+                                                                              value;
+                                                                          // }
+                                                                        },
+                                                                        onTap: snapshot.data[index]['type'].toString() ==
                                                                                 'DATETIME'
-                                                                            ? null
-                                                                            : snapshot.data[index]['type'].toString() == 'REAL'
-                                                                                ? TextInputType.number
-                                                                                : TextInputType.text,
-                                                                    decoration: InputDecoration(
-                                                                        hintText: snapshot.data[index]['type'].toString() == 'DATETIME' ? inputVal[index] == null ? snapshot.data[index]['name'].toString() : inputVal[index].toString() : snapshot.data[index]['name'].toString(),
-                                                                        hintStyle: TextStyle(color: Colors.blue.shade500),
-                                                                        border: InputBorder.none,
-                                                                        icon: Icon(
-                                                                          Icons
-                                                                              .check,
-                                                                          color:
-                                                                              Colors.blue,
-                                                                        )),
-                                                                  )),
+                                                                            ? () {
+                                                                                showDatePicker(
+                                                                                  context: context,
+                                                                                  initialDate: DateTime.now(),
+                                                                                  firstDate: DateTime(1900),
+                                                                                  lastDate: DateTime(2100),
+                                                                                  locale: Locale('en'),
+                                                                                ).then((val) {
+                                                                                  inputVal[index] = '${val.day.toString()}-${val.month.toString().padLeft(2, '0')}-${val.year.toString().padLeft(2, '0')}';
+                                                                                  print('MMMMMMMM>>>>>>>>>MMMMMMM');
+                                                                                  print(val);
+                                                                                  print(inputVal[index]);
+                                                                                });
+                                                                              }
+                                                                            : null,
+                                                                        keyboardType: snapshot.data[index]['type'].toString() ==
+                                                                                'TEXT'
+                                                                            ? TextInputType
+                                                                                .text
+                                                                            : snapshot.data[index]['type'].toString() == 'DATETIME'
+                                                                                ? null
+                                                                                : snapshot.data[index]['type'].toString() == 'REAL' ? TextInputType.number : TextInputType.text,
+                                                                        decoration: InputDecoration(
+                                                                            hintText: snapshot.data[index]['type'].toString() == 'DATETIME' ? inputVal[index] == null ? snapshot.data[index]['name'].toString() : inputVal[index].toString() : snapshot.data[index]['name'].toString(),
+                                                                            hintStyle: TextStyle(color: Colors.blue.shade500),
+                                                                            border: InputBorder.none,
+                                                                            icon: Icon(
+                                                                              Icons.check,
+                                                                              color: Colors.blue,
+                                                                            )),
+                                                                      )),
                                                 Container(
                                                   child: Divider(
                                                     color: Colors.blue.shade400,
@@ -340,6 +417,12 @@ class _DataAdd extends State<DataAdd> {
                               for (int i = 0;
                                   i < snapshot.data.length - 1;
                                   i++) {
+                                if (i == picNo) {
+                                  print('+++++++++++++++++++++++++++++++++');
+                                  print(imgName);
+                                  print('+++++++++++++++++++++++++++++++++');
+                                  inputVal[i] = imgName;
+                                }
                                 cols.add(snapshot.data[i]['name']);
                                 vals.add(inputVal[i]);
                               }
@@ -348,7 +431,11 @@ class _DataAdd extends State<DataAdd> {
                               print(cols);
                               print(vals);
                               flex.DatabaseHelper()
-                                  .saveTabVal(currentTable, cols, vals);
+                                  .saveTabVal(currentTable, cols, vals)
+                                  .then((value) => Toast.show(
+                                      'Data added successfully!', context,
+                                      duration: Toast.LENGTH_LONG,
+                                      gravity: Toast.BOTTOM));
                             },
                           ),
                         ),

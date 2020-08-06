@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:quiknowte/auth/route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:path/path.dart' as p;
+// import 'package:path/path.dart' as p;
 import 'package:quiknowte/home.dart';
 
 import 'auth/auth.dart';

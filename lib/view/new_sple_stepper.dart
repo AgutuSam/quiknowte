@@ -279,7 +279,6 @@ class _NewSample extends State<NewSample> {
                   items: [
                     DropdownMenuItem(value: ' TEXT', child: Text('Text')),
                     DropdownMenuItem(value: ' REAL', child: Text('Number')),
-                    DropdownMenuItem(value: ' BLOB', child: Text('Group')),
                     DropdownMenuItem(
                         value: ' DATETIME', child: Text('Date/Time')),
                   ],
@@ -353,9 +352,15 @@ class _NewSample extends State<NewSample> {
                   items: [
                     DropdownMenuItem(value: ' TEXT', child: Text('Text')),
                     DropdownMenuItem(value: ' REAL', child: Text('Number')),
-                    DropdownMenuItem(value: ' BLOB', child: Text('Group')),
+                    // DropdownMenuItem(value: ' BLOB', child: Text('Group')),
                     DropdownMenuItem(
                         value: ' VARCHAR(100)', child: Text('Location')),
+                    DropdownMenuItem(
+                        value: ' VARCHAR(120)', child: Text('Audio')),
+                    DropdownMenuItem(
+                        value: ' VARCHAR(127)', child: Text('Image')),
+                    DropdownMenuItem(
+                        value: ' VARCHAR(132)', child: Text('video')),
                     DropdownMenuItem(
                         value: ' DATETIME', child: Text('Date/Time')),
                   ],

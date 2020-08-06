@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:quiknowte/model/dynsql.dart' as flex;
+import 'package:path_provider/path_provider.dart';
+import 'dart:async';
+import 'dart:io';
 
 class Dtables extends StatefulWidget {
   @override
@@ -82,7 +85,16 @@ class _Dtables extends State<Dtables> {
                   icon: Icon(Icons.delete),
                   onPressed: () {},
                 )
-              : Text('${_retList[num][colNm[i].toString()].toString()}')),
+              : _tableList[i]['type'].toString() == 'VARCHAR(127)'
+                  ? FlatButton.icon(
+                      onPressed: () {
+                        imgDisplayPopUp(context,
+                            '${_retList[num][colNm[i].toString()].toString()}');
+                      },
+                      icon: Icon(Icons.image),
+                      label: Text(
+                          '${_retList[num][colNm[i].toString()].toString()}'))
+                  : Text('${_retList[num][colNm[i].toString()].toString()}')),
         );
       }
 
@@ -118,9 +130,9 @@ class _Dtables extends State<Dtables> {
               ),
               Text(''),
               Container(
-                    alignment: AlignmentDirectional.center,
-                    child: CircularProgressIndicator(),
-                  )
+                alignment: AlignmentDirectional.center,
+                child: CircularProgressIndicator(),
+              )
             ],
           ));
     } else {
@@ -165,15 +177,56 @@ class _Dtables extends State<Dtables> {
                             ),
                             Text(''),
                             Container(
-                    alignment: AlignmentDirectional.center,
-                    child: CircularProgressIndicator(),
-                  )
+                              alignment: AlignmentDirectional.center,
+                              child: CircularProgressIndicator(),
+                            )
                           ],
                         ),
                       )
                     : _getDataBody()),
           ],
         ),
+      ),
+    );
+  }
+
+  Future<Widget> imgDisplayPopUp(BuildContext context, String name) async {
+    final Directory appDirectory = await getApplicationDocumentsDirectory();
+    final String pictureDirectory = '${appDirectory.path}/Pictures';
+    await Directory(pictureDirectory).create(recursive: true);
+    final String filePath = '$pictureDirectory/$name';
+
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: Text(name),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+              child: Align(
+                alignment: Alignment.center,
+                child: filePath == null
+                    ? SizedBox()
+                    : SizedBox(
+                        child: Image.file(File(filePath)),
+                        // width: 64.0,
+                        // height: 64.0,
+                      ),
+              ),
+            ),
+          ],
+        ),
+        actions: <Widget>[
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            textColor: Theme.of(context).primaryColor,
+            child: const Text('Cancel'),
+          ),
+        ],
       ),
     );
   }

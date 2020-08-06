@@ -32,7 +32,7 @@ class _DataView extends State<DataView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-            home: Scaffold(
+      home: Scaffold(
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
@@ -66,5 +66,4 @@ class _DataView extends State<DataView> {
       _currentIndex = index;
     });
   }
-
 }
