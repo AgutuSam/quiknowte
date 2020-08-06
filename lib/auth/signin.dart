@@ -32,6 +32,8 @@ class _SigninPageState extends State<SigninPage> {
 
   @override
   Widget build(BuildContext context) {
+    // var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -164,9 +166,7 @@ class _SigninPageState extends State<SigninPage> {
                         ),
                       ),
                       FlatButton(
-                          onPressed: () {
-                            forgotPassword();
-                          },
+                          onPressed: () => forgotPassword(),
                           child: Text("Forgot your password?",
                               style: TextStyle(color: Colors.white)))
                     ],
@@ -188,37 +188,39 @@ class _SigninPageState extends State<SigninPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        OutlineButton.icon(
-                          onPressed: () {
-                            signInWithGoogle();
-                          },
-                          borderSide: BorderSide(color: Colors.red),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0)),
-                          icon: Icon(
-                            FontAwesomeIcons.google,
-                            color: Colors.red,
-                          ),
-                          label: Text(
-                            "Google",
-                            style: TextStyle(color: Colors.red),
+                        ButtonTheme(
+                          minWidth: width * 0.4,
+                          child: OutlineButton.icon(
+                            onPressed: () => signInWithGoogle(),
+                            borderSide: BorderSide(color: Colors.red),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            icon: Icon(
+                              FontAwesomeIcons.google,
+                              color: Colors.red,
+                            ),
+                            label: Text(
+                              "Google",
+                              style: TextStyle(color: Colors.red),
+                            ),
                           ),
                         ),
                         // SizedBox(width: 10.0),
-                        OutlineButton.icon(
-                          onPressed: () {
-                            signInWithFacebook();
-                          },
-                          borderSide: BorderSide(color: Colors.indigo),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0)),
-                          icon: Icon(
-                            FontAwesomeIcons.facebookF,
-                            color: Colors.indigo,
-                          ),
-                          label: Text(
-                            "Facebook",
-                            style: TextStyle(color: Colors.indigo),
+                        ButtonTheme(
+                          minWidth: width * 0.4,
+                          child: OutlineButton.icon(
+                            onPressed: () => signInWithFacebook(),
+                            borderSide: BorderSide(color: Colors.indigo),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            icon: Icon(
+                              FontAwesomeIcons.facebookF,
+                              color: Colors.indigo,
+                            ),
+                            label: Text(
+                              "Facebook",
+                              style: TextStyle(color: Colors.indigo),
+                            ),
                           ),
                         ),
                       ],
@@ -316,6 +318,7 @@ class _SigninPageState extends State<SigninPage> {
             .signInWithFireBaseAuth(email: email, password: password);
         print(user.uid);
         widget.onSignedIn();
+        CircularProgressIndicator();
       } catch (e) {
         Toast.show(e.message, context,
             duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
@@ -330,6 +333,7 @@ class _SigninPageState extends State<SigninPage> {
       FirebaseUser user = await widget.auth.signInWithGoogle();
       print(user.uid);
       widget.onSignedIn();
+      CircularProgressIndicator();
     } catch (e) {
       Toast.show(e.message, context,
           duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
@@ -343,6 +347,7 @@ class _SigninPageState extends State<SigninPage> {
       FirebaseUser user = await widget.auth.signInWithFacebook();
       print(user.uid);
       widget.onSignedIn();
+      CircularProgressIndicator();
     } catch (e) {
       Toast.show(e.message, context,
           duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);

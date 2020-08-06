@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-// import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:quiknowte/samples/common.dart';
@@ -20,7 +19,7 @@ void fileManagerMain(BuildContext context) {
     if (!dirExists) {
       Directory('/data/user/0/com.example.quiknowte/$dbTime/')
           .create()
-          .then((Directory directory) {
+          .then((directory) {
         Common().sDCardDir = directory.path;
       });
     }
@@ -45,20 +44,8 @@ void fileManagerMain(BuildContext context) {
   Future.wait([initializeDateFormatting('zh_CN', null), getPermission()])
       .then((result) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => CallFileManager()));
+        context,
+        MaterialPageRoute(
+            builder: (context) => FileManager(), fullscreenDialog: false));
   });
-}
-
-class CallFileManager extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Quiknowte File Manager',
-      theme: ThemeData(
-//        platform: TargetPlatform.iOS,
-        primarySwatch: Colors.blue,
-      ),
-      home: FileManager(),
-    );
-  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:numberpicker/numberpicker.dart';
 import 'package:quiknowte/model/dynsql.dart' as flex;
 import 'package:quiknowte/view/tableList.dart';
 import 'package:toast/toast.dart';
@@ -11,7 +12,7 @@ class NewSample extends StatefulWidget {
 }
 
 class _NewSample extends State<NewSample> {
-   int _currentStep = 0;
+  int _currentStep = 0;
   final _stepFormKey = GlobalKey<FormState>();
   final dy = flex.DatabaseHelper();
   TextEditingController _controllerSamples;
@@ -22,10 +23,15 @@ class _NewSample extends State<NewSample> {
   List<String> samples = [];
   List<String> constants = [];
   List<String> variables = [];
+  List<bool> groupVisible;
+  int groups;
+  int groupstage;
 
- 
   @override
   void initState() {
+    groupVisible = List.generate(3, (index) => false);
+    groups = 0;
+    groupstage = 0;
     super.initState();
     initPlatformState();
   }
@@ -75,6 +81,89 @@ class _NewSample extends State<NewSample> {
     );
   }
 
+  Widget showGroups(int groups) {
+    return Column(
+      children: <Widget>[
+        constants == null || constants.isEmpty
+            ? Container(
+                height: 0.0,
+              )
+            : Container(
+                height: 90.0,
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children:
+                        List<Widget>.generate(constants.length, (int index) {
+                      return _entityTile(
+                          constants[index],
+                          constants[index]
+                              .substring(0, constants[index].indexOf(' ')),
+                          constants);
+                    }),
+                  ),
+                ),
+              ),
+        TextField(
+          controller: _controllerConstants,
+          decoration: InputDecoration(labelText: 'Variable name'),
+          onChanged: (String value) => setState(() {}),
+        ),
+        SizedBox(height: 16),
+        DropdownButtonFormField(
+          iconSize: 30,
+          value: _constantType,
+          style: TextStyle(color: Colors.black, fontSize: 16),
+          onChanged: (value) {
+            setState(() {
+              _constantType = value as String;
+            });
+          },
+          hint: Text('Variable Type'),
+          items: [
+            DropdownMenuItem(value: ' TEXT', child: Text('Text')),
+            DropdownMenuItem(value: ' REAL', child: Text('Number')),
+            DropdownMenuItem(value: ' VARCHAR(100)', child: Text('Location')),
+            DropdownMenuItem(value: ' DATETIME', child: Text('Date/Time')),
+          ],
+        ),
+        Visibility(
+          visible: groupVisible[groupstage],
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Column(
+                children: <Widget>[
+                  NumberPicker.integer(
+                      initialValue: 0,
+                      minValue: 0,
+                      maxValue: 3,
+                      onChanged: (value) => setState(() => groups = value)),
+                  groups > 0 ? showGroups(groups) : Container()
+                ],
+              ),
+            ),
+          ),
+        ),
+        Center(
+          child: IconButton(
+            icon: Icon(Icons.add),
+            tooltip: 'Add',
+            onPressed: _controllerConstants.text.isEmpty
+                ? null
+                : () => setState(() {
+                      constants.add(
+                          _controllerConstants.text.toString() + _constantType);
+                      _controllerConstants.clear();
+                    }),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -93,10 +182,11 @@ class _NewSample extends State<NewSample> {
                         context,
                         duration: Toast.LENGTH_SHORT,
                         gravity: Toast.BOTTOM)
-                        : dy.table(samples, constants, variables)
-                    : () => Navigator.push(context,MaterialPageRoute(builder: (context) => Samples())),
-                    
-                // : null,
+                    : dy.table(samples, constants, variables)
+                : () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Samples())),
+
+        // : null,
         onStepCancel:
             _currentStep > 0 ? () => setState(() => _currentStep -= 1) : null,
         currentStep: _currentStep,
@@ -189,6 +279,7 @@ class _NewSample extends State<NewSample> {
                   items: [
                     DropdownMenuItem(value: ' TEXT', child: Text('Text')),
                     DropdownMenuItem(value: ' REAL', child: Text('Number')),
+                    DropdownMenuItem(value: ' BLOB', child: Text('Group')),
                     DropdownMenuItem(
                         value: ' DATETIME', child: Text('Date/Time')),
                   ],
@@ -249,17 +340,45 @@ class _NewSample extends State<NewSample> {
                   value: _variableType,
                   style: TextStyle(color: Colors.black, fontSize: 16),
                   onChanged: (value) {
-                    setState(() {
-                      _variableType = value as String;
-                    });
+                    _variableType == ' VARCHAR(100)'
+                        ? setState(() {
+                            groupVisible[groupstage] = true;
+                            groupstage++;
+                          })
+                        : setState(() {
+                            _variableType = value as String;
+                          });
                   },
                   hint: Text('Variable Type'),
                   items: [
                     DropdownMenuItem(value: ' TEXT', child: Text('Text')),
                     DropdownMenuItem(value: ' REAL', child: Text('Number')),
+                    DropdownMenuItem(value: ' BLOB', child: Text('Group')),
+                    DropdownMenuItem(
+                        value: ' VARCHAR(100)', child: Text('Location')),
                     DropdownMenuItem(
                         value: ' DATETIME', child: Text('Date/Time')),
                   ],
+                ),
+                Visibility(
+                  visible: groupVisible[groupstage],
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Column(
+                        children: <Widget>[
+                          NumberPicker.integer(
+                              initialValue: 0,
+                              minValue: 0,
+                              maxValue: 3,
+                              onChanged: (value) =>
+                                  setState(() => groups = value)),
+                          groups > 0 ? showGroups(groups) : Container()
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
                 Center(
                   child: IconButton(
@@ -268,6 +387,7 @@ class _NewSample extends State<NewSample> {
                     onPressed: _controllerVariables.text.isEmpty
                         ? null
                         : () => setState(() {
+                              groupstage = 0;
                               variables.add(
                                   _controllerVariables.text.toString() +
                                       _variableType);

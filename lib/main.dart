@@ -1,18 +1,77 @@
 import 'dart:async';
+import 'dart:io';
 // import 'package:flutter/foundation.dart';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter/material.dart';
 import 'package:quiknowte/auth/route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:path/path.dart' as p;
 import 'package:quiknowte/home.dart';
 
 import 'auth/auth.dart';
 
 void main() {
-  // debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
+  // WidgetsFlutterBinding.ensureInitialized();
+  // var dir;
+  // List<FileSystemEntity> files = [];
+  // Directory parentDir;
+  // final List<FileSystemEntity> _files = [];
+  // final List<FileSystemEntity> _folder = [];
+  // final RegExp dotdb = RegExp(r'([A-Za-z])\w+.db');
+  // final RegExp extended = RegExp(r'(?<=databases/)(.*)');
+  // // var re = RegExp(r'(?<=quick)(.*)(?=over)');  //after 'quick' and before 'over'
+
+  // Directory('/data/user/0/com.example.quiknowte/databases/')
+  //     ?.exists()
+  //     ?.then((dirExistence) {
+  //   if (!dirExistence) {
+  //     Directory('/data/user/0/com.example.quiknowte/databases/')
+  //         .create()
+  //         .then((directory) {
+  //       dir = directory?.path;
+  //     });
+  //   } else {
+  //     // dir = Directory('/data/user/0/com.example.quiknowte/databases/').path;
+  //   }
+  // });
+
+  // parentDir = Directory(dir);
+
+  // for (var v in parentDir?.listSync()) {
+  //   if (p.basename(v?.path)?.substring(0, 1) == '.') {
+  //     continue;
+  //   }
+  //   if (FileSystemEntity.isFileSync(v?.path)) {
+  //     if (extended.firstMatch(v?.path.toString())?.group(0) ==
+  //             dotdb.firstMatch(v?.path.toString())?.group(0) &&
+  //         extended.firstMatch(v?.path.toString())?.group(0) != 'projects.db') {
+  //       _files.add(v);
+  //     }
+  //   } else
+  //     _folder?.add(v);
+  // }
+
+  // _files?.sort(
+  //     (a, b) => a?.path?.toLowerCase()?.compareTo(b?.path?.toLowerCase()));
+  // _folder?.sort(
+  //     (a, b) => a?.path?.toLowerCase()?.compareTo(b?.path?.toLowerCase()));
+  // files
+  //   ..clear()
+  //   ..addAll(_files);
+
+  // if (files.isNotEmpty && files != null) {
+  //   for (var i = 0; i < files.length; i++) {
+  //     final StorageReference ref = FirebaseStorage.instance.ref().child(
+  //         '/databases/${dotdb.firstMatch(files[i]?.path?.toString())?.group(0)}');
+  //     final StorageUploadTask task = ref.putFile(files[i]);
+  //     // var uploadTask = storageRef.child('images/' + new Date().getTime() + file.name).put(file, metadata);
+  //   }
+  // }
+
   runApp(MyApp());
 }
 

@@ -10,16 +10,16 @@ class InputVal {
 }
 
 class InputValChange {
-  InputValChange({this.val,this.key, this.index});
+  InputValChange({this.val, this.key, this.index});
   final String val;
   final String key;
   final int index;
 }
 
 class Submit {
-Submit({this.columns, this.currentTable});
-final List columns;
-final String currentTable;
+  Submit({this.columns, this.currentTable});
+  final List columns;
+  final String currentTable;
 }
 
 class FetchTablesVals {
@@ -31,3 +31,5 @@ class InitInputVals {
   InitInputVals({this.num});
   final int num;
 }
+
+class Location {}

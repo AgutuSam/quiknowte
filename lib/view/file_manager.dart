@@ -31,6 +31,7 @@ class _FileManagerState extends State<FileManager> {
     initPathFiles(Common().sDCardDir);
   }
 
+//***************************************************************/
   Future<bool> onWillPop() async {
     if (parentDir.path != Common().sDCardDir) {
       initPathFiles(parentDir.parent.path);
@@ -40,10 +41,11 @@ class _FileManagerState extends State<FileManager> {
     }
     return false;
   }
+//***************************************************************/
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    return WillPopScope(      //  <==***************************************************/
       onWillPop: onWillPop,
       child: Scaffold(
         backgroundColor: Colors.blue.shade200,
@@ -358,7 +360,6 @@ class _FileManagerState extends State<FileManager> {
     final List<FileSystemEntity> _folder = [];
 
     for (var v in parentDir.listSync()) {
-      // 去除以 .开头的文件/文件夹
       if (p.basename(v.path).substring(0, 1) == '.') {
         continue;
       }

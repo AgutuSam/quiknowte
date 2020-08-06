@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:quiknowte/screen_size.dart';
-import 'package:quiknowte/view/dynamic.dart';
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:quiknowte/view/represent/page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'callfilemanager.dart';
+import 'dynamic.dart';
+import 'extras/extras.dart';
+import 'represent/page.dart';
 
 /// This Widget is the main application widget.
 class ProjectHome extends StatefulWidget {
@@ -199,9 +200,15 @@ class _ProjectHome extends State<ProjectHome> {
                           topLeft: Radius.circular(22.0),
                         )),
                         color: Colors.lightBlueAccent,
-                        onPressed: () {
-                          return null;
-                        },
+                        onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Extras(
+                                      ptime: pTime,
+                                      pname: pName,
+                                      pid: pId,
+                                    ),
+                                fullscreenDialog: false)),
                         textColor: Colors.white,
                         padding: const EdgeInsets.all(0.0),
                         child: Container(
@@ -215,7 +222,7 @@ class _ProjectHome extends State<ProjectHome> {
                               colorFilter: ColorFilter.mode(
                                   Color.fromRGBO(255, 255, 255, 0.6),
                                   BlendMode.dstATop),
-                              image: ExactAssetImage('assets/math.jpg'),
+                              image: ExactAssetImage('assets/film.jpg'),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -227,7 +234,7 @@ class _ProjectHome extends State<ProjectHome> {
                               Icon(Icons.settings,
                                   size: 60.0, color: Colors.white),
                               Text(
-                                'Math',
+                                'Extras',
                                 style: TextStyle(
                                   fontSize: 24,
                                   color: Colors.white,

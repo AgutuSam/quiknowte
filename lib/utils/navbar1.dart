@@ -120,7 +120,7 @@ class _NavBar1State extends State<NavBar1> {
                         fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    '${auser?.email}' != null ? '${auser?.email}' : 'Anonym',
+                    '${auser?.email}' != null ? '${auser?.email}' : 'Anonym@quiknowte.com',
                     style: TextStyle(color: active, fontSize: 16.0),
                   ),
                   SizedBox(height: 30.0),
