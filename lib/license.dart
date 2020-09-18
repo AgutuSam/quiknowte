@@ -3,31 +3,32 @@ import 'package:flutter/widgets.dart';
 import 'package:quiknowte/utils/navbar1.dart';
 import 'package:quiknowte/auth/auth.dart';
 
-class Info extends StatefulWidget {
-  Info({this.auth});
+class License extends StatefulWidget {
+  License({this.auth});
   final BaseAuth auth;
   @override
   State<StatefulWidget> createState() {
-    return _InfoState();
+    return _LicenseState();
   }
 }
 
-class _InfoState extends State<Info> {
+class _LicenseState extends State<License> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       appBar: AppBar(
-        title: Text('About'),
+        title: Text('License'),
       ),
       drawer: NavBar1(auth: widget.auth),
       body: Container(
         child: Center(
           child: Container(
-            padding: EdgeInsets.all(18.0),
+            padding: EdgeInsets.all(12.0),
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/info.png'), fit: BoxFit.contain)),
+                    image: AssetImage('assets/license.png'),
+                    fit: BoxFit.contain)),
           ),
         ),
       ),

@@ -14,6 +14,7 @@ import 'dart:async';
 import '../help.dart';
 import '../home.dart';
 import '../info.dart';
+import '../license.dart';
 
 class NavBar1 extends StatefulWidget {
   NavBar1({this.auth, this.onSignedOut});
@@ -120,23 +121,23 @@ class _NavBar1State extends State<NavBar1> {
                         fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    '${auser?.email}' != null ? '${auser?.email}' : 'Anonym@quiknowte.com',
+                    '${auser?.email}' != null
+                        ? '${auser?.email}'
+                        : 'Anonym@quiknowte.com',
                     style: TextStyle(color: active, fontSize: 16.0),
                   ),
                   SizedBox(height: 30.0),
-                  _buildRow(Icons.home, 'Home', context, StartHomePage()),
+                  _buildRow(Icons.home, 'Home', context,
+                      StartHomePage(auth: widget.auth)),
                   _buildDivider(),
-                  _buildRow(Icons.account_circle, 'Profile', context,
-                      StartHomePage()),
+                  // _buildRow(Icons.help_outline, 'Help', context,
+                  //     Help(auth: widget.auth)),
+                  // _buildDivider(),
+                  _buildRow(Icons.info_outline, 'Info', context,
+                      Info(auth: widget.auth)),
                   _buildDivider(),
-                  _buildRow(
-                      Icons.email, 'Contact us', context, StartHomePage()),
-                  _buildDivider(),
-                  _buildRow(Icons.star, 'Rate us', context, StartHomePage()),
-                  _buildDivider(),
-                  _buildRow(Icons.help_outline, 'Help', context, Help()),
-                  _buildDivider(),
-                  _buildRow(Icons.info_outline, 'Info', context, Info()),
+                  _buildRow(Icons.star, 'License', context,
+                      License(auth: widget.auth)),
                   _buildDivider(),
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: .2),
