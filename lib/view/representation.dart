@@ -142,10 +142,11 @@ class _RepresentationSate extends State<Representation>
   List<List<Properties>> globalMultiData;
   List<List<PropertiesDateTime>> globalMultiTimeData;
   List<List<PropertiesInt>> globalMultiIntData;
-  List<charts.Series<Properties, String>>  multiDataVal;
+  List<charts.Series<Properties, String>> multiDataVal;
   static Random random = Random();
   static Color getColor() {
-    return Color.fromARGB(255, random.nextInt(255), random.nextInt(255), random.nextInt(255));
+    return Color.fromARGB(
+        255, random.nextInt(255), random.nextInt(255), random.nextInt(255));
   }
 
   void createGlobalData() {
@@ -170,20 +171,20 @@ class _RepresentationSate extends State<Representation>
     int i;
     int j;
     if (_selTable.isNotEmpty) {
-      for(j = 0; j < _selTable.length; j++){
-      flex.DatabaseHelper().getAllSamples(_selTable[j].toString()).then((val) {
-        tear = val;
-        print(tear[0][_axisYVal]);
-        for (i = 0; i < tear.length; i++) {
-          globalMultiTimeData.add(
-            [
-            PropertiesDateTime(tear[i][_axisXVal] as DateTime,
-                double.parse(tear[i][_axisYVal].toString()).round()),
-            ]
-          );
-        }
-      });
-    }
+      for (j = 0; j < _selTable.length; j++) {
+        flex.DatabaseHelper()
+            .getAllSamples(_selTable[j].toString())
+            .then((val) {
+          tear = val;
+          print(tear[0][_axisYVal]);
+          for (i = 0; i < tear.length; i++) {
+            globalMultiTimeData.add([
+              PropertiesDateTime(tear[i][_axisXVal] as DateTime,
+                  double.parse(tear[i][_axisYVal].toString()).round()),
+            ]);
+          }
+        });
+      }
     }
   }
 
@@ -191,21 +192,20 @@ class _RepresentationSate extends State<Representation>
     List tear;
     int i;
     if (_selTable.isNotEmpty) {
-      _selTable.asMap().forEach((index, element) { 
+      _selTable.asMap().forEach((index, element) {
         flex.DatabaseHelper().getAllSamples(element.toString()).then((val) {
-        tear = val;
-        
-        for (i = 0; i < tear.length; i++) {
-          
-          globalMultiData[index].add(
-            Properties(tear[i][_axisXVal].toString(),
-                double.parse(tear[i][_axisYVal].toString()).round()),
-                );
-                print('?////////////////////????????????');
-        print(globalMultiData.toString());
-        print('????????/////////////////////////????????');
-        }
-      });
+          tear = val;
+
+          for (i = 0; i < tear.length; i++) {
+            globalMultiData[index].add(
+              Properties(tear[i][_axisXVal].toString(),
+                  double.parse(tear[i][_axisYVal].toString()).round()),
+            );
+            print('?////////////////////????????????');
+            print(globalMultiData.toString());
+            print('????????/////////////////////////????????');
+          }
+        });
       });
       setState(() {
         _selTable = [];
@@ -218,20 +218,20 @@ class _RepresentationSate extends State<Representation>
     int i;
     int j;
     if (_selTable != []) {
-      for(j = 0; j < _selTable.length; j++){
-      flex.DatabaseHelper().getAllSamples(_selTable[j].toString()).then((val) {
-        tear = val;
-        print(tear[0][_axisYVal]);
-        for (i = 0; i < tear.length; i++) {
-          globalMultiIntData.add(
-            [
-            PropertiesInt(double.parse(tear[i][_axisXVal].toString()).round(),
-                double.parse(tear[i][_axisYVal].toString()).round()),
-            ]
-          );
-        }
-      });
-    }
+      for (j = 0; j < _selTable.length; j++) {
+        flex.DatabaseHelper()
+            .getAllSamples(_selTable[j].toString())
+            .then((val) {
+          tear = val;
+          print(tear[0][_axisYVal]);
+          for (i = 0; i < tear.length; i++) {
+            globalMultiIntData.add([
+              PropertiesInt(double.parse(tear[i][_axisXVal].toString()).round(),
+                  double.parse(tear[i][_axisYVal].toString()).round()),
+            ]);
+          }
+        });
+      }
     }
   }
 
@@ -403,7 +403,8 @@ class _RepresentationSate extends State<Representation>
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    Widget cards(String image, String title, Widget route, String check, int index) {
+    Widget cards(
+        String image, String title, Widget route, String check, int index) {
       return InkWell(
         onTap: () {
           List<bool> selected;
@@ -435,11 +436,10 @@ class _RepresentationSate extends State<Representation>
                 selected[buttonIndex] = false;
               }
             }
-            if(title == 'Custom Legend'){
+            if (title == 'Custom Legend') {
               globalDataChooser = 'multi';
             }
-          }
-          );
+          });
         },
         child: Opacity(
           opacity: 0.8,
@@ -520,7 +520,6 @@ class _RepresentationSate extends State<Representation>
 
     List<charts.Series<Properties, String>> _createData(
         String eyedee, List<Properties> globalData) {
-          
       return [
         charts.Series<Properties, String>(
           id: eyedee,
@@ -528,68 +527,64 @@ class _RepresentationSate extends State<Representation>
           measureFn: (Properties valew, _) => valew.measure,
           data: globalData,
         )
-          // Set series to use the secondary measure axis.
-          // ..setAttribute(charts.measureAxisIdKey, secondaryMeasureAxisId),
+        // Set series to use the secondary measure axis.
+        // ..setAttribute(charts.measureAxisIdKey, secondaryMeasureAxisId),
       ];
     }
 
-    List<charts.Series<PropertiesInt, int>> 
-    _createMultiIntData(String eyedee, List<List<PropertiesInt>> globalMultiIntData) {
-      List<charts.Series<PropertiesInt, int>>  val;
-      for(var i = 0; i < globalMultiIntData.length; i++){
+    List<charts.Series<PropertiesInt, int>> _createMultiIntData(
+        String eyedee, List<List<PropertiesInt>> globalMultiIntData) {
+      List<charts.Series<PropertiesInt, int>> val;
+      for (var i = 0; i < globalMultiIntData.length; i++) {
         val = [
-        charts.Series<PropertiesInt, int>(
-        id: eyedee[i],
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (PropertiesInt valew, _) => valew.dtDomain,
-        measureFn: (PropertiesInt valew, _) => valew.measure,
-        data: globalMultiIntData[i],
-      )
-      ..setAttribute(charts.rendererIdKey, 'customPoint'),
+          charts.Series<PropertiesInt, int>(
+            id: eyedee[i],
+            colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+            domainFn: (PropertiesInt valew, _) => valew.dtDomain,
+            measureFn: (PropertiesInt valew, _) => valew.measure,
+            data: globalMultiIntData[i],
+          )..setAttribute(charts.rendererIdKey, 'customPoint'),
         ];
       }
       return val;
-      
     }
 
-    List<charts.Series<Properties, String>> 
-    _createMultiData(String eyedee, List<List<Properties>> globalMultiData) {
-    print(':::::::::::::::::::::::::::::::::::::::::::::::::::');
-    print(globalMultiData.toString());
-    print(':::::::::::::::::::::::::::::::::::::::::::::::::::');
-      for(var i = 0; i < globalMultiData.length; i++){
-        multiDataVal.add(
-        charts.Series<Properties, String>(
-        id: 'heey',
-        colorFn: (_, __) => charts.ColorUtil.fromDartColor(getColor()),
-        domainFn: (Properties valew, _) => valew.domain,
-        measureFn: (Properties valew, _) => valew.measure,
-        data: globalMultiData[i],
-      )
-      // ..setAttribute(charts.rendererIdKey, 'customPoint'),
-        );
+    List<charts.Series<Properties, String>> _createMultiData(
+        String eyedee, List<List<Properties>> globalMultiData) {
+      print(':::::::::::::::::::::::::::::::::::::::::::::::::::');
+      print(globalMultiData.toString());
+      print(':::::::::::::::::::::::::::::::::::::::::::::::::::');
+      for (var i = 0; i < globalMultiData.length; i++) {
+        multiDataVal.add(charts.Series<Properties, String>(
+          id: 'heey',
+          colorFn: (_, __) => charts.ColorUtil.fromDartColor(getColor()),
+          domainFn: (Properties valew, _) => valew.domain,
+          measureFn: (Properties valew, _) => valew.measure,
+          data: globalMultiData[i],
+        )
+            // ..setAttribute(charts.rendererIdKey, 'customPoint'),
+            );
       }
-        
+
       return multiDataVal;
     }
 
-   List<charts.Series<PropertiesDateTime, DateTime>> 
-    _createMultiTimeData(String eyedee, List<List<PropertiesDateTime>> globalMultiTimeData) {
-   List<charts.Series<PropertiesDateTime, DateTime>>  val;
-      for(var i = 0; i < globalMultiTimeData.length; i++){
+    List<charts.Series<PropertiesDateTime, DateTime>> _createMultiTimeData(
+        String eyedee, List<List<PropertiesDateTime>> globalMultiTimeData) {
+      List<charts.Series<PropertiesDateTime, DateTime>> val;
+      for (var i = 0; i < globalMultiTimeData.length; i++) {
         val = [
-        charts.Series<PropertiesDateTime, DateTime>(
-        id: eyedee[i],
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (PropertiesDateTime valew, _) => valew.dtDomain,
-        measureFn: (PropertiesDateTime valew, _) => valew.measure,
-        data: globalMultiTimeData[i],
-      )
-      ..setAttribute(charts.rendererIdKey, 'customPoint'),
+          charts.Series<PropertiesDateTime, DateTime>(
+            id: eyedee[i],
+            colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+            domainFn: (PropertiesDateTime valew, _) => valew.dtDomain,
+            measureFn: (PropertiesDateTime valew, _) => valew.measure,
+            data: globalMultiTimeData[i],
+          )..setAttribute(charts.rendererIdKey, 'customPoint'),
         ];
       }
       return val;
-  }
+    }
 
     final List<Tabz> tabz = <Tabz>[
       Tabz(
@@ -1355,8 +1350,7 @@ class _RepresentationSate extends State<Representation>
                             onPressed: (_) => onCapPress(widget.key),
                             children: [widget.value],
                           );
-                        }).toList()
-                        ),
+                        }).toList()),
                   ),
                 ),
                 Container(
@@ -1413,12 +1407,13 @@ class _RepresentationSate extends State<Representation>
                             onChanged: (value) {
                               setState(() {
                                 _axisYVal = value as String;
-                                if(globalDataChooser == 'default'){
+                                if (globalDataChooser == 'default') {
                                   createGlobalData();
-                                }else if(globalDataChooser == 'multi'){
-                                  print('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
+                                } else if (globalDataChooser == 'multi') {
+                                  print(
+                                      'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
                                   createGlobalMultiData();
-                                }                                
+                                }
                                 canvas();
                               });
                             },
@@ -2248,7 +2243,8 @@ class _RepresentationSate extends State<Representation>
                               _selTable
                                   .remove(_tableList[i]['name'].toString());
                             }
-                            globalMultiData = List.generate(_selTable.length, (index) => []);
+                            globalMultiData =
+                                List.generate(_selTable.length, (index) => []);
                             tableStructCheck();
                           });
                         },

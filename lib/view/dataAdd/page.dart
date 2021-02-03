@@ -352,6 +352,8 @@ class _DataAdd extends State<DataAdd> {
                                                                           //             ['type']
                                                                           //         .toString() !=
                                                                           //     'DATETIME') {
+                                                                                                                                                 
+                                                                          
                                                                           inputVal[index] =
                                                                               value;
                                                                           // }
